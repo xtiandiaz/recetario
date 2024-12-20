@@ -1,7 +1,7 @@
 # Recetario
 
 ## Desayuno ☕️
-* [Huevos escalfados](./notes/breakfast/poached_eggs.md)
+* [Huevos escalfados](./docs/breakfast/poached_eggs.md)
 * Pudín de semillas chía
 * Panqueques
 * Omelettes
