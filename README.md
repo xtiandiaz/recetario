@@ -6,6 +6,7 @@
 * Panqueques
 * Omelettes
 * Tortillas rellenas
+* Granola casera
 
 ## Almuerzo 🍽
 
@@ -64,6 +65,7 @@
 * Puré de arveja
 * Puré de huevo
 * Bolas de arroz
+* Bolitas de quinoa y puré de papa
 * Verduras apanadas
 * Cascos de papa o plátano rostizados
 * Tomates 'secos' en aceite y hierbas
