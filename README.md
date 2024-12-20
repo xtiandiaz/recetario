@@ -20,6 +20,7 @@
 * Ensalada capresa
 * Ensalada de algas marinas
 * Ensalada griega
+* Ensalada Tabbouleh
 * Ensalada de rábano con queso cottage
 * Ensalada rusa
 * Ensalada 'Donburi Wok'
@@ -47,13 +48,14 @@
 #### Sopas 🍲
 * Sopa cremosa de salmón
 
-### Otros (también como acompañamientos) 
+### Otros (también como acompañamientos)
 * Medallones de berenjena o zuccini
 * Medallones de trucha o salmón
 * Tallarines de arroz con verduras salteadas
 * Kibbehs
 * Tortillas rellenas
 * Tortilla española
+* Tofu apanado
 
 ### Acompañamientos 🥟
 
