@@ -1,6 +1,28 @@
-# Recetario
+# Recetario 🥘
 
-## Desayuno ☕️
+## Tabla de contenido
+1. [Desayuno](#breakfast)
+1. [Almuerzo](#lunch)
+    1. [Entradas](#starters)
+        1. [Sopas](#soups)
+        1. [Ensaladas](#salads)
+        1. [Otras](#starters-other)
+    1. [Principios](#main-dishes)
+        1. [Pastas](#pasta)
+        1. [Pescados](#fish)
+        1. [Carnes](#meats)
+        1. [Hamburguesas](#burgers)
+        1. [Sopas](#main-dishes-soups)
+1. [Acompañamientos](#side-dishes)
+    1. [Varios](#side-dishes-various)
+    1. [Encurtidos](#pickles)
+1. [Bebidas](#drinks)
+    1. [Calientes](#drinks-hot)
+    1. [Frías](#drinks-cold)
+1. [Panadería & Repostería](#bakery)
+---
+
+## Desayuno ☕️ <a id="breakfast"></a>
 * [Huevos escalfados](./docs/breakfast/poached_eggs.md)
 * Pudín de semillas chía
 * Panqueques
@@ -8,16 +30,15 @@
 * Tortillas rellenas
 * Granola casera
 
-## Almuerzo 🍽
+## Almuerzo 🍽 <a id="lunch"></a>
 
-### Entradas
+### Entradas <a id="starters"></a>
 
-* Tajadas de cuajada sofreída y con aderezo dulce
+#### Sopas 🍲 <a id="soups"></a>
+* Crema de zapallo (ahuyama)
+* Sopa de miso
 
-#### Sopas 🍲
-* Crema de zapallo / ahuyama
-
-#### Ensaladas 🥗
+#### Ensaladas 🥗 <a id="salads"></a>
 * Ensalada capresa
 * Ensalada de algas marinas
 * Ensalada griega
@@ -26,31 +47,35 @@
 * Ensalada rusa
 * Ensalada 'Donburi Wok'
 
+#### Otras <a id="starters-other"></a>
+* Tajadas de cuajada sofreída y con aderezo dulce
+
 ### Principios
 
-#### Pastas 🍝
+#### Pastas 🍝 <a id="pasta"></a>
+* Lasaña de espinaca y pollo en salsa bechamel
 * Penne o tallarines con queso ricotta y salsa marinara
 * Cuscús con espinaca, tomates 'secos' y pollo rostizado
 
-#### Pescados 🐟
+#### Pescados 🐟 <a id="fish"></a>
 * Trucha o salmón al ajillo con salvia
 * Salmón asado
 * Rollos de salmón
 
-#### Carnes 🥩 🍗
+#### Carnes 🥩 🍗 <a id="meats"></a>
 * Carnes selladas y sofreídas (servidas con salsa al gusto)
   
-#### Hamburguesas 🍔
+#### Hamburguesas 🍔 <a id="burgers"></a>
 * Hamburguesa tradicional casera
 * Hamburguesa Budapest
 * Hamburguesa mediterránea
 * Hamburguesa hawaiana
 
-#### Sopas 🍲
+#### Sopas 🍲 <a id="main-dishes-soups"></a>
 * Sopa cremosa de salmón
 
-### Otros (también como acompañamientos)
-* Medallones de berenjena o zuccini
+#### Otros (también como acompañamientos) <a id="main-dishes-others"></a>
+* Medallones de quinoa con berenjena o calabacín (zucchini)
 * Medallones de trucha o salmón
 * Tallarines de arroz con verduras salteadas
 * Kibbehs
@@ -58,8 +83,9 @@
 * Tortilla española
 * Tofu apanado
 
-### Acompañamientos 🥟
+### Acompañamientos 🥟 <a id="side-dishes"></a>
 
+#### Varios <a id="side-dishes-various"></a>
 * Hummus
 * Puré de aguacate
 * Puré de arveja
@@ -71,30 +97,34 @@
 * Tomates 'secos' en aceite y hierbas
 * Cuscús con ajonjolí y quinoa tostada
 
-#### Encurtidos 🥒 🫙
+#### Encurtidos 🥒 🫙 <a id="pickles"></a>
 * Pimentones encurtidos
 * Pepinillos
 * Cebolla roja encurtida
 
-### Salsas y aderezos 💃
+### Salsas y aderezos 💃 <a id="sauces"></a>
 
 * Salsa Tzatziki
 * Salsa marinara
 * Salsa tahini
 * Salsa Teriyaki
 * Salsa Holandesa
-* Salsa de tomate
+* Salsa bechamel
+* Salsa de tomate casera
 * Mayonesa casera
 * Mostaneza (mayonesa + mostaza caseras)
 * Dulce de pimentón
 * Chutney de mango
 * Vinagretas varias
 
-## Bebidas
-### Calientes ☕️
+## Bebidas <a id="drinks"></a>
+### Calientes ☕️ <a id="drinks-hot"></a>
 * Té verde
 * Té negro
 * Café con jengibre y canela
 
-### Frías 🍹
+### Frías 🍹 <a id="drinks-cold"></a>
 * Limonada o naranjada con menta
+
+## Panadería & Repostería 🥐 <a id="bakery"></a>
+
