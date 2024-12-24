@@ -58,8 +58,9 @@
 * Cuscús con espinaca, tomates 'secos' y pollo rostizado
 
 #### Pescados 🐟 <a id="fish"></a>
-* Trucha o salmón al ajillo con salvia
-* Salmón asado
+* Salmón o trucha al ajillo con salvia
+* Salmón o trucha a la caponata
+* Salmón o trucha teriyaki
 * Rollos de salmón
 
 #### Carnes 🥩 🍗 <a id="meats"></a>
@@ -85,16 +86,27 @@
 
 ### Acompañamientos 🥟 <a id="side-dishes"></a>
 
-#### Varios <a id="side-dishes-various"></a>
-* Hummus
+#### Purés
 * Puré de aguacate
 * Puré de arveja
 * Puré de huevo
+
+#### Bolas
 * Bolas de arroz
 * Bolitas de quinoa y puré de papa
-* Verduras apanadas
-* Cascos de papa o plátano rostizados
+
+#### Roatizados
+* Cascos de papa, plátano y/o zanahoria rostizados
+
+#### Apanados
+* Cascos de verduras apanados
+
+#### Italianos
+* Caponata (verduras salteadas al estilo siciliano)
 * Tomates 'secos' en aceite y hierbas
+
+#### Árabe
+* Hummus
 * Cuscús con ajonjolí y quinoa tostada
 
 #### Encurtidos 🥒 🫙 <a id="pickles"></a>
