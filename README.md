@@ -13,8 +13,13 @@
         1. [Carnes](#meats)
         1. [Hamburguesas](#burgers)
         1. [Sopas](#main-dishes-soups)
-1. [Acompañamientos](#side-dishes)
-    1. [Varios](#side-dishes-various)
+1. [Acompañamientos](#sides)
+    1. [Purés](#sides-purees)
+    1. [Bolas](#sides-balls)
+    1. [Rostizados](#sides-roasted)
+    1. [Apanados](#sides-breaded)
+    1. [Italianos](#sides-italian)
+    1. [Libaneses](#sides-lebanese)
     1. [Encurtidos](#pickles)
 1. [Bebidas](#drinks)
     1. [Calientes](#drinks-hot)
@@ -84,32 +89,35 @@
 * Tortilla española
 * Tofu apanado
 
-### Acompañamientos 🥟 <a id="side-dishes"></a>
+### Acompañamientos 🥟 <a id="sides"></a>
 
-#### Purés
+#### Ensaladas 🥗
+Ver en la sección de [entradas](#entradas).
+
+#### Purés 🧈 <a id="sides-purees"></a>
 * Puré de aguacate
 * Puré de arveja
 * Puré de huevo
 
-#### Bolas
+#### Bolas 🍙 <a id="sides-balls"></a>
 * Bolas de arroz
 * Bolitas de quinoa y puré de papa
 
-#### Roatizados
+#### Rostizados 🥔 <a id="sides-roasted"></a>
 * Cascos de papa, plátano y/o zanahoria rostizados
 
-#### Apanados
+#### Apanados 🍞 <a id="sides-breaded"></a>
 * Cascos de verduras apanados
 
-#### Italianos
+#### Italianos 🇮🇹 <a id="sides-italian"></a>
 * Caponata (verduras salteadas al estilo siciliano)
 * Tomates 'secos' en aceite y hierbas
 
-#### Árabe
+#### Libanéses 🇱🇧 <a id="sides-lebanese"></a>
 * Hummus
 * Cuscús con ajonjolí y quinoa tostada
 
-#### Encurtidos 🥒 🫙 <a id="pickles"></a>
+#### Encurtidos 🥒 🫙 <a id="sides-pickles"></a>
 * Pimentones encurtidos
 * Pepinillos
 * Cebolla roja encurtida
