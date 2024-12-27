@@ -125,6 +125,7 @@
 * Salsa de tomate casera
 * Mayonesa casera
 * Mostaneza (mayonesa + mostaza caseras)
+* Pesto
 * Dulce de pimentón
 * Chutney de mango
 * Vinagretas varias
