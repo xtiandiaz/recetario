@@ -1,0 +1,25 @@
+{
+  "units": {
+    "cup": 240,
+    "tbsp": 15,
+    "tsp": 5
+  },
+  "referenceIngredients": [
+    {
+      "key": "active_dry_yeast",
+      "density": 0.75
+    },
+    {
+      "key": "flour",
+      "density": 0.593
+    },
+    {
+      "key": "granulated_salt",
+      "density": 1.217
+    },
+    {
+      "key": "granulated_sugar",
+      "density": 0.7
+    }
+  ]
+}
