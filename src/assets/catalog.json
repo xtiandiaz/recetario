@@ -1,0 +1,9 @@
+{
+  "categories": ["bakery"],
+  "recipes": [
+    {
+      "key": "pan_molde",
+      "category": "bakery"
+    }
+  ]
+}
