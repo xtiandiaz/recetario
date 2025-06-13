@@ -1,6 +1,8 @@
 {
   "title": "Pan de molde",
   "subtitle": "Pan lactal",
+  "key": "bread_presliced",
+  "units": 1,
   "ingredients": [
     {
       "name": "Harina de fuerza (italiana – tipo 00)",
@@ -53,8 +55,8 @@
   "steps": [
     "Mezclar en un bol el agua tibia, el azúcar, la levadura y 1 cda. de la harina de fuerza, y dejar la levadura actuar por 20 min.",
     "Agregar al bol todos los demás ingredientes, incluyendo la mantequilla derretida, y mezclar lo mejor posible con una cuchara.",
-    "Aceitar ligeramente una superficie plana, volcar la mezcla, y amasar vigorosamente por 10 mins.",
-    "Aceitar el bol, poner la masa, y tapar el bol con una toalla. Dejar reposar la masa por 1 hr en un lugar cálido y sin corrientes de aire.",
+    "Enharinar ligeramente una superficie plana, volcar la mezcla, y amasar vigorosamente por 10 mins.",
+    "Aceitar el bol, poner la masa, y tapar el bol con una toalla. Dejar reposar la masa por 1 hr en un lugar tibio y sin corrientes de aire.",
     "Pasado el tiempo de reposo, retirar la masa del recipiente, y con ayuda de un rodillo amoldarla en forma rectangular de tal manera que su ancho sea el mismo largo del molde.",
     "Opcionalmente, distribuir las semillas al gusto sobre la masa rectangular.",
     "Enrollar la masa, apretar un poco los extremos y extenderlos hacia abajo para que sellen.",

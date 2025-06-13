@@ -2,7 +2,11 @@
   "categories": ["bakery"],
   "recipes": [
     {
-      "key": "pan_molde",
+      "key": "bread_presliced",
+      "category": "bakery"
+    },
+    {
+      "key": "bread_burger",
       "category": "bakery"
     }
   ]
