@@ -1,0 +1,103 @@
+{
+  "key": "rustic_bread",
+  "units_portions": 1,
+  "ingredients": [
+    {
+      "key": "strong_flour",
+      "quantity": "250 g"
+    },
+    {
+      "key": "whole_wheat_flour",
+      "alt_key": "rye_flour",
+      "quantity": "250 g"
+    },
+    {
+      "key": "granulated_sugar",
+      "quantity": "7 g"
+    },
+    {
+      "key": "granulated_salt",
+      "quantity": "10 g"
+    },
+    {
+      "key": "active_dry_yeast",
+      "quantity": "3.5 g"
+    },
+    {
+      "key": "tepid_water",
+      "quantity": "350 mL"
+    },
+    {
+      "key": "olive_oil",
+      "quantity": "10 mL"
+    },
+    {
+      "key": "bread_seeds",
+      "quantity": "30 g",
+      "priority": "optional"
+    }
+  ],
+  "utensils": [
+    {
+      "key": "loaf_tin",
+      "capacity": "2 L",
+      "priority": "optional"
+    }
+  ],
+  "stages": {
+    "es": [
+      {
+        "steps": [
+          "En un bol pequeño, disolver la levadura en el agua templada junto con el azúcar y una cucharada de harina.",
+          "Dejar reposar la mezcla por 15 min. hasta que burbujée."
+        ]
+      },
+      {
+        "steps": [
+          "En un bol grande, mezclar las harinas y la sal, y luego añadir la mezcla de agua y levadura y el aceite de oliva.",
+          "Remover la mezcla con una cuchara hasta integrar todos los ingredientes.",
+          "Pasar la masa a una superficie ligeramente enharinada y amasar vigorosamente durante 10 min. hasta obtener una masa suave y elástica."
+        ]
+      },
+      {
+        "steps": [
+          "Formar una bola con la masa y ponerla dentro del bol ligeramente aceitado.",
+          "Cubrir el bol con una toalla y dejar elevar la masa por 1.5–2 hr hasta que duplique su tamaño."
+        ]
+      },
+      {
+        "pre_steps": [
+          "Pasado el tiempo de leudado, desgasificar ligeramente la masa, amasándola suavemente."
+        ],
+        "steps": [
+          "[optional] Expandir un poco la masa y esparcir sobre ella las semillas.",
+          "Formar una bola con la masa y ponerla dentro del bol ligeramente aceitado."
+        ],
+        "alt_steps": [
+          "Con ayuda de un rodillo, expandir la masa en forma rectangular donde el ancho del rectángulo sea el mismo largo del molde.",
+          "[optional] Esparcir las semillas sobre la masa rectangular.",
+          "Enrollar la masa a lo largo. Luego, apretar un poco los extremos y extenderlos hacia abajo para que sellen el rollo.",
+          "Recubrir el molde con papel vegetal para hornear, y ubicar el rollo adentro."
+        ],
+        "post_steps": ["Tapar el contenedor con una toalla y dejar reposar la masa por 1 hr más."]
+      },
+      {
+        "steps": [
+          "Precalentar el horno a 220ºC.",
+          "[optional] Colocar una bandeja metálica en la base del horno."
+        ]
+      },
+      {
+        "steps": [
+          "Realizar unos cortes en la superficie del pan con un cuchillo afilado.",
+          "[optional] Justo antes de meter el pan en el horno, vertir medio vaso de agua en la bandeja metálica caliente (para generar vapor).",
+          "Hornear el pan durante 15 min. a 220ºC.",
+          "Bajar la temperatura a 190ºC y hornear el pan por otros 20-25 min., hasta que la corteza esté dorada."
+        ]
+      },
+      {
+        "steps": ["Dejar enfriar el pan sobre una rejilla antes de cortarlo."]
+      }
+    ]
+  }
+}

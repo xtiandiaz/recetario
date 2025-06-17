@@ -1,0 +1,7 @@
+[
+  {
+    "key": "loaf_tin",
+    "purpose": "baking",
+    "materials": ["safe_metal", "tempered_glass", "ceramic"]
+  }
+]

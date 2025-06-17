@@ -1,13 +1,6 @@
 {
   "categories": ["bakery"],
-  "recipes": [
-    {
-      "key": "bread_presliced",
-      "category": "bakery"
-    },
-    {
-      "key": "bread_burger",
-      "category": "bakery"
-    }
-  ]
+  "recipes": {
+    "bakery": ["rustic_bread", "burger_bread"]
+  }
 }

@@ -10,6 +10,10 @@
       "density": 0.75
     },
     {
+      "key": "butter",
+      "density": 0.911
+    },
+    {
       "key": "flour",
       "density": 0.593
     },
@@ -20,6 +24,14 @@
     {
       "key": "granulated_sugar",
       "density": 0.7
+    },
+    {
+      "key": "honey",
+      "density": 1.42
+    },
+    {
+      "key": "olive_oil",
+      "density": 0.915
     }
   ]
 }
