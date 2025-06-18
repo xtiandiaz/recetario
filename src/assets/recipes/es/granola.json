@@ -1,0 +1,56 @@
+{
+  "key": "granola",
+  "portions": 12,
+  "ingredients": [
+    {
+      "key": "oat_flakes",
+      "quantity": "3 cup"
+    },
+    {
+      "key": "granola_assorted_nuts_seeds",
+      "quantity": "1.5 cup",
+      "recommendations": ["almonds", "brazil_nuts", "chia_seeds", "pumpkin_seeds"]
+    },
+    {
+      "key": "granola_assorted_dry_fruit",
+      "quantity": "1/2 cup",
+      "recommendations": ["dried_coconut_flakes", "dried_cramberries", "raisins"]
+    },
+    {
+      "key": "coconut_oil",
+      "quantity": "1/2 cup"
+    },
+    {
+      "key": "honey",
+      "quantity": "1/3 cup"
+    },
+    {
+      "key": "granulated_salt",
+      "quantity": "3/4 tsp."
+    }
+  ],
+  "instructions": {
+    "es": [
+      {
+        "steps": [
+          "En un bol grande, mezclar las hojuelas de avena, la sal, las nueces y las semillas. \nNO mezclar aún la fruta deshidratada y dejarla para el final.",
+          "Derretir el aceite de coco, derramarlo sobre la mezcla y revolver con un cucharón.",
+          "Calentar un poco la miel de abejas para que se aligere, vertirla sobre la mezcla y revolver."
+        ]
+      },
+      {
+        "steps": [
+          "Precalentar el horno a 180ºC.",
+          "Recubrir una bandeja para hornear con papel vegetal, volcar la mezcla y esparcirla sobre la superficie de la bandeja.",
+          "Hornear durante 10 min. Luego, retirar la bandeja del horno, revolver la granola para que se siga tostando uniformemente, y hornearla durante otros 10 min."
+        ]
+      },
+      {
+        "steps": [
+          "Retirar la bandeja del horno, esparcir la fruta deshidratada y revolver toda la mezcla sobre la bandeja.",
+          "Dejar enfriar la granola por 40 min. antes de guardarla y/o consumirla."
+        ]
+      }
+    ]
+  }
+}

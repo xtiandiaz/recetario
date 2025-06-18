@@ -1,6 +1,5 @@
 {
   "key": "rustic_bread",
-  "units_portions": 1,
   "ingredients": [
     {
       "key": "strong_flour",
@@ -44,7 +43,7 @@
       "priority": "optional"
     }
   ],
-  "stages": {
+  "instructions": {
     "es": [
       {
         "steps": [
