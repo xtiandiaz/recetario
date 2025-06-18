@@ -1,0 +1,10 @@
+[
+  {
+    "category": "bakery",
+    "recipes": ["rustic_bread"]
+  },
+  {
+    "category": "misc",
+    "recipes": ["granola"]
+  }
+]

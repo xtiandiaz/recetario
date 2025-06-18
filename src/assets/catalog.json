@@ -1,6 +1,0 @@
-{
-  "categories": ["bakery"],
-  "recipes": {
-    "bakery": ["rustic_bread", "burger_bread"]
-  }
-}

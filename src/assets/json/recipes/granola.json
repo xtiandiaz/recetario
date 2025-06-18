@@ -1,6 +1,7 @@
 {
   "key": "granola",
-  "portions": 12,
+  "category": "misc",
+  "portions": 16,
   "ingredients": [
     {
       "key": "oat_flakes",
@@ -8,7 +9,7 @@
     },
     {
       "key": "granola_assorted_nuts_seeds",
-      "quantity": "1.5 cup",
+      "quantity": "3/2 cup",
       "recommendations": ["almonds", "brazil_nuts", "chia_seeds", "pumpkin_seeds"]
     },
     {
@@ -29,9 +30,10 @@
       "quantity": "3/4 tsp."
     }
   ],
-  "instructions": {
+  "phases": {
     "es": [
       {
+        "title": "Preparar la mezcla",
         "steps": [
           "En un bol grande, mezclar las hojuelas de avena, la sal, las nueces y las semillas. \nNO mezclar aún la fruta deshidratada y dejarla para el final.",
           "Derretir el aceite de coco, derramarlo sobre la mezcla y revolver con un cucharón.",
@@ -39,16 +41,24 @@
         ]
       },
       {
+        "title": "Preparar el horno y la bandeja",
         "steps": [
           "Precalentar el horno a 180ºC.",
-          "Recubrir una bandeja para hornear con papel vegetal, volcar la mezcla y esparcirla sobre la superficie de la bandeja.",
-          "Hornear durante 10 min. Luego, retirar la bandeja del horno, revolver la granola para que se siga tostando uniformemente, y hornearla durante otros 10 min."
+          "Recubrir una bandeja para hornear con papel vegetal, volcar sobre ella la mezcla y esparcirla uniformemente."
         ]
       },
       {
+        "title": "Hornear",
         "steps": [
-          "Retirar la bandeja del horno, esparcir la fruta deshidratada y revolver toda la mezcla sobre la bandeja.",
-          "Dejar enfriar la granola por 40 min. antes de guardarla y/o consumirla."
+          "Hornear la granola durante 10 min.",
+          "Luego, retirar la bandeja del horno, revolver y esparcir la granola para que se siga tostando uniformemente, y hornearla durante otros 10 min."
+        ]
+      },
+      {
+        "title": "Finalizar",
+        "steps": [
+          "Retirar la bandeja del horno, esparcir la fruta deshidratada y revolver la granola sobre la bandeja.",
+          "Dejarla enfriar por 40 min antes de guardarla y/o disfrutarla."
         ]
       }
     ]

@@ -1,5 +1,6 @@
 {
   "key": "rustic_bread",
+  "category": "bakery",
   "ingredients": [
     {
       "key": "strong_flour",
@@ -12,15 +13,15 @@
     },
     {
       "key": "granulated_sugar",
-      "quantity": "7 g"
+      "quantity": "2 tsp"
     },
     {
       "key": "granulated_salt",
-      "quantity": "10 g"
+      "quantity": "1.5 tsp"
     },
     {
       "key": "active_dry_yeast",
-      "quantity": "3.5 g"
+      "quantity": "1 tsp"
     },
     {
       "key": "tepid_water",
@@ -28,7 +29,7 @@
     },
     {
       "key": "olive_oil",
-      "quantity": "10 mL"
+      "quantity": "1 tbsp"
     },
     {
       "key": "bread_seeds",
@@ -43,34 +44,33 @@
       "priority": "optional"
     }
   ],
-  "instructions": {
+  "phases": {
     "es": [
       {
+        "title": "Activar la levadura",
         "steps": [
           "En un bol pequeño, disolver la levadura en el agua templada junto con el azúcar y una cucharada de harina.",
-          "Dejar reposar la mezcla por 15 min. hasta que burbujée."
+          "Dejar reposar la mezcla por 15 min hasta que burbujée."
         ]
       },
       {
+        "title": "Preparar y leudar la masa",
         "steps": [
           "En un bol grande, mezclar las harinas y la sal, y luego añadir la mezcla de agua y levadura y el aceite de oliva.",
           "Remover la mezcla con una cuchara hasta integrar todos los ingredientes.",
-          "Pasar la masa a una superficie ligeramente enharinada y amasar vigorosamente durante 10 min. hasta obtener una masa suave y elástica."
-        ]
-      },
-      {
-        "steps": [
+          "Pasar la masa a una superficie ligeramente enharinada y amasar vigorosamente durante 10 min hasta obtener una masa suave y elástica.",
           "Formar una bola con la masa y ponerla dentro del bol ligeramente aceitado.",
-          "Cubrir el bol con una toalla y dejar elevar la masa por 1.5–2 hr hasta que duplique su tamaño."
+          "Cubrir el bol con una toalla y dejar leudar la masa por 1.5–2 hr hasta que duplique su tamaño."
         ]
       },
       {
+        "title": "Amoldar la masa",
         "pre_steps": [
-          "Pasado el tiempo de leudado, desgasificar ligeramente la masa, amasándola suavemente."
+          "Pasado el tiempo de leudado, desgasificar ligeramente la masa amasándola suavemente."
         ],
         "steps": [
           "[optional] Expandir un poco la masa y esparcir sobre ella las semillas.",
-          "Formar una bola con la masa y ponerla dentro del bol ligeramente aceitado."
+          "Formar una bola con la masa y ponerla nuevamente dentro del bol ligeramente aceitado."
         ],
         "alt_steps": [
           "Con ayuda de un rodillo, expandir la masa en forma rectangular donde el ancho del rectángulo sea el mismo largo del molde.",
@@ -78,24 +78,27 @@
           "Enrollar la masa a lo largo. Luego, apretar un poco los extremos y extenderlos hacia abajo para que sellen el rollo.",
           "Recubrir el molde con papel vegetal para hornear, y ubicar el rollo adentro."
         ],
-        "post_steps": ["Tapar el contenedor con una toalla y dejar reposar la masa por 1 hr más."]
+        "post_steps": ["Tapar el contenedor con una toalla y dejar la masa inflarse por 1 hr más."]
       },
       {
+        "title": "Preparar el horno",
         "steps": [
           "Precalentar el horno a 220ºC.",
-          "[optional] Colocar una bandeja metálica en la base del horno."
+          "[optional] Colocar una bandeja metálica (limpia y seca) en la base del horno."
         ]
       },
       {
+        "title": "Hornear",
         "steps": [
           "Realizar unos cortes en la superficie del pan con un cuchillo afilado.",
-          "[optional] Justo antes de meter el pan en el horno, vertir medio vaso de agua en la bandeja metálica caliente (para generar vapor).",
-          "Hornear el pan durante 15 min. a 220ºC.",
-          "Bajar la temperatura a 190ºC y hornear el pan por otros 20-25 min., hasta que la corteza esté dorada."
+          "[optional] Justo antes de meter el pan en el horno, vertir [1/2 cup] de agua en la bandeja metálica caliente (para generar vapor).",
+          "Hornear el pan durante 15 min a 220ºC.",
+          "Bajar la temperatura del horno a 190ºC y seguir horneando el pan por otros 20-25 min, hasta que la corteza esté dorada."
         ]
       },
       {
-        "steps": ["Dejar enfriar el pan sobre una rejilla antes de cortarlo."]
+        "title": "Finalizar",
+        "steps": ["Dejar enfriar el pan sobre una rejilla antes de cortarlo y disfrutarlo."]
       }
     ]
   }
