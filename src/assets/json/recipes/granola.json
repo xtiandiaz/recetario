@@ -19,11 +19,13 @@
     },
     {
       "key": "coconut_oil",
-      "quantity": "1/2 cup"
+      "quantity": "1/2 cup",
+      "temperature": "tepid`"
     },
     {
       "key": "honey",
-      "quantity": "1/3 cup"
+      "quantity": "1/3 cup",
+      "temperature": "tepid`"
     },
     {
       "key": "granulated_salt",
@@ -32,35 +34,15 @@
   ],
   "phases": {
     "es": [
-      {
-        "title": "Preparar la mezcla",
-        "steps": [
-          "En un bol grande, mezclar las hojuelas de avena, la sal, las nueces y las semillas. \nNO mezclar aún la fruta deshidratada y dejarla para el final.",
-          "Derretir el aceite de coco, derramarlo sobre la mezcla y revolver con un cucharón.",
-          "Calentar un poco la miel de abejas para que se aligere, vertirla sobre la mezcla y revolver."
-        ]
-      },
-      {
-        "title": "Preparar el horno y la bandeja",
-        "steps": [
-          "Precalentar el horno a 180ºC.",
-          "Recubrir una bandeja para hornear con papel vegetal, volcar sobre ella la mezcla y esparcirla uniformemente."
-        ]
-      },
-      {
-        "title": "Hornear",
-        "steps": [
-          "Hornear la granola durante 10 min.",
-          "Luego, retirar la bandeja del horno, revolver y esparcir la granola para que se siga tostando uniformemente, y hornearla durante otros 10 min."
-        ]
-      },
-      {
-        "title": "Finalizar",
-        "steps": [
-          "Retirar la bandeja del horno, esparcir la fruta deshidratada y revolver la granola sobre la bandeja.",
-          "Dejarla enfriar por 40 min antes de guardarla y/o disfrutarla."
-        ]
-      }
+      "En un bol grande, mezclar las hojuelas de avena, la sal, las nueces y las semillas. \nNO mezclar aún la fruta deshidratada y dejarla para el final.",
+      "Derretir el aceite de coco, derramarlo sobre la mezcla y remover con una espátula.",
+      "Tibiar la miel de abejas, vertirla sobre la mezcla y revolver.",
+      "Precalentar el horno a 180ºC.",
+      "Recubrir una bandeja para hornear con papel vegetal, volcar sobre ella la mezcla y esparcirla uniformemente.",
+      "Hornear la granola durante 10 min.",
+      "Retirar la bandeja del horno, revolver la granola, volver a esparcirla uniformemente y hornearla por otros 10 min.",
+      "Retirar la bandeja del horno, esparcir la fruta deshidratada y revolver la granola sobre la bandeja.",
+      "Dejarla enfriar por 40 min antes de guardarla y/o disfrutarla."
     ]
   }
 }

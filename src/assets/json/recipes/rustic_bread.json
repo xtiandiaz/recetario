@@ -4,12 +4,12 @@
   "ingredients": [
     {
       "key": "strong_flour",
-      "quantity": "250 g"
+      "quantity": "300 g"
     },
     {
       "key": "whole_wheat_flour",
-      "alt_key": "rye_flour",
-      "quantity": "250 g"
+      "alt_keys": ["rye_flour"],
+      "quantity": "200 g"
     },
     {
       "key": "granulated_sugar",
@@ -24,8 +24,9 @@
       "quantity": "1 tsp"
     },
     {
-      "key": "tepid_water",
-      "quantity": "350 mL"
+      "key": "water",
+      "quantity": "350 mL",
+      "temperature": "tepid"
     },
     {
       "key": "olive_oil",
@@ -35,6 +36,11 @@
       "key": "bread_seeds",
       "quantity": "30 g",
       "priority": "optional"
+    },
+    {
+      "key": "milk",
+      "quantity": "2 tbsp",
+      "temperature": "room"
     }
   ],
   "utensils": [
@@ -44,62 +50,22 @@
       "priority": "optional"
     }
   ],
-  "phases": {
+  "steps": {
     "es": [
-      {
-        "title": "Activar la levadura",
-        "steps": [
-          "En un bol pequeño, disolver la levadura en el agua templada junto con el azúcar y 2 tbsp de la harina.",
-          "Dejar reposar la mezcla por 20 min hasta que burbujée."
-        ]
-      },
-      {
-        "title": "Preparar y leudar la masa",
-        "steps": [
-          "En un bol grande, mezclar las harinas y la sal, y luego añadir la mezcla de agua y levadura y el aceite de oliva.",
-          "Remover la mezcla con una espátula hasta integrar todos los ingredientes.",
-          "Pasar la masa a una superficie ligeramente enharinada y amasar vigorosamente durante 10 min hasta obtener una masa suave y elástica.",
-          "Formar una bola con la masa y ponerla dentro del bol ligeramente aceitado.",
-          "Cubrir el bol con una toalla y dejar leudar la masa por 1.5–2 hr hasta que duplique su tamaño."
-        ]
-      },
-      {
-        "title": "Amoldar la masa",
-        "pre_steps": [
-          "Pasado el tiempo de leudado, desgasificar ligeramente la masa amasándola suavemente."
-        ],
-        "steps": [
-          "[optional] Expandir un poco la masa y esparcir sobre ella las semillas.",
-          "Formar una bola con la masa y ponerla nuevamente dentro del bol ligeramente aceitado."
-        ],
-        "alt_steps": [
-          "Con ayuda de un rodillo, expandir la masa en forma rectangular donde el ancho del rectángulo sea el mismo largo del molde.",
-          "[optional] Esparcir las semillas sobre la masa rectangular.",
-          "Enrollar la masa a lo largo. Luego, apretar un poco los extremos y extenderlos hacia abajo para que sellen el rollo.",
-          "Recubrir el molde con papel vegetal para hornear, y ubicar el rollo adentro."
-        ],
-        "post_steps": ["Tapar el contenedor con una toalla y dejar la masa inflarse por 1 hr más."]
-      },
-      {
-        "title": "Preparar el horno",
-        "steps": [
-          "Precalentar el horno a 220ºC.",
-          "[optional] Colocar una bandeja metálica (limpia y seca) en la base del horno."
-        ]
-      },
-      {
-        "title": "Hornear",
-        "steps": [
-          "Realizar unos cortes en la superficie del pan con un cuchillo afilado.",
-          "[optional] Justo antes de meter el pan en el horno, vertir [1/2 cup] de agua en la bandeja metálica caliente (para generar vapor).",
-          "Hornear el pan durante 15 min a 220ºC.",
-          "Bajar la temperatura del horno a 190ºC y seguir horneando el pan por otros 20-25 min, hasta que la corteza esté dorada."
-        ]
-      },
-      {
-        "title": "Finalizar",
-        "steps": ["Dejar enfriar el pan sobre una rejilla antes de cortarlo y disfrutarlo."]
-      }
+      "En un bol pequeño, mezclar la levadura, el agua, la azúcar y [1 cup] de la harina. Remover y dejar actuar por 15 min.",
+      "En un bol grande, mezclar el resto de harina, sal, (las semillas), el aceite de oliva, y la mezcla de agua con levadura. Remover bien la mezcla con una espátula.",
+      "Pasar la masa a una superficie enharinada y amasar durante 10 min.",
+      "Formar una bola con la masa y ponerla dentro del bol grande aceitado para que no pegue.",
+      "Cubrir el bol con una toalla y dejar la masa levar por 1.5 hr.",
+      "Pasado el tiempo, desgasificar la masa amasándola suavemente.",
+      "Si se quiere hornear en un molde, alargar la masa con ayuda de un rodillo y luego enrollarla de tal manera que el rollo quepa exactamente en el molde. Si NO, formar una bola y ponerla en el bol para que vuelva a crecer.",
+      "Tapar el contenedor con la toalla y dejar levar la masa por 1 hr más.",
+      "Precalentar el horno a 220ºC.",
+      "Si NO se tiene en molde, poner la masa en una rejilla recubierta con papel vegetal y hacerle unos cortes transversales con un cuchillo bien afilado.",
+      "Barnizar el pan con la leche usando una brocha o pincel de cocina.",
+      "Hornear el pan durante 15 min a 220ºC.",
+      "Bajar la temperatura a 190ºC y seguir horneando el pan durante otros 25 min.",
+      "Retirar el pan del horno (y del molde, si tiene), y dejar enfriar el pan por 20 min antes de cortarlo y disfrutarlo."
     ]
   }
 }

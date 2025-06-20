@@ -40,6 +40,9 @@
     "density_key": "honey"
   },
   {
+    "key": "milk"
+  },
+  {
     "key": "oat_flakes"
   },
   {
@@ -61,6 +64,6 @@
     "density_key": "flour"
   },
   {
-    "key": "tepid_water"
+    "key": "water"
   }
 ]
