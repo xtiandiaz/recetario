@@ -1,47 +1,23 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { Icon } from './assets/design-tokens/iconography';
+import { VuetyNavigationBarVM } from '@vueties/components/bars/view-models';
+import VuetyScene from './vueties/scenes/VuetyScene.vue'
+
+const navBarVM: VuetyNavigationBarVM = {
+  isVisible: true,
+  rightBarItems: [
+    {
+      icon: Icon.Scale,
+      isEnabled: true,
+      path: '/datasheet'
+    }
+  ]
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <VuetyScene :navigationBarVM="navBarVM" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+<style scoped lang="scss">
 </style>

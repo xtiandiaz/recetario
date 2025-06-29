@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@design-tokens": ["./src/assets/design-tokens/*"],
-      "@/vueties": ["./src/vueties"]
+      "@vueties": ["./src/vueties"]
     }
   }
 }

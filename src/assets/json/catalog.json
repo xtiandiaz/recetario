@@ -1,10 +1,40 @@
-[
-  {
-    "category": "bakery",
-    "recipes": ["rustic_bread"]
-  },
-  {
-    "category": "misc",
-    "recipes": ["granola"]
-  }
-]
+{
+  "sections": [
+    {
+      "key": "food", 
+      "categories": [
+        {
+          "key": "bakery",
+          "emoji": "🥖",
+          "recipes": [
+            "rustic-bread", 
+            "pita-bread",
+            "pizza-bread"
+          ]
+        },
+        {
+          "key": "salads",
+          "emoji": "🥗",
+          "recipes": [
+            "tabbouleh"
+          ]
+        },
+        {
+          "key": "misc",
+          "emoji": "🍲",
+          "recipes": [
+            "granola"
+          ]
+        },
+        {
+          "key": "sauces-and-dips",
+          "emoji": "🍝",
+          "recipes": [
+            "baba-ganoush",
+            "tzatziki"
+          ]
+        }
+      ]
+    }
+  ]
+}
