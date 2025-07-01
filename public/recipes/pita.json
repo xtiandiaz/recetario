@@ -1,14 +1,15 @@
 {
-  "key": "pita-bread",
+  "key": "pita",
   "category": "bakery",
   "units": 6,
+  "origin": "🇸🇦",
   "ingredients": [
     {
       "key": "all-purpose-flour",
       "quantity": "1 cup"
     },
     {
-      "key": "whole-flour",
+      "key": "whole-wheat-flour",
       "quantity": "1.5 cup"
     },
     {

@@ -3,10 +3,35 @@ export enum Language {
 }
 
 export enum LocalizedStringKey {
-  Title_SectionFood,
+  Title_SectionFood = 'title-section-food',
   
-  Title_CategoryBakery,
-  Title_CategoryMisc,
-  Title_CategorySalads,
-  Title_CategorySaucesAndDips,
+  Title_CategoryBakery = 'title-category-bakery',
+  Title_CategoryMisc = 'title-category-misc',
+  Title_CategoryPastas = 'title-category-pastas',
+  Title_CategorySalads = 'title-category-salads',
+  Title_CategorySauces = 'title-category-sauces',
+  Title_CategorySoups = 'title-category-soups',
+  
+  Title_RecipeBabaGanoush = 'title-recipe-baba-ganoush',
+  Title_RecipeCreamySalmonSoup = 'title-recipe-creamy-salmon-soup',
+  Title_RecipeFocaccia = 'title-recipe-focaccia',
+  Title_RecipeGranola = 'title-recipe-granola',
+  Title_RecipeOnigiri = 'title-recipe-onigiri',
+  Title_RecipePita = 'title-recipe-pita',
+  Title_RecipePizza = 'title-recipe-pizza',
+  Title_RecipeRusticBread = 'title-recipe-rustic-bread',
+  Title_RecipeTabbouleh = 'title-recipe-tabbouleh',
+  Title_RecipeTzatziki = 'title-recipe-tzatziki',
+  
+  Title_IngredientAllPurposeWheatFlour = 'title-ingredient-all-purpose-wheat-flour',
+  Title_IngredientActiveDryYeast = 'title-ingredient-active-dry-yeast',
+  Title_IngredientGranulatedSalt = 'title-ingredient-granulated-salt',
+  Title_IngredientGranulatedSugar = 'title-ingredient-granulated-sugar',
+  Title_IngredientOliveOil = 'title-ingredient-olive-oil',
+  Title_IngredientStrongWheatFlour = 'title-ingredient-strong-wheat-flour',
+  Title_IngredientWholeWheatFlour = 'title-ingredient-whole-wheat-flour',
+  Title_IngredientWater= 'title-ingredient-water',
+  
+  Title_Ingredients = 'title-ingredients',
+  Title_Instructions = 'title-instructions',
 }

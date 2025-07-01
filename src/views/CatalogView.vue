@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { getCatalog } from '@/services/content-provider';
+import { useRouter } from 'vue-router';
+import { RecipeKey } from '@/models/recipe'
+import { getCatalog, getRecipe } from '@/services/content-provision';
+import { onMounted } from 'vue';
+
+const router = useRouter()
 
 const catalog = getCatalog()
+
+onMounted(async () => {
+  const recipe = await getRecipe(RecipeKey.PizzaBread)
+  console.log(recipe)
+})
 </script>
 
 <template>
@@ -17,6 +27,7 @@ const catalog = getCatalog()
           :key="index"
           :id="category.key"
           class="category-card"
+          @click="router.push(`category/${category.key}`)"
         >
           <label>
             <h1>{{ category.emoji }}</h1>
@@ -29,7 +40,10 @@ const catalog = getCatalog()
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/varties';
+@use '@/assets/styles/category-theme';
 @use '@vueties/components/bars/styles' as bar-styles;
+@use '@vueties/utils/mixins';
 @use '@design-tokens/palette';
 
 $card-gap: 0.75em;
@@ -37,8 +51,10 @@ $card-gap: 0.75em;
 main {
   margin: 0 auto;
   max-width: 720px;
-  height: calc(100% - bar-styles.$nav-bar-height);
-  overflow: auto;
+}
+
+h3 {
+  text-align: center;
 }
 
 section {
@@ -59,12 +75,15 @@ section {
 .category-card {
   $h-padding: 1.5em;
   
+  border: none;
+  border-radius: 1em;
+  display: inline-block;
   flex: 1 1 calc(50% - $card-gap - $h-padding * 2);
+  font-size: 1em;
   padding: 1.5em $h-padding;
+  @include category-theme.thematize('cards');
   
   label {
-    text-align: left;
-    
     h1, h6 {
       margin: 0
     }

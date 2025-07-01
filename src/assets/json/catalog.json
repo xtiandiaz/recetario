@@ -4,34 +4,54 @@
       "key": "food", 
       "categories": [
         {
-          "key": "bakery",
+          "color": "yellow",
           "emoji": "🥖",
+          "key": "bakery",
           "recipes": [
-            "rustic-bread", 
-            "pita-bread",
-            "pizza-bread"
+            "focaccia",
+            "pita",
+            "pizza",
+            "rustic-bread"
           ]
         },
         {
-          "key": "salads",
+          "color": "gray",
+          "emoji": "🥣",
+          "key": "misc",
+          "recipes": [
+            "granola",
+            "onigiri"
+          ]
+        },
+        {
+          "color": "red",
+          "emoji": "🍝",
+          "key": "pastas",
+          "recipes": []
+        },
+        {
+          "color": "green",
           "emoji": "🥗",
+          "key": "salads",
           "recipes": [
             "tabbouleh"
           ]
         },
         {
-          "key": "misc",
-          "emoji": "🍲",
-          "recipes": [
-            "granola"
-          ]
-        },
-        {
-          "key": "sauces-and-dips",
-          "emoji": "🍝",
+          "color": "orange",
+          "emoji": "🥘",
+          "key": "sauces",
           "recipes": [
             "baba-ganoush",
             "tzatziki"
+          ]
+        },
+        {
+          "color": "mint",
+          "emoji": "🍲",
+          "key": "soups",
+          "recipes": [
+            "creamy-salmon-soup"
           ]
         }
       ]

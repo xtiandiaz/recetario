@@ -5,12 +5,19 @@ import VuetyScene from './vueties/scenes/VuetyScene.vue'
 
 const navBarVM: VuetyNavigationBarVM = {
   isVisible: true,
+  // leftBarItems: [
+  //   {
+  //     icon: Icon.StarFilled,
+  //     isEnabled: false,
+  //     path: '/'
+  //   }
+  // ],
   rightBarItems: [
     {
       icon: Icon.Scale,
-      isEnabled: true,
+      isEnabled: false,
       path: '/datasheet'
-    }
+    },
   ]
 }
 </script>
