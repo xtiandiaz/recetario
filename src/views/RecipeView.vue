@@ -115,8 +115,12 @@ h3 {
 }
 
 .vuety-progress-indicator {
-  display: block;
-  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 3em;
 }
 </style>
