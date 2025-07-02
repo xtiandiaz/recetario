@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
 import { getRecipe } from '@/services/content-provision';
@@ -19,13 +19,23 @@ const props = defineProps<{
 
 const route = useRoute()
 
+const recipeKey = computed(() => props.rKey)
 const recipe = ref<Recipe | undefined>()
 
-watch(() => props.rKey, async (recipeKey) => {
+async function loadRecipe(key: RecipeKey) {
   recipe.value = undefined
-  recipe.value = await getRecipe(recipeKey)
+  
+  recipe.value = await getRecipe(key)
   route.meta.title!.value = recipe.value?.title
-}, { immediate: true })
+}
+
+watch(recipeKey, async (recipeKey) => {
+  loadRecipe(recipeKey)
+})
+
+onMounted(async () => {
+  loadRecipe(props.rKey)
+})
 </script>
 
 <template>
