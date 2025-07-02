@@ -2,7 +2,7 @@ import { QuantityUnit } from "@/models/units";
 import { Icon } from '@design-tokens/iconography'
 import { enumKeyFromValue } from "@/assets/tungsten/enum";
 
-export const quantityUnitIcon = (unit: QuantityUnit): Icon => {
+export const quantityUnitIcon = (unit: QuantityUnit): Icon | undefined => {
   switch (unit) {
     case QuantityUnit.Cup:
       return Icon.Cup
@@ -10,6 +10,8 @@ export const quantityUnitIcon = (unit: QuantityUnit): Icon => {
       return Icon.TableSpoon
     case QuantityUnit.TeaSpoon:
       return Icon.TeaSpoon
+    default:
+      return undefined
   }
 }
 
