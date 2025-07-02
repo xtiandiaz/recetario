@@ -4,7 +4,10 @@ export enum IngredientKey {
   GranulatedSalt = 'granulated-salt',
   GranulatedSugar = 'granulated-sugar',
   OliveOil = 'olive-oil',
+  SeedMix = 'seed-mix',
   StrongWheatFlour = 'strong-wheat-flour',
+  WholeMilk = 'whole-milk',
+  WholeRyeFlour = 'whole-rye-flour',
   WholeWheatFlour = 'whole-wheat-flour',
 }
 

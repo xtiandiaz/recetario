@@ -26,10 +26,17 @@ export default new Map<LocalizedStringKey, string>([
   [LocalizedStringKey.Title_IngredientGranulatedSalt, "Sal"],
   [LocalizedStringKey.Title_IngredientGranulatedSugar, "Azúcar"],
   [LocalizedStringKey.Title_IngredientOliveOil, "Aceite de oliva"],
+  [LocalizedStringKey.Title_IngredientSeedMix, "Mezcla de semillas"],
   [LocalizedStringKey.Title_IngredientStrongWheatFlour, "Harina de fuerza \"00\""],
-  [LocalizedStringKey.Title_IngredientWholeWheatFlour, "Harina de trigo integral"],
   [LocalizedStringKey.Title_IngredientWater, "Agua"],
+  [LocalizedStringKey.Title_IngredientWholeMilk, "Leche entera"],
+  [LocalizedStringKey.Title_IngredientWholeRyeFlour, "Harina de centeno"],
+  [LocalizedStringKey.Title_IngredientWholeWheatFlour, "Harina de trigo integral"],
   
   [LocalizedStringKey.Title_Ingredients, "Ingredientes"],
   [LocalizedStringKey.Title_Instructions, "Instrucciones"],
+  
+  [LocalizedStringKey.Unit_Cup, "Tz."],
+  [LocalizedStringKey.Unit_TableSpoon, "Cda."],
+  [LocalizedStringKey.Unit_TeaSpoon, "cdta."],
 ])

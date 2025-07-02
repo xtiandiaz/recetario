@@ -27,11 +27,18 @@ export enum LocalizedStringKey {
   Title_IngredientActiveDryYeast = 'title-ingredient-active-dry-yeast',
   Title_IngredientGranulatedSalt = 'title-ingredient-granulated-salt',
   Title_IngredientGranulatedSugar = 'title-ingredient-granulated-sugar',
+  Title_IngredientWholeMilk = 'title-ingredient-whole-milk',
   Title_IngredientOliveOil = 'title-ingredient-olive-oil',
+  Title_IngredientSeedMix = 'title-ingredient-seed-mix',
   Title_IngredientStrongWheatFlour = 'title-ingredient-strong-wheat-flour',
-  Title_IngredientWholeWheatFlour = 'title-ingredient-whole-wheat-flour',
   Title_IngredientWater= 'title-ingredient-water',
+  Title_IngredientWholeRyeFlour = 'title-ingredient-whole-rye-flour',
+  Title_IngredientWholeWheatFlour = 'title-ingredient-whole-wheat-flour',
   
   Title_Ingredients = 'title-ingredients',
   Title_Instructions = 'title-instructions',
+  
+  Unit_Cup = 'unit-cup',
+  Unit_TableSpoon = 'unit-tbsp',
+  Unit_TeaSpoon = 'unit-tsp',
 }

@@ -9,7 +9,7 @@ const router = useRouter()
 const catalog = getCatalog()
 
 onMounted(async () => {
-  const recipe = await getRecipe(RecipeKey.PizzaBread)
+  const recipe = await getRecipe(RecipeKey.Pizza)
   console.log(recipe)
 })
 </script>

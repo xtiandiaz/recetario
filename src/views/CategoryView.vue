@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { CategoryKey } from '@/models/catalog';
 import { getCategory } from '@/services/content-provision';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@vueties/components/form/rows/VuetyPushFormRow.vue';
-import { recipeTitle } from '@/utils/catalog.utils';
+import { recipeTitle } from '@/utils/localization.utils';
 
 const props = defineProps<{
   cKey: CategoryKey
@@ -20,8 +20,8 @@ const recipeEntries = computed(() => category.value.recipes
   .sort((a, b) => a.title.localeCompare(b.title))
 )
 
-onMounted(() => {
-  // route.meta.title!.value = category?.title
+watch(category, (value) => {
+  route.meta.title!.value = value.title
 })
 </script>
 

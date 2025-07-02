@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import type { Ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import CatalogView from './views/CatalogView.vue'
 import CategoryView from './views/CategoryView.vue'
 import RecipeView from './views/RecipeView.vue'
@@ -10,7 +10,7 @@ declare module 'vue-router' {
   }
 }
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
@@ -20,12 +20,18 @@ export default createRouter({
     {
       path: '/category/:cKey',
       component: CategoryView,
-      props: true
+      props: true,
     },
     {
       path: '/recipe/:rKey',
       component: RecipeView,
-      props: true
+      props: true,
     }
   ]
 })
+
+router.getRoutes().forEach(r => {
+  r.meta.title = ref<string>()
+})
+
+export default router

@@ -37,3 +37,8 @@ body, #app {
   overflow: hidden;
 }
 
+.vuety-navigation-bar {
+  #vnb-title {
+    @extend strong, .serif;
+  }
+}

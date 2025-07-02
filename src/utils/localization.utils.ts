@@ -1,8 +1,9 @@
+import type { LocalizedStringKey } from "@/models/localization"
 import { CategoryKey, SectionKey } from "@/models/catalog";
-import { LocalizedStringKey } from "@/models/localization";
 import type { RecipeKey } from "@/models/recipe";
 import type { IngredientKey } from "@/models/ingredient";
-import { localizedString } from "@/services/localization";
+import { QuantityUnit } from "@/models/units"
+import { localizedString } from "@/services/localization"
 
 export const sectionTitle = (key: SectionKey): string => {
   return localizedString(`title-section-${key}` as LocalizedStringKey)
@@ -18,4 +19,13 @@ export const recipeTitle = (key: RecipeKey): string => {
 
 export const ingredientTitle = (key: IngredientKey): string => {
   return localizedString(`title-ingredient-${key}` as LocalizedStringKey)
+}
+
+export const localizedQuantityUnit = (unit: QuantityUnit): string => {
+  switch (unit) {
+    case QuantityUnit.Gram:
+      return unit
+    default:
+      return localizedString(`unit-${unit}` as LocalizedStringKey)
+  }
 }
