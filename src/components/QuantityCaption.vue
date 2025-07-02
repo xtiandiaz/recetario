@@ -30,10 +30,10 @@ const unitIcon = computed(() => unit.value ? quantityUnitIcon(unit.value) : unde
   align-items: center;
   display: flex;
   gap: 0.25em;
-  padding: 0.125em 0;
+  padding: 0.125em 0 0 0;
   
   .svg-icon {
-    width: 1em;
+    width: 1.25em;
     @include palette.color-attribute('color', 'body');
   }
 }

@@ -1,0 +1,48 @@
+{
+  "key": "pizza",
+  "category": "bakery",
+  "units": 2,
+  "origin": "🇮🇹",
+  "ingredients": [
+    {
+      "key": "strong-wheat-flour",
+      "quantity": "3 cup"
+    },
+    {
+      "key": "granulated-sugar",
+      "quantity": "1 tsp"
+    },
+    {
+      "key": "granulated-salt",
+      "quantity": "1 tsp"
+    },
+    {
+      "key": "active-dry-yeast",
+      "quantity": "1.5 tsp"
+    },
+    {
+      "key": "water",
+      "quantity": "1 cup",
+      "temperature": "tepid"
+    }
+  ],
+  "instructions": [
+    {
+      "language": "es",
+      "steps": [
+        "En un bol, mezclar el agua, la levadura, el azúcar, y [2 tbsp] de la harina. Revolver y dejar actuar por 15 min.",
+        "Agregar toda la harina a la mezcla y revolverla bien con una espátula.",
+        "Pasar la masa a una superficie enharinada y amasarla durante 10 min.",
+        "Formar una bola con la masa y ponerla dentro del bol aceitado para que no se pegue.",
+        "Cubrir el bol con una toalla y dejar la masa levar por 1-2 hr.",
+        "Pasado el tiempo, desgasificar la masa amasándola suavemente.",
+        "Dividir la masa en el número de pizzas deseadas. Luego, aplanarla(s) con la ayuda de un rodillo, darle(s) las forma deseada, y cortarle(s) los bordes al gusto.",
+        "Precalentar el horno a 220ºC.",
+        "Cubrir la(s) bandeja(s) en las que se quiere hornear las pizzas con papel vegetal. Ubicar la(s) masa(s) sobre la(s) bandeja(s), y barnizar la(s) masa(s) con un poco de aceite de oliva y con la ayuda de una brocha de cocina.",
+        "Decorar la(s) pizza(s) al gusto con las salsas e ingredientes a la mano.",
+        "Hornear la(s) pizza(s) durante 15-20 min hasta que la(s) masa(s) esté(n) dorada(s).",
+        "Retirarla(s) del horno, y dejarla(s) enfriar por 10 min antes de cortarla(s) y disfrutarla(s)."
+      ]
+    }
+  ]
+}

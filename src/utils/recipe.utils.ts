@@ -18,7 +18,6 @@ export const quantityUnitIcon = (unit: QuantityUnit): Icon | undefined => {
 export function decodeQuantityString(quantityString: string): [number, QuantityUnit] | undefined {
   const unitPattern = Object.values(QuantityUnit).join('|')
   const regExp = new RegExp(`^\\s*(\\d*[.,]?\\d+)\\s*(${unitPattern})\\s*$`)
-  console.log(regExp)
   
   const match = quantityString.match(regExp)
   const unit = match ? enumKeyFromValue(QuantityUnit, match[2])! : undefined
