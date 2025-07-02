@@ -11,6 +11,7 @@ import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
 import QuantityCaption from '@/components/QuantityCaption.vue'
 import { Icon } from '@/assets/design-tokens/iconography';
 import { LocalizedStringKey } from '@/models/localization';
+import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
 
 const props = defineProps<{
   rKey: RecipeKey
@@ -62,6 +63,8 @@ watch(() => props.rKey, async (recipeKey) => {
         </VuetyTaskFormRow>
       </VuetyFormSection>
     </VuetyForm>
+    
+    <VuetyProgressIndicator v-else />
   </main>
 </template>
 
@@ -101,10 +104,6 @@ h3 {
   }
 }
 
-.ingredient {
-  
-}
-
 .vuety-form {
   gap: 1em;
 }
@@ -113,5 +112,11 @@ h3 {
   :deep(.svg-icon) {
     @include palette.color-attribute('color', 'secondary-body');
   }
+}
+
+.vuety-progress-indicator {
+  display: block;
+  margin: 0 auto;
+  width: 3em;
 }
 </style>
