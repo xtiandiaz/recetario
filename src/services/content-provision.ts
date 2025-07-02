@@ -28,7 +28,7 @@ export function getCategory(key: CategoryKey): Category | undefined {
 
 export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
   try {
-    const recipe = await (await fetch(`/recipes/${key}.json`)).json() as Recipe
+    const recipe = await (await fetch(`recipes/${key}.json`)).json() as Recipe
     recipe.title = recipeTitle(recipe.key)
     
     recipe.ingredients.forEach(i => i.title = ingredientTitle(i.key))
