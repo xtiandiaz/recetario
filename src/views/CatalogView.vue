@@ -23,7 +23,7 @@ const catalog = getCatalog()
           @click="router.push(`category/${category.key}`)"
         >
           <label>
-            <h1>{{ category.emoji }}</h1>
+            <span class="h1">{{ category.emoji }}</span>
             <h6>{{ category.title }}</h6>
           </label>
         </button>
@@ -37,6 +37,7 @@ const catalog = getCatalog()
 @use '@/assets/styles/category-theme';
 @use '@vueties/components/bars/styles' as bar-styles;
 @use '@vueties/utils/mixins';
+@use '@design-tokens/typography';
 @use '@design-tokens/palette';
 
 $card-gap: 0.75em;
@@ -77,7 +78,7 @@ section {
   @include category-theme.thematize('cards');
   
   label {
-    h1, h6 {
+    h6 {
       margin: 0
     }
   }
