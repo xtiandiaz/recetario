@@ -33,7 +33,6 @@ const icon = computed(() => measurement.value?.unit ? measurementIcon(measuremen
 @use '@design-tokens/typography';
 
 .measurement-caption {
-  @extend .strong;
   align-items: center;
   display: flex;
   gap: 0.25em;
@@ -42,6 +41,9 @@ const icon = computed(() => measurement.value?.unit ? measurementIcon(measuremen
   &.estimate {
     @extend .italic;
     @include palette.color-attribute('color', 'secondary-body');
+  }
+  :not(&.estimate) {
+    @extend .strong;
   }
   
   .svg-icon {

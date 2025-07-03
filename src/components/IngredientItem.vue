@@ -20,7 +20,6 @@ defineProps<{
 @use '@design-tokens/typography';
 
 .captions {
-  @extend .strong;
   display: flex;
   flex-wrap: wrap;
   gap: 0.25em 1em;
