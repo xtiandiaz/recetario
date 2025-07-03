@@ -11,9 +11,10 @@ export enum Unit {
 
 export enum UnitKind {
   Temperature = 'temperature',
+  Time = 'time',
   Volume = 'volume',
   Weight = 'weight',
-  WeightOrVolume = 'weight-or-volume',
+  CustomaryVolumeOrWeight = 'customary-volume-weight',
 }
 
 export interface Measurement {

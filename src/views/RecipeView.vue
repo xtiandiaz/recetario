@@ -8,7 +8,6 @@ import VuetyForm from '@/vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@/vueties/components/form/VuetyFormSection.vue'
 import VuetyTaskFormRow from '@/vueties/components/form/rows/VuetyTaskFormRow.vue';
 import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
-import QuantityCaption from '@/components/MeasurementCaption.vue'
 import { Icon } from '@/assets/design-tokens/iconography';
 import { LocalizedStringKey } from '@/models/localization';
 import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
@@ -89,7 +88,7 @@ h3 {
   margin: 1em 0 0 1.125em;
   
   &, :deep(.svg-icon) {
-    @include palette.color-attribute('color', 'tertiary-body');
+    @include palette.color-attribute('color', 'secondary-body');
   }
   
   > * {

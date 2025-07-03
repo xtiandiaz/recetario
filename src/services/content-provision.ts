@@ -1,9 +1,23 @@
 import rawCatalog from '@/assets/json/catalog.json'
+import rawDataSheet from '@/assets/json/data-sheet.json'
 import type { Catalog, Category, CategoryKey } from "@/models/catalog";
-import type { Recipe, RecipeKey } from '@/models/recipe';
-import { categoryTitle, sectionTitle, recipeTitle, ingredientTitle } from '@/utils/localization.utils';
+import type { DataSheet } from '@/models/data-sheet';
+import type { RawRecipe, Recipe, RecipeKey } from '@/models/recipe';
+import { categoryTitle, sectionTitle } from '@/utils/localization.utils';
+import { refineRawRecipe } from '@/utils/recipe.utils';
 
 let catalog: Catalog | undefined = undefined
+let dataSheet: DataSheet | undefined = undefined
+
+export function getDataSheet(): DataSheet {
+  if (dataSheet) {
+    return dataSheet
+  }
+  
+  dataSheet = rawDataSheet as DataSheet
+  
+  return dataSheet
+}
 
 export function getCatalog(): Catalog {
   if (catalog) {
@@ -28,17 +42,11 @@ export function getCategory(key: CategoryKey): Category | undefined {
 
 export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
   try {
-    const recipe = await (await fetch(`recipes/${key}.json`)).json() as Recipe
-    recipe.title = recipeTitle(recipe.key)
+    const rawRecipe = await (await fetch(`recipes/${key}.json`)).json() as RawRecipe
     
-    recipe.ingredients.forEach(i => {
-      i.title = ingredientTitle(i.key)
-    })
-    recipe.ingredients.sort((a, b) => a.title!.localeCompare(b.title!))
-    
-    return recipe
-  } catch {
-    console.error(key, 'Not found!')
+    return refineRawRecipe(rawRecipe, getDataSheet())
+  } catch (e: unknown) {
+    console.error(e)
     
     return undefined
   }

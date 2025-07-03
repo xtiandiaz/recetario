@@ -4,42 +4,42 @@
   "ingredients": [
     {
       "key": "strong-wheat-flour",
-      "quantity": "1.5 cup"
+      "amount": "1.5 cup"
     },
     {
       "key": "whole-wheat-flour",
       "alt_keys": ["whole-rye-flour"],
-      "quantity": "2 cup"
+      "amount": "2 cup"
     },
     {
       "key": "granulated-sugar",
-      "quantity": "2 tsp"
+      "amount": "2 tsp"
     },
     {
       "key": "granulated-salt",
-      "quantity": "1.5 tsp"
+      "amount": "1.5 tsp"
     },
     {
       "key": "active-dry-yeast",
-      "quantity": "1.5 tsp"
+      "amount": "1.5 tsp"
     },
     {
       "key": "water",
-      "quantity": "1.5 cup",
+      "amount": "1.5 cup",
       "temperature": "tepid"
     },
     {
       "key": "olive-oil",
-      "quantity": "1.5 tbsp"
+      "amount": "1.5 tbsp"
     },
     {
       "key": "seed-mix",
-      "quantity": "40 g",
+      "amount": "40 g",
       "priority": "optional"
     },
     {
       "key": "whole-milk",
-      "quantity": "2 tbsp",
+      "amount": "2 tbsp",
       "temperature": "room"
     }
   ],

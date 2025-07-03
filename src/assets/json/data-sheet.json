@@ -1,0 +1,50 @@
+{
+  "customaryUnitVolumes": [
+    {
+      "unit": "cup",
+      "ml": 240
+    },
+    {
+      "unit": "tbsp",
+      "ml": 15
+    },
+    {
+      "unit": "tsp",
+      "ml": 5
+    }
+  ],
+  "densities": [
+    {
+      "key": "butter",
+      "value": 0.911
+    },
+    {
+      "key": "flour",
+      "value": 0.593
+    },
+    {
+      "key": "granulated-salt",
+      "value": 1.217
+    },
+    {
+      "key": "granulated-sugar",
+      "value": 0.7
+    },
+    {
+      "key": "granulated-yeast",
+      "value": 0.75
+    },
+    {
+      "key": "honey",
+      "value": 1.42
+    },
+    {
+      "key": "olive-oil",
+      "value": 0.915
+    },
+    {
+      "key": "water",
+      "value": 1
+    }
+  ]
+}

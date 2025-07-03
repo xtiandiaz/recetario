@@ -1,5 +1,5 @@
 import type { CategoryKey } from "./catalog"
-import type { Ingredient } from "./ingredient"
+import type { RawIngredient, Ingredient } from "./ingredient"
 import type { Language } from "./localization"
 
 export enum RecipeKey {
@@ -19,12 +19,21 @@ export interface RecipeInstructions {
   steps: string[]
 }
 
+export interface RawRecipe {
+  category: CategoryKey
+  ingredients: RawIngredient[]
+  instructions: RecipeInstructions[]
+  key: RecipeKey
+  
+  origin?: string
+}
+
 export interface Recipe {
   category: CategoryKey
   ingredients: Ingredient[]
   instructions: RecipeInstructions[]
   key: RecipeKey
+  title: string
   
-  title?: string
   origin?: string
 }
