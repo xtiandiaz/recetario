@@ -11,14 +11,10 @@ export enum IngredientKey {
   WholeWheatFlour = 'whole-wheat-flour',
 }
 
-export enum TemperatureKey {
-  Tepid = 'tepid'
-}
-
 export interface Ingredient {
   key: IngredientKey
   quantity: string
-  temperature: TemperatureKey
   
+  temperature?: string
   title?: string
 }

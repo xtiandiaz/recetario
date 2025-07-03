@@ -23,7 +23,7 @@ $category-colors: (
 @mixin thematize-background($key) {
   $color: map.get($category-colors, $key);
   
-  @include mixins.linear-gradient(180deg, $color 0.05 0%, 'secondary-background' 1 75%);
+  @include mixins.linear-gradient(180deg, $color 0.1 0%, 'secondary-background' 1 75%);
 }
 
 @mixin thematize-card($key) {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
 import { getRecipe } from '@/services/content-provision';
@@ -8,10 +8,11 @@ import VuetyForm from '@/vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@/vueties/components/form/VuetyFormSection.vue'
 import VuetyTaskFormRow from '@/vueties/components/form/rows/VuetyTaskFormRow.vue';
 import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
-import QuantityCaption from '@/components/QuantityCaption.vue'
+import QuantityCaption from '@/components/MeasurementCaption.vue'
 import { Icon } from '@/assets/design-tokens/iconography';
 import { LocalizedStringKey } from '@/models/localization';
 import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
+import IngredientItem from '@/components/IngredientItem.vue';
 
 const props = defineProps<{
   rKey: RecipeKey
@@ -19,23 +20,14 @@ const props = defineProps<{
 
 const route = useRoute()
 
-const recipeKey = computed(() => props.rKey)
 const recipe = ref<Recipe | undefined>()
 
-async function loadRecipe(key: RecipeKey) {
+watch(() => props.rKey, async (key) => {
   recipe.value = undefined
   
   recipe.value = await getRecipe(key)
   route.meta.title!.value = recipe.value?.title
-}
-
-watch(recipeKey, async (recipeKey) => {
-  loadRecipe(recipeKey)
-})
-
-onMounted(async () => {
-  loadRecipe(props.rKey)
-})
+}, { immediate: true })
 </script>
 
 <template>
@@ -55,8 +47,7 @@ onMounted(async () => {
           :key="index"
           class="ingredient"
         >
-          {{ ingredient.title! }}
-          <QuantityCaption :quantityString="ingredient.quantity" />
+          <IngredientItem :ingredient="ingredient" />
         </VuetyTaskFormRow>
       </VuetyFormSection>
       
@@ -69,7 +60,7 @@ onMounted(async () => {
           v-for="(step, index) of recipe.instructions[0].steps"
           :key="index"
         >
-          {{ step }}
+          <span>{{ step }}</span>
         </VuetyTaskFormRow>
       </VuetyFormSection>
     </VuetyForm>
@@ -118,9 +109,9 @@ h3 {
   gap: 1em;
 }
 
-.vuety-form-section {
-  :deep(.svg-icon) {
-    @include palette.color-attribute('color', 'secondary-body');
+.vuety-form-row.task {  
+  :deep(.content) {
+    align-self: center;
   }
 }
 

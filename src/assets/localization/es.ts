@@ -36,7 +36,17 @@ export default new Map<LocalizedStringKey, string>([
   [LocalizedStringKey.Title_Ingredients, "Ingredientes"],
   [LocalizedStringKey.Title_Instructions, "Instrucciones"],
   
-  [LocalizedStringKey.Unit_Cup, "Tz."],
-  [LocalizedStringKey.Unit_TableSpoon, "Cda."],
-  [LocalizedStringKey.Unit_TeaSpoon, "cdta."],
+  [LocalizedStringKey.Unit_Cup, "Taza"],
+  [LocalizedStringKey.Unit_CupAbbr, "Tz."],
+  [LocalizedStringKey.Unit_Gram, "gramo"],
+  [LocalizedStringKey.Unit_GramAbbr, "g"],
+  [LocalizedStringKey.Unit_Mililiter, "mililitro"],
+  [LocalizedStringKey.Unit_MililiterAbbr, "ml"],
+  [LocalizedStringKey.Unit_TableSpoon, "Cucharada"],
+  [LocalizedStringKey.Unit_TableSpoonAbbr, "Cda."],
+  [LocalizedStringKey.Unit_TeaSpoon, "cucharadita"],
+  [LocalizedStringKey.Unit_TeaSpoonAbbr, "cdta."],
+  
+  [LocalizedStringKey.Estimate_TemperatureTepid, "Tibio/a"],
+  [LocalizedStringKey.Estimate_TemperatureRoom, "Al clima"],
 ])

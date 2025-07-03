@@ -39,6 +39,16 @@ export enum LocalizedStringKey {
   Title_Instructions = 'title-instructions',
   
   Unit_Cup = 'unit-cup',
+  Unit_CupAbbr = 'unit-cup-abbr',
+  Unit_Gram = 'unit-g',
+  Unit_GramAbbr = 'unit-g-abbr',
+  Unit_Mililiter = 'unit-ml',
+  Unit_MililiterAbbr = 'unit-ml-abbr',
   Unit_TableSpoon = 'unit-tbsp',
+  Unit_TableSpoonAbbr = 'unit-tbsp-abbr',
   Unit_TeaSpoon = 'unit-tsp',
+  Unit_TeaSpoonAbbr = 'unit-tsp-abbr',
+  
+  Estimate_TemperatureRoom = 'estimate-room',
+  Estimate_TemperatureTepid = 'estimate-tepid',
 }

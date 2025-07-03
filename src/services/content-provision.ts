@@ -31,7 +31,9 @@ export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
     const recipe = await (await fetch(`recipes/${key}.json`)).json() as Recipe
     recipe.title = recipeTitle(recipe.key)
     
-    recipe.ingredients.forEach(i => i.title = ingredientTitle(i.key))
+    recipe.ingredients.forEach(i => {
+      i.title = ingredientTitle(i.key)
+    })
     recipe.ingredients.sort((a, b) => a.title!.localeCompare(b.title!))
     
     return recipe
