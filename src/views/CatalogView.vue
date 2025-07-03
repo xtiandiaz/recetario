@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { RecipeKey } from '@/models/recipe'
 import { getCatalog, getRecipe } from '@/services/content-provision';
-import { onMounted } from 'vue';
 
 const router = useRouter()
 

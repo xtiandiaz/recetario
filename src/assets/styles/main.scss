@@ -26,15 +26,12 @@ html {
   ));
 }
 
-body, main, #app {
+body, #app {
   height: 100%;
   margin: 0;
+  overflow: hidden;
   position: relative;
   width: 100%;
-}
-
-body, #app {
-  overflow: hidden;
 }
 
 .vuety-navigation-bar {
