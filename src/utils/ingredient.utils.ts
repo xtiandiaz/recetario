@@ -71,13 +71,13 @@ export function refineRawIngredient(rawIngredient: RawIngredient, dataSheet: Dat
 
 export function calculateAmountWeightOrVolumeEquivalent(ingredient: Ingredient): Measurement | undefined {
   if (!ingredient.density || !ingredient.consistency) {
-    console.log('Undefined density or consistency for ingredient:', ingredient)
+    console.log('Undefined density or consistency for ingredient:', ingredient.key)
     return undefined
   }
   const altUnits = consistencyPreciseUnits(ingredient.consistency)
   const equivalenceUnit = altUnits.find(u => u !== ingredient.amount.unit)
   if (!equivalenceUnit) {
-    console.log('Undefined equivalence Unit for ingredient:', ingredient)
+    console.log('Undefined equivalence Unit for ingredient:', ingredient.key)
     return undefined
   }
   
