@@ -36,7 +36,7 @@ const catalog = getCatalog()
 @use '@/assets/varties';
 @use '@/assets/styles/category-theme';
 @use '@vueties/components/bars/styles' as bar-styles;
-@use '@vueties/utils/mixins';
+@use '@vueties/styles/mixins';
 @use '@design-tokens/typography';
 @use '@design-tokens/palette';
 

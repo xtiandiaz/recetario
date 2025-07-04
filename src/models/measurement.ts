@@ -10,21 +10,23 @@ export enum Unit {
 }
 
 export enum UnitKind {
+  CustomaryVolumeOrWeight = 'customary-volume-weight',
   Temperature = 'temperature',
   Time = 'time',
   Volume = 'volume',
   Weight = 'weight',
-  CustomaryVolumeOrWeight = 'customary-volume-weight',
 }
 
 export interface Measurement {
+  quantity: number
   unit: Unit
-  
-  estimate?: MeasurementEstimate
-  quantity?: number
 }
 
-export enum MeasurementEstimate {
+export enum TemperatureEstimate {
   TemperatureRoom = 'room',
   TemperatureTepid = 'tepid',
+}
+
+export interface TemperatureMeasurement extends Measurement {
+  estimate?: TemperatureEstimate
 }

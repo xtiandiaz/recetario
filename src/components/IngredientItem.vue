@@ -42,6 +42,6 @@ const equivalent = computed(() => {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 0.125em;
-  margin-top: 0.25em;
+  margin-top: 0.125em;
 }
 </style>

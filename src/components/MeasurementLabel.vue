@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { UnitKind, type Measurement } from '@/models/measurement';
 import { measurementIcon, unitKind } from '@/utils/measurement.utils';
 import { localizedQuantity } from '@/utils/localization.utils';
 import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue'
-import type { Measurement } from '@/models/measurement';
+import { clamp } from '@/assets/tungsten/math';
 
 const { measurement } = defineProps<{
   measurement: Measurement
@@ -12,12 +13,21 @@ const { measurement } = defineProps<{
 }>()
 
 const icon = computed(() => measurementIcon(measurement))
+const measurementKindClass = computed(() => {
+  switch (unitKind(measurement.unit)) {
+    case UnitKind.Temperature:
+      const tVal = clamp(Math.round(measurement.quantity / 25) * 25, 0, 100)
+      return `temperature-${tVal}`
+    default:
+      return undefined
+  }
+})
 </script>
 
 <template>
   <div 
     v-if="measurement" 
-    :class="['measurement-label', unitKind(measurement.unit)]"
+    :class="['measurement-label', unitKind(measurement.unit), measurementKindClass]"
   >
     {{ localizedQuantity(measurement, abbreviated === true) }}
     
@@ -30,6 +40,7 @@ const icon = computed(() => measurementIcon(measurement))
 </template>
 
 <style scoped lang="scss">
+@use '../assets/styles/measurement';
 @use '@design-tokens/palette';
 @use '@design-tokens/typography';
 
@@ -40,10 +51,7 @@ const icon = computed(() => measurementIcon(measurement))
   padding: 0.125em 0 0 0;
   
   &.temperature {
-    @extend .caption, .italic;
-    &, .svg-icon {
-      @include palette.color-attribute('color', 'orange');
-    }
+    @extend .caption;
   }
   :not(&.temperature) {
     @extend .strong;

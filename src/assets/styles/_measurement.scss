@@ -1,0 +1,16 @@
+@use 'sass:math';
+@use '@design-tokens/palette';
+
+@mixin temperature($value) {
+  .temperature-#{$value} {
+    &, * {
+      @include palette.mixed-color-attribute('color', 'blue', 'red', $value + 25);
+    }
+  }
+}
+
+@include temperature(0);
+@include temperature(25);
+@include temperature(50);
+@include temperature(75);
+@include temperature(100);

@@ -2,7 +2,7 @@ import type { LocalizedStringKey } from "@/models/localization"
 import { CategoryKey, SectionKey } from "@/models/catalog";
 import type { RecipeKey } from "@/models/recipe";
 import type { IngredientKey } from "@/models/ingredient";
-import { Unit, type Measurement } from '@/models/measurement'
+import { Unit, type Measurement, type TemperatureMeasurement } from '@/models/measurement'
 import { localizedString } from "@/services/localization"
 
 export const sectionTitle = (key: SectionKey): string => {
@@ -41,14 +41,17 @@ const unitQuantitySeparator = (unit: Unit): string => {
 }
 
 export const localizedQuantity = (measurement: Measurement, abbreviated: boolean = true): string => {
+  const temperatureMeasurement = measurement as TemperatureMeasurement
+  if (temperatureMeasurement && temperatureMeasurement.estimate) {
+    return localizedString(`estimate-${temperatureMeasurement.estimate}` as LocalizedStringKey)
+  }
+  
   if (measurement.quantity) {
     return [
       measurement.quantity.toLocaleString(),
       localizedMeasurementUnit(measurement.unit, abbreviated, !abbreviated && measurement.quantity > 1)
     ].join(unitQuantitySeparator(measurement.unit))
-  } else if (measurement.estimate) {
-    return localizedString(`estimate-${measurement.estimate}` as LocalizedStringKey)
-  } else {
-    return '?'
   }
+  
+  return '?'
 }

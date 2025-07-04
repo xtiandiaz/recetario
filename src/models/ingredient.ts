@@ -1,5 +1,5 @@
 import type { Density } from "./data-sheet"
-import type { Measurement } from "./measurement"
+import type { Measurement, TemperatureMeasurement } from "./measurement"
 
 export enum IngredientKey {
   ActiveDryYeast = 'active-dry-yeast',
@@ -39,5 +39,5 @@ export interface Ingredient {
   
   consistency?: Consistency
   density?: Density
-  temperature?: Measurement
+  temperature?: TemperatureMeasurement
 }

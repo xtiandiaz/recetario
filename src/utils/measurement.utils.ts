@@ -1,10 +1,11 @@
-import { MeasurementEstimate, Unit } from "@/models/measurement";
-import { UnitKind, type Measurement } from "@/models/measurement"
+import { Unit, UnitKind, TemperatureEstimate } from "@/models/measurement";
+import type { Measurement, TemperatureMeasurement } from "@/models/measurement"
 import type { Density } from "@/models/data-sheet";
 import { getDataSheet } from "@/services/content-provision";
 import { Icon } from '@design-tokens/iconography'
 import { enumKeyFromValue } from "@/assets/tungsten/enum";
 import { Consistency } from "@/models/ingredient";
+import { clamp } from "@/assets/tungsten/math";
 
 export const unitKind = (unit: Unit): UnitKind => {
   switch (unit) {
@@ -24,11 +25,12 @@ export const unitKind = (unit: Unit): UnitKind => {
   }
 }
 
-export const estimateUnit = (estimate: MeasurementEstimate): Unit => {
+export const temperatureEstimateApproximateValue = (estimate: TemperatureEstimate): number => {
   switch (estimate) {
-    case MeasurementEstimate.TemperatureRoom:
-    case MeasurementEstimate.TemperatureTepid:
-      return Unit.Celcius
+    case TemperatureEstimate.TemperatureRoom:
+      return 20
+    case TemperatureEstimate.TemperatureTepid:
+      return 30
   }
 }
 
@@ -51,7 +53,9 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
     case Unit.Cup:
       return Icon.Cup
     case Unit.Celcius:
-      return Icon.ThermometerMedium
+      const icons = [Icon.ThermometerLow, Icon.ThermometerMedium, Icon.ThermometerHigh]
+      const index = clamp(Math.floor((measurement.quantity ?? 0) / 50), 0, icons.length)
+      return icons[index]
     case Unit.TableSpoon:
       return Icon.TableSpoon
     case Unit.TeaSpoon:
@@ -62,15 +66,6 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
 }
 
 export function decodeMeasurementString(measurementString: string): Measurement {
-  const estimatePattern = Object.values(MeasurementEstimate).join('|')
-  const estimateRegExp = new RegExp(`^\\s*(${estimatePattern})\\s*$`)
-  const estimateMatch = measurementString.match(estimateRegExp)
-  const estimate = estimateMatch ? enumKeyFromValue(MeasurementEstimate, estimateMatch[1])! : undefined
-  
-  if (estimate) {
-    return { estimate: estimate, unit: estimateUnit(estimate) }
-  }
-  
   const unitPattern = Object.values(Unit).join('|')
   const measurementRegExp = new RegExp(`^\\s*(\\d*[.,]?\\d+)\\s*(${unitPattern})\\s*$`)
   const measurementMatch = measurementString.match(measurementRegExp)
@@ -81,6 +76,19 @@ export function decodeMeasurementString(measurementString: string): Measurement 
   }
   
   throw new Error(`Undecodable measurement string: ${measurementString}`)
+}
+
+export function decodeTemperatureMeasurementString(measurementString: string): TemperatureMeasurement {
+  const estimatePattern = Object.values(TemperatureEstimate).join('|')
+  const estimateRegExp = new RegExp(`^\\s*(${estimatePattern})\\s*$`)
+  const estimateMatch = measurementString.match(estimateRegExp)
+  const estimate = estimateMatch ? enumKeyFromValue(TemperatureEstimate, estimateMatch[1])! : undefined
+  
+  if (estimate) {
+    return { estimate: estimate, quantity: temperatureEstimateApproximateValue(estimate), unit: Unit.Celcius }
+  }
+  
+  return decodeMeasurementString(measurementString) as TemperatureMeasurement
 }
 
 export function convertCustomaryVolumeOrWeight(

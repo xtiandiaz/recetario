@@ -1,30 +1,5 @@
-@use 'sass:map';
-@use '@design-tokens/palette';
+@use '@vueties/styles/base';
 @use '@design-tokens/typography';
-@use '@/assets/varties';
-@use '@vueties/utils/styles';
-@use '@vueties/utils/mixins';
-@use '@vueties/components/bars/styles' as bar-styles;
-
-* {
-  @extend .inhibit-contextual-touch-action;
-}
-
-html {
-  overscroll-behavior: none;
-  @include palette.color-attributes((
-    'color': 'body',
-    'background-color': 'secondary-background'
-  ));
-}
-
-html, body, #app {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
 
 .vuety-navigation-bar {
   #vnb-title {

@@ -4,7 +4,12 @@ import type { RawIngredient, Ingredient } from "@/models/ingredient";
 import type { Measurement } from "@/models/measurement";
 import type { DataSheet } from "@/models/data-sheet";
 import { ingredientTitle } from "./localization.utils";
-import { decodeMeasurementString, convertCustomaryVolumeOrWeight, consistencyPreciseUnits } from "./measurement.utils";
+import { 
+  consistencyPreciseUnits, 
+  convertCustomaryVolumeOrWeight, 
+  decodeMeasurementString, 
+  decodeTemperatureMeasurementString
+} from "./measurement.utils";
 
 export const ingredientDensityKey = (ingredientKey: IngredientKey): DensityKey | undefined => {
   switch (ingredientKey) {
@@ -56,7 +61,7 @@ export function refineRawIngredient(rawIngredient: RawIngredient, dataSheet: Dat
   const densityKey = ingredientDensityKey(rawIngredient.key)
   const density = dataSheet.densities.find(d => d.key == densityKey)
   const temperature = rawIngredient.temperature 
-    ? decodeMeasurementString(rawIngredient.temperature) 
+    ? decodeTemperatureMeasurementString(rawIngredient.temperature) 
     : undefined
   
   return {
