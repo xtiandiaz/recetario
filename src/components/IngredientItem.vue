@@ -40,8 +40,8 @@ const equivalent = computed(() => {
 .captions {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  gap: 0.125em;
+  flex-direction: row;
+  gap: 0.75em;
   margin-top: 0.125em;
 }
 </style>

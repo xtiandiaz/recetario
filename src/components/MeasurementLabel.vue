@@ -16,7 +16,7 @@ const icon = computed(() => measurementIcon(measurement))
 const measurementKindClass = computed(() => {
   switch (unitKind(measurement.unit)) {
     case UnitKind.Temperature:
-      const tVal = clamp(Math.round(measurement.quantity / 25) * 25, 0, 100)
+      const tVal = clamp(Math.floor(measurement.quantity / 25) * 25, 0, 100)
       return `temperature-${tVal}`
     default:
       return undefined
@@ -50,9 +50,6 @@ const measurementKindClass = computed(() => {
   gap: 0.25em;
   padding: 0.125em 0 0 0;
   
-  &.temperature {
-    @extend .caption;
-  }
   :not(&.temperature) {
     @extend .strong;
   }
