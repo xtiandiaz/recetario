@@ -1,11 +1,11 @@
 import { Language, LocalizedStringKey } from "@/models/localization"
-import ES from '@/assets/localization/es'
+import { localizedStrings } from '@/assets/localization/es'
 import settingsStore from '@/stores/settings'
 
 export const localizedStringInLanguage = (key: LocalizedStringKey, language: Language): string => {
   const element: string | undefined = (() => {
     switch (language) {
-      case Language.Spanish: return ES.get(key)
+      case Language.Spanish: return localizedStrings.get(key)
     }
   })()
   

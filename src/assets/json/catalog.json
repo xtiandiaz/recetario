@@ -17,7 +17,7 @@
         {
           "color": "gray",
           "emoji": "🥣",
-          "key": "misc",
+          "key": "misc-food",
           "recipes": [
             "granola",
             "onigiri"
@@ -52,6 +52,19 @@
           "key": "soups",
           "recipes": [
             "creamy-salmon-soup"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "personal-care", 
+      "categories": [
+        {
+          "color": "sky-blue",
+          "emoji": "🧴",
+          "key": "personal-hygiene",
+          "recipes": [
+            "deodorant"
           ]
         }
       ]

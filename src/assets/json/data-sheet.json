@@ -5,6 +5,10 @@
       "ml": 240
     },
     {
+      "unit": "drop",
+      "ml": 0.051
+    },
+    {
       "unit": "tbsp",
       "ml": 15
     },
@@ -15,8 +19,20 @@
   ],
   "densities": [
     {
+      "key": "baking-soda",
+      "value": 2.16
+    },
+    {
       "key": "butter",
       "value": 0.911
+    },
+    {
+      "key": "coconut-oil",
+      "value": 0.922
+    },
+    {
+      "key": "corn-starch",
+      "value": 0.54
     },
     {
       "key": "flour",

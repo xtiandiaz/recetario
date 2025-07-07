@@ -6,7 +6,10 @@ export interface CustomaryUnitVolume {
 }
 
 export enum DensityKey {
+  BakingSoda = 'baking-soda',
   Butter = 'butter',
+  CoconutOil = 'coconut-oil',
+  CornStarch = 'corn-starch',
   Flour = 'flour',
   GranulatedSalt = 'granulated-salt',
   GranulatedSugar = 'granulated-sugar',

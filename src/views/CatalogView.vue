@@ -13,7 +13,7 @@ const catalog = getCatalog()
       v-for="(section, sectionIndex) in catalog.sections"
       :key="sectionIndex"
     >
-      <h3 class="serif">{{ section.title }}</h3>
+      <h4 class="serif">{{ section.title }}</h4>
       <div class="cards">
         <button
           v-for="(category, index) in section.categories.filter(c => c.recipes.length > 0)"
@@ -43,20 +43,22 @@ const catalog = getCatalog()
 $card-gap: 0.75em;
 
 main {
+  box-sizing: border-box;
   margin: 0 auto;
   max-width: 720px;
 }
 
-h3 {
+h4 {
   text-align: center;
+  margin-bottom: 1em;
 }
 
 section {
   $h-margin: 1em;
   
-  margin: 1em $h-margin;
+  box-sizing: border-box;
+  margin: 3em $h-margin 1em $h-margin;
   padding: 0;
-  width: calc(100% - $h-margin * 2);
   
   .cards {
     display: flex;
@@ -72,7 +74,8 @@ section {
   border: none;
   border-radius: 1em;
   display: inline-block;
-  flex: 1 1 calc(50% - $card-gap - $h-padding * 2);
+  box-sizing: border-box;
+  flex: 1 1 calc(50% - $card-gap);
   font-size: 1em;
   padding: 1.5em $h-padding;
   @include category-theme.thematize('cards');

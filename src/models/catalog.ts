@@ -3,7 +3,7 @@ import type { Color } from "@design-tokens/palette"
 
 export enum CategoryKey {
   Bakery = "bakery",
-  Miscellaneous = "misc",
+  MiscFood = "misc-food",
   Pastas = "pastas",
   Salads = "salads",
   Sauces = "sauces",

@@ -10,8 +10,14 @@ import {
   decodeMeasurementString, 
   decodeTemperatureMeasurementString
 } from "./measurement.utils";
+import { enumKeyFromValue } from "@/assets/tungsten/enum";
 
 export const ingredientDensityKey = (ingredientKey: IngredientKey): DensityKey | undefined => {
+  const analogous = enumKeyFromValue(DensityKey, ingredientKey as string)
+  if (analogous) {
+    return analogous
+  }
+  
   switch (ingredientKey) {
     case IngredientKey.AllPurposeWheatFlour:
     case IngredientKey.StrongWheatFlour:
@@ -20,14 +26,7 @@ export const ingredientDensityKey = (ingredientKey: IngredientKey): DensityKey |
       return DensityKey.Flour
     case IngredientKey.ActiveDryYeast:
       return DensityKey.GranulatedYeast
-    case IngredientKey.GranulatedSalt:
-      return DensityKey.GranulatedSalt
-    case IngredientKey.GranulatedSugar:
-      return DensityKey.GranulatedSugar
-    case IngredientKey.OliveOil:
-      return DensityKey.OliveOil
     case IngredientKey.WholeMilk:
-    case IngredientKey.Water:
       return DensityKey.Water
     default:
       return undefined
@@ -37,6 +36,8 @@ export const ingredientDensityKey = (ingredientKey: IngredientKey): DensityKey |
 const ingredientConsistency = (ingredientKey: IngredientKey): Consistency | undefined => {
   switch (ingredientKey) {
     case IngredientKey.AllPurposeWheatFlour:
+    case IngredientKey.BakingSoda:
+    case IngredientKey.CornStarch:
     case IngredientKey.StrongWheatFlour:
     case IngredientKey.WholeRyeFlour:
     case IngredientKey.WholeWheatFlour:
@@ -45,8 +46,12 @@ const ingredientConsistency = (ingredientKey: IngredientKey): Consistency | unde
     case IngredientKey.GranulatedSalt:
     case IngredientKey.GranulatedSugar:
       return Consistency.Granulated
+    case IngredientKey.CoconutOil:
+      return Consistency.SemiSolid
+    case IngredientKey.Honey:
     case IngredientKey.OliveOil:
       return Consistency.Viscous
+    case IngredientKey.EssentialOil:
     case IngredientKey.WholeMilk:
     case IngredientKey.Water:
       return Consistency.Liquid

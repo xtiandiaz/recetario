@@ -6,7 +6,9 @@ import type { RawRecipe, Recipe, RecipeKey } from '@/models/recipe';
 import { categoryTitle, sectionTitle } from '@/utils/localization.utils';
 import { refineRawRecipe } from '@/utils/recipe.utils';
 
-const sourcePath = 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist'
+const sourcePath = (import.meta.env.PROD 
+  ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist'
+  : '')
 
 let catalog: Catalog | undefined = undefined
 let dataSheet: DataSheet | undefined = undefined

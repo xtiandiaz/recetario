@@ -11,6 +11,7 @@ export const unitKind = (unit: Unit): UnitKind => {
   switch (unit) {
     case Unit.Celcius:
       return UnitKind.Temperature
+    case Unit.Drop:
     case Unit.Mililiter:
       return UnitKind.Volume;
     case Unit.Gram:
@@ -56,6 +57,8 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
       const icons = [Icon.ThermometerLow, Icon.ThermometerMedium, Icon.ThermometerHigh]
       const index = clamp(Math.floor((measurement.quantity ?? 0) / 50), 0, icons.length)
       return icons[index]
+    case Unit.Drop:
+      return Icon.Drop
     case Unit.TableSpoon:
       return Icon.TableSpoon
     case Unit.TeaSpoon:
@@ -118,6 +121,8 @@ export function convertCustomaryVolumeOrWeight(
   
   const volumeMl = measurement.quantity * unitVolume
   let quantity: number
+  
+  // console.log(measurement.quantity, measurement.unit, volumeMl, `(${unitVolume})`, density.key, density.value)
   
   switch (to) {
     case Unit.Gram:
