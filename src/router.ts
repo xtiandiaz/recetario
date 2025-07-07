@@ -1,37 +1,28 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import { ref, type Ref } from 'vue'
+import { createVuetyRouter } from '@vueties/router/vuety-router'
 import CatalogView from './views/CatalogView.vue'
 import CategoryView from './views/CategoryView.vue'
 import RecipeView from './views/RecipeView.vue'
+import CalculatorView from './views/CalculatorView.vue'
 
-declare module 'vue-router' {
-  interface RouteMeta {
-    title?: Ref<string | undefined>
+export default createVuetyRouter([
+  {
+    component: CatalogView,
+    path: '/'
+  },
+  {
+    component: CategoryView,
+    path: '/category/:cKey',
+    props: true,
+  },
+  {
+    component: RecipeView,
+    path: '/recipe/:rKey',
+    props: true,
+  },
+  {
+    components: {
+      modal: CalculatorView
+    },
+    path: '/calculator',
   }
-}
-
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [
-    {
-      path: '/',
-      component: CatalogView
-    },
-    {
-      path: '/category/:cKey',
-      component: CategoryView,
-      props: true,
-    },
-    {
-      path: '/recipe/:rKey',
-      component: RecipeView,
-      props: true,
-    }
-  ]
-})
-
-router.getRoutes().forEach(r => {
-  r.meta.title = ref<string>()
-})
-
-export default router
+])

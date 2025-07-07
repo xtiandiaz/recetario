@@ -21,8 +21,8 @@ const recipeEntries = computed(() => category.value.recipes
 )
 
 watch(category, (value) => {
-  route.meta.title!.value = value.title
-})
+  route.meta.title.value = value.title
+}, { immediate: true })
 </script>
 
 <template>

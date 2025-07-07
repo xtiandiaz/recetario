@@ -25,7 +25,7 @@ watch(() => props.rKey, async (key) => {
   recipe.value = undefined
   
   recipe.value = await getRecipe(key)
-  route.meta.title!.value = recipe.value?.title
+  route.meta.title.value = recipe.value?.title
 }, { immediate: true })
 </script>
 

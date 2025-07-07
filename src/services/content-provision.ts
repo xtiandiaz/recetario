@@ -6,6 +6,8 @@ import type { RawRecipe, Recipe, RecipeKey } from '@/models/recipe';
 import { categoryTitle, sectionTitle } from '@/utils/localization.utils';
 import { refineRawRecipe } from '@/utils/recipe.utils';
 
+const sourcePath = 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist'
+
 let catalog: Catalog | undefined = undefined
 let dataSheet: DataSheet | undefined = undefined
 
@@ -42,7 +44,7 @@ export function getCategory(key: CategoryKey): Category | undefined {
 
 export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
   try {
-    const rawRecipe = await (await fetch(`recipes/${key}.json`)).json() as RawRecipe
+    const rawRecipe = await (await fetch(`${sourcePath}/recipes/${key}.json`)).json() as RawRecipe
     
     return refineRawRecipe(rawRecipe, getDataSheet())
   } catch (e: unknown) {
