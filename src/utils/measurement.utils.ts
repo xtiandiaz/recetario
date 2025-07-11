@@ -1,5 +1,5 @@
 import { Unit, UnitKind, TemperatureEstimate } from "@/models/measurement";
-import type { Measurement, TemperatureMeasurement } from "@/models/measurement"
+import type { QuantityRange, Measurement, TemperatureMeasurement } from "@/models/measurement"
 import type { Density } from "@/models/data-sheet";
 import { getDataSheet } from "@/services/content-provision";
 import { Icon } from '@design-tokens/iconography'
@@ -55,7 +55,8 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
       return Icon.Cup
     case Unit.Celcius:
       const icons = [Icon.ThermometerLow, Icon.ThermometerMedium, Icon.ThermometerHigh]
-      const index = clamp(Math.floor((measurement.quantity ?? 0) / 50), 0, icons.length)
+      const quantityValue = typeof measurement.quantity === 'object' ? measurement.quantity.max : measurement.quantity
+      const index = clamp(Math.floor(quantityValue / 50), 0, icons.length)
       return icons[index]
     case Unit.Drop:
       return Icon.Drop
@@ -70,12 +71,16 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
 
 export function decodeMeasurementString(measurementString: string): Measurement {
   const unitPattern = Object.values(Unit).join('|')
-  const measurementRegExp = new RegExp(`^\\s*(\\d*[.,]?\\d+)\\s*(${unitPattern})\\s*$`)
+  const measurementRegExp = new RegExp(`^\\s*(\\d*\[.\\-,]?\\d+)\\s*(${unitPattern})\\s*$`)
   const measurementMatch = measurementString.match(measurementRegExp)
   const unit = measurementMatch ? enumKeyFromValue(Unit, measurementMatch[2])! : undefined
   
   if (measurementMatch && unit) {
-    return { quantity: Number(measurementMatch[1]), unit }
+    const range = measurementMatch[1].split('-').map(Number)
+    return { 
+      quantity: range.length > 1 ? { min: range[0], max: range[1] } as QuantityRange : range[0], 
+      unit 
+    }
   }
   
   throw new Error(`Undecodable measurement string: ${measurementString}`)
@@ -119,21 +124,28 @@ export function convertCustomaryVolumeOrWeight(
     throw new Error(`Undefined volume for customary Unit: ${measurement.unit}`)
   }
   
-  const volumeMl = measurement.quantity * unitVolume
-  let quantity: number
+  function convert(volumeMl: number): number {
+    switch (to) {
+      case Unit.Gram:
+        return volumeMl * density.value
+      case Unit.Mililiter:
+        return volumeMl / density.value
+      default:
+        throw new Error(`Undefined conversion target Unit: ${to}`)
+    }
+  }
   
   // console.log(measurement.quantity, measurement.unit, volumeMl, `(${unitVolume})`, density.key, density.value)
   
-  switch (to) {
-    case Unit.Gram:
-      quantity = volumeMl * density.value
-      break
-    case Unit.Mililiter:
-      quantity = volumeMl / density.value
-      break
-    default:
-      throw new Error(`Undefined conversion target Unit: ${to}`)
+  if (typeof measurement.quantity === 'object') {
+    return { 
+      quantity: {
+        min: convert(measurement.quantity.min * unitVolume),
+        max: convert(measurement.quantity.max * unitVolume)
+      }, 
+      unit: to 
+    }
   }
   
-  return { quantity, unit: to }
+  return { quantity: convert(measurement.quantity * unitVolume), unit: to }
 }

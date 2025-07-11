@@ -73,13 +73,14 @@ export function refineRawIngredient(rawIngredient: RawIngredient, dataSheet: Dat
     amount,
     consistency: ingredientConsistency(rawIngredient.key),
     density,
+    extras: rawIngredient.extras,
     key: rawIngredient.key,
     temperature,
     title: ingredientTitle(rawIngredient.key)
   }
 }
 
-export function calculateAmountWeightOrVolumeEquivalent(ingredient: Ingredient): Measurement | undefined {
+export function calculateAmountWeightOrVolumeEquivalent(ingredient: Ingredient): Measurement | undefined {  
   if (!ingredient.density || !ingredient.consistency) {
     console.log('Undefined density or consistency for ingredient:', ingredient.key)
     return undefined

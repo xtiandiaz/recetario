@@ -1,4 +1,5 @@
 import type { Density } from "./data-sheet"
+import type { Language } from "./localization"
 import type { Measurement, TemperatureMeasurement } from "./measurement"
 
 export enum IngredientKey {
@@ -31,10 +32,17 @@ export enum Consistency {
   Viscous = 'viscous',
 }
 
+export interface Extras {
+  language: Language
+  
+  note?: string
+}
+
 export interface RawIngredient {
   amount: string
   key: IngredientKey
   
+  extras?: Extras[]
   temperature?: string
   title?: string
 }
@@ -46,5 +54,6 @@ export interface Ingredient {
   
   consistency?: Consistency
   density?: Density
+  extras?: Extras[]
   temperature?: TemperatureMeasurement
 }

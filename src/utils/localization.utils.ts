@@ -4,6 +4,7 @@ import type { RecipeKey } from "@/models/recipe";
 import type { IngredientKey } from "@/models/ingredient";
 import { Unit, type Measurement, type TemperatureMeasurement } from '@/models/measurement'
 import { localizedString } from "@/services/localization"
+import '@/assets/tungsten/extensions/array.extensions'
 
 export const sectionTitle = (key: SectionKey): string => {
   return localizedString(`title-section-${key}` as LocalizedStringKey)
@@ -47,9 +48,17 @@ export const localizedQuantity = (measurement: Measurement, abbreviated: boolean
   }
   
   if (measurement.quantity) {
+    const quantityValues = typeof measurement.quantity === 'object' 
+      ? [measurement.quantity.min, measurement.quantity.max]
+      : [measurement.quantity]
+    
     return [
-      measurement.quantity.toLocaleString(),
-      localizedMeasurementUnit(measurement.unit, abbreviated, !abbreviated && measurement.quantity > 1)
+      quantityValues.map(v => v.toLocaleString()).join('-'),
+      localizedMeasurementUnit(
+        measurement.unit, 
+        abbreviated, 
+        !abbreviated && (quantityValues.last()! > 1)
+      )
     ].join(unitQuantitySeparator(measurement.unit))
   }
   

@@ -25,11 +25,13 @@ export const localizedStrings = new Map<LocalizedStringKey, string>([
   // ---
   [LocalizedStringKey.Title_CategoryPersonalHygiene, "Higiene"],
   // ---
-  [LocalizedStringKey.Title_RecipeDeodorant, "Desodorante"],
+  [LocalizedStringKey.Title_RecipeLiquidDeodorant, "Desodorante líquido"],
+  [LocalizedStringKey.Title_RecipePastyDeodorant, "Desodorante pastoso"],
   
   [LocalizedStringKey.Title_IngredientAllPurposeWheatFlour, "Harina de trigo común"],
   [LocalizedStringKey.Title_IngredientActiveDryYeast, "Levadura seca"],
   [LocalizedStringKey.Title_IngredientBakingSoda, "Bicarbonato de sodio"],
+  [LocalizedStringKey.Title_IngredientCarrierOil, "Aceite portador"],
   [LocalizedStringKey.Title_IngredientCoconutOil, "Aceite de coco"],
   [LocalizedStringKey.Title_IngredientCornStarch, "Fécula de maíz"],
   [LocalizedStringKey.Title_IngredientDryFruitMix, "Variedad de frutos secos al gusto"],

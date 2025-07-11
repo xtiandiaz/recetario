@@ -18,8 +18,13 @@ export enum UnitKind {
   Weight = 'weight',
 }
 
+export interface QuantityRange {
+  max: number
+  min: number
+}
+
 export interface Measurement {
-  quantity: number
+  quantity: number | QuantityRange
   unit: Unit
 }
 

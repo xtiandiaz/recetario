@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
+import settingsStore from '@/stores/settings'
 import { getRecipe } from '@/services/content-provision';
 import { localizedString } from '@/services/localization';
 import VuetyForm from '@/vueties/components/form/VuetyForm.vue'
@@ -17,9 +18,11 @@ const props = defineProps<{
   rKey: RecipeKey
 }>()
 
+const settings = settingsStore()
 const route = useRoute()
 
 const recipe = ref<Recipe | undefined>()
+const steps = computed(() => recipe.value?.instructions.find(i => i.language === settings.currentLanguage)?.steps)
 
 watch(() => props.rKey, async (key) => {
   recipe.value = undefined
@@ -55,10 +58,7 @@ watch(() => props.rKey, async (key) => {
         <h6 class="serif">{{ localizedString(LocalizedStringKey.Title_Instructions) }}</h6>
       </span>
       <VuetyFormSection>
-        <VuetyTaskFormRow
-          v-for="(step, index) of recipe.instructions[0].steps"
-          :key="index"
-        >
+        <VuetyTaskFormRow v-for="(step, index) of steps" :key="index">
           <span>{{ step }}</span>
         </VuetyTaskFormRow>
       </VuetyFormSection>

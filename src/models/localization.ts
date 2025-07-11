@@ -27,11 +27,13 @@ export enum LocalizedStringKey {
   // ---
   Title_CategoryPersonalHygiene = 'title-category-personal-hygiene',
   // ---
-  Title_RecipeDeodorant = 'title-recipe-deodorant',
+  Title_RecipeLiquidDeodorant = 'title-recipe-liquid-deodorant',
+  Title_RecipePastyDeodorant = 'title-recipe-pasty-deodorant',
   
+  Title_IngredientActiveDryYeast = 'title-ingredient-active-dry-yeast',
   Title_IngredientAllPurposeWheatFlour = 'title-ingredient-all-purpose-wheat-flour',
   Title_IngredientBakingSoda = 'title-ingredient-baking-soda',
-  Title_IngredientActiveDryYeast = 'title-ingredient-active-dry-yeast',
+  Title_IngredientCarrierOil = 'title-ingredient-carrier-oil',
   Title_IngredientCoconutOil = 'title-ingredient-coconut-oil',
   Title_IngredientCornStarch = 'title-ingredient-corn-starch',
   Title_IngredientDryFruitMix = 'title-ingredient-dry-fruit-mix',
