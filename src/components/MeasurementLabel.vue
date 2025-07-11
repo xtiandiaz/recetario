@@ -16,7 +16,8 @@ const icon = computed(() => measurementIcon(measurement))
 const measurementKindClass = computed(() => {
   switch (unitKind(measurement.unit)) {
     case UnitKind.Temperature:
-      const tVal = clamp(Math.floor(measurement.quantity / 25) * 25, 0, 100)
+      const quantity = typeof measurement.quantity === 'object' ? measurement.quantity.max : measurement.quantity
+      const tVal = clamp(Math.floor(quantity / 25) * 25, 0, 100)
       return `temperature-${tVal}`
     default:
       return undefined

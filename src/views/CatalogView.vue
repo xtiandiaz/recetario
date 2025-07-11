@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useRouter } from 'vue-router';
-import { getCatalog } from '@/services/content-provision';
+import useSessionStore from '@/stores/session'
 
 const router = useRouter()
+const session = useSessionStore()
 
-const catalog = getCatalog()
+const catalog = computed(() => session.catalog)
 </script>
 
 <template>
-  <main>
+  <main v-if="catalog">
     <section 
       v-for="(section, sectionIndex) in catalog.sections"
       :key="sectionIndex"

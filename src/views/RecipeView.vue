@@ -2,7 +2,8 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
-import settingsStore from '@/stores/settings'
+import useSettingsStore from '@/stores/settings'
+import useSessionStore from '@/stores/session'
 import { getRecipe } from '@/services/content-provision';
 import { localizedString } from '@/services/localization';
 import VuetyForm from '@/vueties/components/form/VuetyForm.vue'
@@ -11,30 +12,34 @@ import VuetyTaskFormRow from '@/vueties/components/form/rows/VuetyTaskFormRow.vu
 import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
 import { Icon } from '@/assets/design-tokens/iconography';
 import { LocalizedStringKey } from '@/models/localization';
-import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
 import IngredientItem from '@/components/IngredientItem.vue';
+import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
 
-const props = defineProps<{
-  rKey: RecipeKey
+const { recipeKey } = defineProps<{
+  recipeKey: RecipeKey
 }>()
 
-const settings = settingsStore()
+const settings = useSettingsStore()
+const session = useSessionStore()
 const route = useRoute()
 
+const summary = computed(() => session.getRecipeSummary(recipeKey))
 const recipe = ref<Recipe | undefined>()
 const steps = computed(() => recipe.value?.instructions.find(i => i.language === settings.currentLanguage)?.steps)
 
-watch(() => props.rKey, async (key) => {
+watch(summary, async (value) => {
   recipe.value = undefined
+  route.meta.title.value = value?.title
   
-  recipe.value = await getRecipe(key)
-  route.meta.title.value = recipe.value?.title
-}, { immediate: true })
+  if (value) {
+    recipe.value = await getRecipe(value?.key)
+  }
+}, { deep: true, immediate: true })
 </script>
 
 <template>
   <main>
-    <div :id="recipe?.category" class="category-background"></div>
+    <div :id="summary?.category" class="category-background"></div>
     
     <VuetyForm v-if="recipe">
       <h3 class="serif">{{ recipe.title }}</h3>
@@ -73,6 +78,7 @@ watch(() => props.rKey, async (key) => {
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
+@use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
 
 @include category-theme.backgrounds();
@@ -115,12 +121,8 @@ h3 {
 }
 
 .vuety-progress-indicator {
-  bottom: 0;
-  left: 0;
   margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 3em;
+  @include mixins.position(absolute, 0, 0, 0, 0);
 }
 </style>

@@ -1,7 +1,7 @@
 import { Unit, UnitKind, TemperatureEstimate } from "@/models/measurement";
 import type { QuantityRange, Measurement, TemperatureMeasurement } from "@/models/measurement"
-import type { Density } from "@/models/data-sheet";
-import { getDataSheet } from "@/services/content-provision";
+import type { Density } from "@/models/catalog";
+import useSessionStore from '@/stores/session'
 import { Icon } from '@design-tokens/iconography'
 import { enumKeyFromValue } from "@/assets/tungsten/enum";
 import { Consistency } from "@/models/ingredient";
@@ -118,7 +118,8 @@ export function convertCustomaryVolumeOrWeight(
     throw new Error(`Invalid target kind for customary volume/weight conversion: ${toUnitKind}`)
   }
   
-  const dataSheet = getDataSheet()
+  const session = useSessionStore()
+  const dataSheet = session.catalog!.dataSheet
   const unitVolume = dataSheet.customaryUnitVolumes.find(uv => uv.unit === measurement.unit)?.ml
   if (!unitVolume) {
     throw new Error(`Undefined volume for customary Unit: ${measurement.unit}`)

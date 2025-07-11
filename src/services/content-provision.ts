@@ -1,57 +1,53 @@
-import rawCatalog from '@/assets/json/catalog.json'
-import rawDataSheet from '@/assets/json/data-sheet.json'
-import type { Catalog, Category, CategoryKey } from "@/models/catalog";
-import type { DataSheet } from '@/models/data-sheet';
+import type { RawCatalog, Catalog } from "@/models/catalog";
 import type { RawRecipe, Recipe, RecipeKey } from '@/models/recipe';
-import { categoryTitle, sectionTitle } from '@/utils/localization.utils';
-import { refineRawRecipe } from '@/utils/recipe.utils';
+import useSessionStore from '@/stores/session'
+import { refineRawCatalog, refineRawRecipe } from '@/utils/catalog.utils';
 
 const sourcePath = (import.meta.env.PROD 
-  ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist'
-  : '')
+  ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist/json'
+  : 'json')
 
 let catalog: Catalog | undefined = undefined
-let dataSheet: DataSheet | undefined = undefined
 
-export function getDataSheet(): DataSheet {
-  if (dataSheet) {
-    return dataSheet
-  }
-  
-  dataSheet = rawDataSheet as DataSheet
-  
-  return dataSheet
-}
-
-export function getCatalog(): Catalog {
-  if (catalog) {
-    return catalog
-  }
-  
-  catalog = rawCatalog as Catalog
-  
-  catalog.sections.forEach(s => {
-    s.title = sectionTitle(s.key)
-    
-    s.categories.forEach(c => c.title = categoryTitle(c.key))
-    s.categories.sort((a, b) => a.title!.localeCompare(b.title!))
-  })
-  
-  return catalog
-}
-
-export function getCategory(key: CategoryKey): Category | undefined {
-  return getCatalog().sections.flatMap(s => s.categories).find(c => c.key === key)
-}
-
-export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
+async function loadFile<T>(path: string): Promise<T | undefined> {
   try {
-    const rawRecipe = await (await fetch(`${sourcePath}/recipes/${key}.json`)).json() as RawRecipe
+    const response = await fetch(`${sourcePath}/${path}.json`)
+    // console.log(path, response.status, response.statusText, response)
     
-    return refineRawRecipe(rawRecipe, getDataSheet())
+    return await response.json() as T
   } catch (e: unknown) {
     console.error(e)
     
     return undefined
   }
+}
+
+async function getCatalog(): Promise<Catalog | undefined> {
+  if (catalog) {
+    return catalog
+  }
+  
+  const rawCatalog = await loadFile<RawCatalog>(`catalog`)
+  if (rawCatalog) {
+    catalog = refineRawCatalog(rawCatalog)
+    return catalog
+  }
+  
+  return undefined
+}
+
+export async function loadCatalog() {
+  const session = useSessionStore()
+  
+  session.catalog = await getCatalog()
+}
+
+export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
+  const rawRecipe = await loadFile<RawRecipe>(`recipes/${key}`)
+  const dataSheet = (await getCatalog())?.dataSheet
+  if (rawRecipe && dataSheet) {
+    return refineRawRecipe(rawRecipe, dataSheet)
+  }
+  
+  return undefined
 }

@@ -1,12 +1,16 @@
 {
-  "key": "pizza",
+  "key": "focaccia",
   "category": "bakery",
-  "units": 2,
+  "units": 1,
   "origin": "🇮🇹",
   "ingredients": [
     {
+      "key": "all-purpose-wheat-flour",
+      "quantity": "2 cup"
+    },
+    {
       "key": "strong-wheat-flour",
-      "quantity": "3 cup"
+      "quantity": "1 cup"
     },
     {
       "key": "granulated-sugar",
@@ -18,12 +22,16 @@
     },
     {
       "key": "active-dry-yeast",
-      "quantity": "1.5 tsp"
+      "quantity": "1 tsp"
     },
     {
       "key": "water",
-      "quantity": "1 cup",
+      "quantity": "1.25 cup",
       "temperature": "tepid"
+    },
+    {
+      "key": "olive-oil",
+      "quantity": "3.5 tbsp"
     }
   ],
   "instructions": [

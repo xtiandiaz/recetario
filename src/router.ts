@@ -11,12 +11,12 @@ export default createVuetyRouter([
   },
   {
     component: CategoryView,
-    path: '/category/:cKey',
+    path: '/category/:categoryKey',
     props: true,
   },
   {
     component: RecipeView,
-    path: '/recipe/:rKey',
+    path: '/recipe/:recipeKey',
     props: true,
   },
   {

@@ -1,8 +1,8 @@
-import { DensityKey } from "@/models/data-sheet"
+import { DensityKey } from "@/models/catalog"
+import type { DataSheet } from "@/models/catalog";
 import { IngredientKey, Consistency } from "@/models/ingredient"
 import type { RawIngredient, Ingredient } from "@/models/ingredient";
 import type { Measurement } from "@/models/measurement";
-import type { DataSheet } from "@/models/data-sheet";
 import { ingredientTitle } from "./localization.utils";
 import { 
   consistencyPreciseUnits, 
@@ -42,19 +42,25 @@ const ingredientConsistency = (ingredientKey: IngredientKey): Consistency | unde
     case IngredientKey.WholeRyeFlour:
     case IngredientKey.WholeWheatFlour:
       return Consistency.Powder
+    
     case IngredientKey.ActiveDryYeast:
     case IngredientKey.GranulatedSalt:
     case IngredientKey.GranulatedSugar:
       return Consistency.Granulated
+    
     case IngredientKey.CoconutOil:
       return Consistency.SemiSolid
+    
+    case IngredientKey.EssentialOil:
     case IngredientKey.Honey:
     case IngredientKey.OliveOil:
       return Consistency.Viscous
-    case IngredientKey.EssentialOil:
+    
+    case IngredientKey.CarrierOil:
     case IngredientKey.WholeMilk:
     case IngredientKey.Water:
       return Consistency.Liquid
+    
     default:
       return undefined
   }
@@ -82,13 +88,13 @@ export function refineRawIngredient(rawIngredient: RawIngredient, dataSheet: Dat
 
 export function calculateAmountWeightOrVolumeEquivalent(ingredient: Ingredient): Measurement | undefined {  
   if (!ingredient.density || !ingredient.consistency) {
-    console.log('Undefined density or consistency for ingredient:', ingredient.key)
+    console.warn('Undefined density or consistency for ingredient:', ingredient.key)
     return undefined
   }
   const altUnits = consistencyPreciseUnits(ingredient.consistency)
   const equivalenceUnit = altUnits.find(u => u !== ingredient.amount.unit)
   if (!equivalenceUnit) {
-    console.log('Undefined equivalence Unit for ingredient:', ingredient.key)
+    console.warn('Undefined equivalence Unit for ingredient:', ingredient.key)
     return undefined
   }
   

@@ -15,7 +15,7 @@ export const localizedStrings = new Map<LocalizedStringKey, string>([
   [LocalizedStringKey.Title_RecipeFocaccia, "Focaccia"],
   [LocalizedStringKey.Title_RecipeGranola, "Granola"],
   [LocalizedStringKey.Title_RecipeOnigiri, "Onigiri 🍙"],
-  [LocalizedStringKey.Title_RecipePita, "Pan pita"],
+  [LocalizedStringKey.Title_RecipePita, "Pita"],
   [LocalizedStringKey.Title_RecipePizza, "Pizza"],
   [LocalizedStringKey.Title_RecipeRusticBread, "Pan rústico"],
   [LocalizedStringKey.Title_RecipeTabbouleh, "Tabulé"], 

@@ -1,0 +1,57 @@
+{
+  "key": "pita",
+  "category": "bakery",
+  "units": 6,
+  "origin": "🇸🇦",
+  "ingredients": [
+    {
+      "amount": "1 cup",
+      "key": "all-purpose-wheat-flour"
+    },
+    {
+      "amount": "1.5 cup",
+      "key": "whole-wheat-flour"
+    },
+    {
+      "amount": "2 tsp",
+      "key": "active-dry-yeast"
+    },
+    {
+      "amount": "1 tsp",
+      "key": "granulated-salt"
+    },
+    {
+      "amount": "0.5 tsp",
+      "key": "granulated-sugar"
+    },
+    {
+      "amount": "2 tbsp",
+      "key": "olive-oil"
+    },
+    {
+      "amount": "1 cup",
+      "key": "water",
+      "temperature": "tepid"
+    }
+  ],
+  "instructions": [
+    {
+      "language": "es",
+      "steps": [
+        "En un bol, mezclar el agua, la levadura, el azúcar, y un [1/4 cup] de la harina. Revolver y dejar la mezcla actuar por 15 min.",
+        "Reservar [2 tbsp] para enharinar la masa con ella.",
+        "Agregar toda la demás harina, la sal y el aceite de oliva a la mezcla, y removerla bien con una espátula.",
+        "Pasar la masa a una superficie enharinada y amasarla durante 10 min.",
+        "Formar una bola con la masa y ponerla dentro del bol aceitado para que no se pegue.",
+        "Cubrir el bol con una toalla y dejar la masa levar por 1 hr hasta que duplique su tamaño.",
+        "Pasado el tiempo, poner el horno a precalentar a 230ºC.",
+        "Desgasificar la masa amasándola suavemente. Luego, dividirla en el número de unidades deseadas, hacer bolas con cada una de ellas, cubrirlas con una toalla y dejarlas reposar por 15 min.",
+        "Pasado el tiempo, aplanarlos y darles forma redondeada con la ayuda de un rodillo.",
+        "Recubrir con papel vegetal la(s) bandeja(s) en la(s) que se quiere hornear los panes y ubicarlos sobre ella(s).",
+        "Poner los panes en el horno durante 2 min.",
+        "Retirarlos del horno, voltearlos y volver a hornearlos por otros 2 min.",
+        "Retirar los panes del horno y dejarlos enfriar por 10 min antes de disfrutarlos."
+      ]
+    }
+  ]
+}

@@ -28,12 +28,14 @@ export interface RawRecipe {
   origin?: string
 }
 
-export interface Recipe {
+export interface RecipeSummary {
   category: CategoryKey
-  ingredients: Ingredient[]
-  instructions: RecipeInstructions[]
   key: RecipeKey
   title: string
-  
+}
+
+export interface Recipe extends RecipeSummary {
+  ingredients: Ingredient[]
+  instructions: RecipeInstructions[]
   origin?: string
 }

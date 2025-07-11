@@ -1,4 +1,4 @@
-import type { Density } from "./data-sheet"
+import type { Density } from "./catalog"
 import type { Language } from "./localization"
 import type { Measurement, TemperatureMeasurement } from "./measurement"
 
@@ -6,6 +6,7 @@ export enum IngredientKey {
   ActiveDryYeast = 'active-dry-yeast',
   AllPurposeWheatFlour = 'all-purpose-wheat-flour',
   BakingSoda = 'baking-soda',
+  CarrierOil = 'carrier-oil',
   CoconutOil = 'coconut-oil',
   CornStarch = 'corn-starch',
   DryFruitMix = 'dry-fruit-mix',
@@ -13,9 +14,9 @@ export enum IngredientKey {
   GranulatedSalt = 'granulated-salt',
   GranulatedSugar = 'granulated-sugar',
   Honey = 'honey',
+  NutSeedMix = 'nut-seed-mix',
   OatFlakes = 'oat-flakes',
   OliveOil = 'olive-oil',
-  NutSeedMix = 'nut-seed-mix',
   StrongWheatFlour = 'strong-wheat-flour',
   Water = 'water',
   WholeMilk = 'whole-milk',

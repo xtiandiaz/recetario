@@ -1,0 +1,40 @@
+{
+  "key": "pasty-deodorant",
+  "category": "personal-hygiene", 
+  "portions": 1,
+  "ingredients": [
+    {
+      "amount": "1 tbsp",
+      "key": "corn-starch"
+    },
+    {
+      "amount": "1 tbsp",
+      "key": "baking-soda"
+    },
+    {
+      "amount": "1.5 tbsp", 
+      "key": "coconut-oil"
+    },
+    {
+      "amount": "5-10 drop",
+      "key": "essential-oil",
+      "extras": [
+        {
+          "language": "es",
+          "note": "E.g., lavanda, eucalipto, árbol de té (tea tree)."
+        }
+      ]
+    }
+  ],
+  "instructions": [
+    {
+      "language": "es",
+      "steps": [
+        "Mezclar el bicarbonato de sodio y la fécula de maíz en un bol.",
+        "Derretir el aceite de coco y agregarlo a la mezcla seca.",
+        "Añadir los aceites esenciales preferidos.",
+        "Transferir la mezcla a un frasco o recipiente limpio y seco."
+      ]
+    }
+  ]
+}

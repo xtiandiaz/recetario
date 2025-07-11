@@ -1,0 +1,45 @@
+{
+  "key": "liquid-deodorant",
+  "category": "personal-hygiene", 
+  "portions": 1,
+  "ingredients": [
+    {
+      "amount": "1 tbsp",
+      "key": "corn-starch"
+    },
+    {
+      "amount": "1 tbsp",
+      "key": "baking-soda"
+    },
+    {
+      "amount": "4 tbsp", 
+      "key": "carrier-oil",
+      "extras": [
+        {
+          "language": "es",
+          "note": "E.g., almendra, coco fraccionado, jojoba, o una combinación de ellos."
+        }
+      ]
+    },
+    {
+      "amount": "5-10 drop",
+      "key": "essential-oil",
+      "extras": [
+        {
+          "language": "es",
+          "note": "E.g., lavanda, eucalipto, árbol de té (tea tree)."
+        }
+      ]
+    }
+  ],
+  "instructions": [
+    {
+      "language": "es",
+      "steps": [
+        "Mezclar el bicarbonato de sodio y la fécula de maíz en un bol.",
+        "Vertir todos los aceites (portadores y esenciales) sobre la mezcla seca y batir hasta lograr una mezcla uniforme.",
+        "Transferir la mezcla a un frasco para desodorante con rolón, o cualquier otro recipiente con tapa, limpio y seco."
+      ]
+    }
+  ]
+}
