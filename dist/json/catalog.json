@@ -23,12 +23,6 @@
           ]
         },
         {
-          "color": "red",
-          "emoji": "🍝",
-          "key": "pastas",
-          "recipes": []
-        },
-        {
           "color": "green",
           "emoji": "🥗",
           "key": "salads",
@@ -42,6 +36,7 @@
           "key": "sauces",
           "recipes": [
             "baba-ganoush",
+            "hummus",
             "tzatziki"
           ]
         },
