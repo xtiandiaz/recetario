@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
 import useSettingsStore from '@/stores/settings'
@@ -19,9 +19,9 @@ const { recipeKey } = defineProps<{
   recipeKey: RecipeKey
 }>()
 
+const route = useRoute()
 const settings = useSettingsStore()
 const session = useSessionStore()
-const route = useRoute()
 
 const summary = computed(() => session.getRecipeSummary(recipeKey))
 const recipe = ref<Recipe | undefined>()
@@ -35,20 +35,24 @@ watch(summary, async (value) => {
     recipe.value = await getRecipe(value?.key)
   }
 }, { deep: true, immediate: true })
+
+onBeforeMount(() => {
+  route.meta.showsLargeTitle.value = true
+})
 </script>
 
 <template>
   <main>
     <div :id="summary?.category" class="category-background"></div>
     
+    <h3 class="headline">{{ summary?.title }}</h3>
+    
     <VuetyForm v-if="recipe">
-      <h3 class="serif">{{ recipe.title }}</h3>
       
-      <span class="headline">
-        <VuetySvgIcon :icon="Icon.Scale" />
-        <h6 class="serif">{{ localizedString(LocalizedStringKey.Title_Ingredients) }}</h6>
-      </span>
-      <VuetyFormSection>
+      <VuetyFormSection
+        :title="localizedString(LocalizedStringKey.Title_Ingredients)"
+        :showsLargeTitle="true"
+      >
         <VuetyTaskFormRow 
           v-for="(ingredient, index) of recipe.ingredients"
           :key="index"
@@ -58,11 +62,10 @@ watch(summary, async (value) => {
         </VuetyTaskFormRow>
       </VuetyFormSection>
       
-      <span class="headline">
-        <VuetySvgIcon :icon="Icon.Doc" />
-        <h6 class="serif">{{ localizedString(LocalizedStringKey.Title_Instructions) }}</h6>
-      </span>
-      <VuetyFormSection>
+      <VuetyFormSection
+        :title="localizedString(LocalizedStringKey.Title_Instructions)"
+        :showsLargeTitle="true"
+      >
         <VuetyTaskFormRow v-for="(step, index) of steps" :key="index">
           <span>{{ step }}</span>
         </VuetyTaskFormRow>
@@ -83,41 +86,15 @@ watch(summary, async (value) => {
 
 @include category-theme.backgrounds();
 
-h3 {
-  margin: 0;
-  text-align: center;
+:deep(.vuety-form-section .large-title) {
+  @extend .serif;
 }
 
 .headline {
-  display: flex;
-  gap: 0.75em;
-  margin: 1em 0 0 1.125em;
-  
-  &, :deep(.svg-icon) {
-    @include palette.color-attribute('color', 'secondary-body');
-  }
-  
-  > * {
-    display: inline-block;
-  }
-  
-  h6 {
-    margin: 0;
-  }
-  
-  .svg-icon {
-    width: 1.5em;
-  }
-}
-
-.vuety-form {
-  gap: 1em;
-}
-
-.vuety-form-row.task {  
-  :deep(.content) {
-    align-self: center;
-  }
+  @extend .serif;
+  margin: 0.5em auto;
+  padding: 0 2em;
+  text-align: center;
 }
 
 .vuety-progress-indicator {

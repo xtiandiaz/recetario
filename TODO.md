@@ -8,7 +8,8 @@
 
 # Recetas
 
-- Pan Focaccia
+- Hummus
+- Tabbouleh
+- Tzatziki
 - Kibbeh
-- Ensalada Tabbouleh
-- Salsa Tzatziki
+- Pan Focaccia

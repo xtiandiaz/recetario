@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, onBeforeMount, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { CategoryKey } from '@/models/catalog';
 import useSessionStore from '@/stores/session'
@@ -22,16 +22,24 @@ const recipeEntries = computed(() => category.value?.recipes
 )
 
 watch(category, async (value) => {
-  route.meta.title.value = value?.title
+  route.meta.title.value = value ? `${value.emoji} ${value.title}` : undefined
 }, { immediate: true })
+
+onBeforeMount(() => {
+  route.meta.showsLargeTitle.value = true
+})
 </script>
 
 <template>
   <main v-if="category">
     <div :id="category.key" class="category-background"></div>
     
+    <div class="headline">
+      <h1>{{ category.emoji }}</h1>
+      <h5>{{ category.title }}</h5>
+    </div>
+    
     <VuetyForm>
-      <h3 class="serif">{{ category.emoji }} {{ category.title }}</h3>
       <VuetyFormSection
         v-for="(group, index) in recipeEntries"
         :key="index"
@@ -56,7 +64,12 @@ watch(category, async (value) => {
 
 @include category-theme.backgrounds();
 
-h3 {
+.headline {
+  & > * {
+    @extend .serif;
+    margin: 0;
+  }
+  
   margin: 0;
   text-align: center;
 }
