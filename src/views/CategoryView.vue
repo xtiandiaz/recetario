@@ -65,12 +65,12 @@ onBeforeMount(() => {
 @include category-theme.backgrounds();
 
 .headline {
+  margin: 0;
+  text-align: center;
+  
   & > * {
     @extend .serif;
     margin: 0;
   }
-  
-  margin: 0;
-  text-align: center;
 }
 </style>
