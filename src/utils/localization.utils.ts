@@ -1,25 +1,29 @@
-import type { LocalizedStringKey } from "@/models/localization"
 import { CategoryKey, SectionKey } from "@/models/catalog";
 import type { RecipeKey } from "@/models/recipe";
-import type { IngredientKey } from "@/models/ingredient";
-import { Unit, type Measurement, type TemperatureMeasurement } from '@/models/measurement'
+import type { IngredientKey, Priority } from "@/models/ingredient";
+import type { Measurement, TemperatureMeasurement } from '@/models/measurement'
+import { Unit } from '@/models/measurement'
 import { localizedString } from "@/services/localization"
 import '@/assets/tungsten/extensions/array.extensions'
 
 export const sectionTitle = (key: SectionKey): string => {
-  return localizedString(`title-section-${key}` as LocalizedStringKey)
+  return localizedString(`section-${key}`)
 }
 
 export const categoryTitle = (key: CategoryKey): string => {
-  return localizedString(`title-category-${key}` as LocalizedStringKey)
+  return localizedString(`category-${key}`)
 }
 
 export const recipeTitle = (key: RecipeKey): string => {
-  return localizedString(`title-recipe-${key}` as LocalizedStringKey)
+  return localizedString(`recipe-${key}`)
 }
 
 export const ingredientTitle = (key: IngredientKey): string => {
-  return localizedString(`title-ingredient-${key}` as LocalizedStringKey)
+  return localizedString(`ingredient-${key}`)
+}
+
+export const priorityTitle = (key: Priority): string => {
+  return localizedString(`priority-${key}`)
 }
 
 export const localizedMeasurementUnit = (unit: Unit, abbreviated: boolean, pluralized: boolean): string => {
@@ -27,7 +31,7 @@ export const localizedMeasurementUnit = (unit: Unit, abbreviated: boolean, plura
     case Unit.Celcius:
       return unit
     default:
-      return localizedString(`unit-${unit}${abbreviated ? '-abbr' : ''}` as LocalizedStringKey) 
+      return localizedString(`unit-${unit}${abbreviated ? '-abbr' : ''}`)
         + (pluralized && !abbreviated ? 's' : '')
   }
 }
@@ -44,7 +48,7 @@ const unitQuantitySeparator = (unit: Unit): string => {
 export const localizedQuantity = (measurement: Measurement, abbreviated: boolean = true): string => {
   const temperatureMeasurement = measurement as TemperatureMeasurement
   if (temperatureMeasurement && temperatureMeasurement.estimate) {
-    return localizedString(`estimate-${temperatureMeasurement.estimate}` as LocalizedStringKey)
+    return localizedString(`estimate-temperature-${temperatureMeasurement.estimate}`)
   }
   
   if (measurement.quantity) {

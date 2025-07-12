@@ -3,12 +3,13 @@ import type { RawIngredient, Ingredient } from "./ingredient"
 import type { Language } from "./localization"
 
 export enum RecipeKey {
+  BabaGanoush = 'baba-ganoush',
   Focaccia = 'focaccia',
+  Hummus = 'hummus',
   Pita = 'pita',
   Pizza = 'pizza',
   RusticBread = 'rustic-bread',
   Tabbouleh = 'tabbouleh',
-  BabaGanoush = 'baba-ganoush',
   Tzatziki = 'tzatziki',
 }
 

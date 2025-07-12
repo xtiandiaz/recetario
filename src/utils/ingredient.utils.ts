@@ -81,6 +81,7 @@ export function refineRawIngredient(rawIngredient: RawIngredient, dataSheet: Dat
     density,
     extras: rawIngredient.extras,
     key: rawIngredient.key,
+    priority: rawIngredient.priority,
     temperature,
     title: ingredientTitle(rawIngredient.key)
   }

@@ -2,12 +2,12 @@
 import { computed, onBeforeMount, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { CategoryKey } from '@/models/catalog';
+import type { RecipeSummary } from '@/models/recipe';
 import useSessionStore from '@/stores/session'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@vueties/components/form/rows/VuetyPushFormRow.vue';
 import '@/assets/tungsten/extensions/array.extensions'
-import type { RecipeSummary } from '@/models/recipe';
 
 const { categoryKey } = defineProps<{
   categoryKey: CategoryKey
@@ -18,7 +18,7 @@ const session = useSessionStore()
 
 const category = computed(() => session.getCategory(categoryKey))
 const recipeEntries = computed(() => category.value?.recipes
-  .groupedBy((val: RecipeSummary) => val.title.substring(0, 1))
+  .groupedBy((val: RecipeSummary) => val.title.substring(0, 1).toLocaleUpperCase())
 )
 
 watch(category, async (value) => {

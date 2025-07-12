@@ -4,7 +4,7 @@ import useSessionStore from '@/stores/session'
 import { refineRawCatalog, refineRawRecipe } from '@/utils/catalog.utils';
 
 const sourcePath = (import.meta.env.PROD 
-  ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/dist/json'
+  ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/src/assets/json'
   : 'json')
 
 let catalog: Catalog | undefined = undefined

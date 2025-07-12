@@ -2,18 +2,19 @@
 import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
 import { RecipeKey, type Recipe } from '@/models/recipe';
+import { Priority } from '@/models/ingredient';
+import { LocalizedStringKey } from '@/models/localization';
 import useSettingsStore from '@/stores/settings'
 import useSessionStore from '@/stores/session'
 import { getRecipe } from '@/services/content-provision';
 import { localizedString } from '@/services/localization';
-import VuetyForm from '@/vueties/components/form/VuetyForm.vue'
-import VuetyFormSection from '@/vueties/components/form/VuetyFormSection.vue'
-import VuetyTaskFormRow from '@/vueties/components/form/rows/VuetyTaskFormRow.vue';
-import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
-import { Icon } from '@/assets/design-tokens/iconography';
-import { LocalizedStringKey } from '@/models/localization';
 import IngredientItem from '@/components/IngredientItem.vue';
-import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
+import VuetyForm from '@vueties/components/form/VuetyForm.vue'
+import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
+import VuetyTaskFormRow from '@vueties/components/form/rows/VuetyTaskFormRow.vue';
+import VuetyProgressIndicator from '@vueties/components/misc/VuetyProgressIndicator.vue';
+import { priorityTitle } from '@/utils/localization.utils';
+import { Icon } from '@design-tokens/iconography';
 
 const { recipeKey } = defineProps<{
   recipeKey: RecipeKey
@@ -25,6 +26,8 @@ const session = useSessionStore()
 
 const summary = computed(() => session.getRecipeSummary(recipeKey))
 const recipe = ref<Recipe | undefined>()
+const mandatoryIngredients = computed(() => recipe?.value?.ingredients.filter(i => i.priority === undefined))
+const optionalIngredients = computed(() => recipe?.value?.ingredients.filter(i => i.priority === Priority.Optional))
 const steps = computed(() => recipe.value?.instructions.find(i => i.language === settings.currentLanguage)?.steps)
 
 watch(summary, async (value) => {
@@ -45,24 +48,39 @@ onBeforeMount(() => {
   <main>
     <div :id="summary?.category" class="category-background"></div>
     
-    <h3 class="headline">{{ summary?.title }}</h3>
+    <h4 class="headline">{{ summary?.title }}</h4>
     
     <VuetyForm v-if="recipe">
-      
       <VuetyFormSection
+        :icon="Icon.Scale"
         :title="localizedString(LocalizedStringKey.Title_Ingredients)"
         :showsLargeTitle="true"
       >
         <VuetyTaskFormRow 
-          v-for="(ingredient, index) of recipe.ingredients"
+          v-for="(ingredient, index) of mandatoryIngredients"
           :key="index"
           class="ingredient"
         >
           <IngredientItem :ingredient="ingredient" />
         </VuetyTaskFormRow>
+        
+        <span v-if="optionalIngredients && optionalIngredients.length > 0">
+          <div class="divider">
+            {{ priorityTitle(Priority.Optional) }}
+          </div>
+          
+          <VuetyTaskFormRow 
+            v-for="(ingredient, index) of optionalIngredients"
+            :key="index"
+            class="ingredient"
+          >
+            <IngredientItem :ingredient="ingredient" />
+          </VuetyTaskFormRow>
+        </span>
       </VuetyFormSection>
       
       <VuetyFormSection
+        :icon="Icon.Doc"
         :title="localizedString(LocalizedStringKey.Title_Instructions)"
         :showsLargeTitle="true"
       >
@@ -86,7 +104,7 @@ onBeforeMount(() => {
 
 @include category-theme.backgrounds();
 
-:deep(.vuety-form-section .large-title) {
+:deep(.large-title *) {
   @extend .serif;
 }
 

@@ -39,11 +39,16 @@ export interface Extras {
   note?: string
 }
 
+export enum Priority {
+  Optional = 'optional'
+}
+
 export interface RawIngredient {
   amount: string
   key: IngredientKey
   
   extras?: Extras[]
+  priority?: Priority
   temperature?: string
   title?: string
 }
@@ -56,5 +61,6 @@ export interface Ingredient {
   consistency?: Consistency
   density?: Density
   extras?: Extras[]
+  priority?: Priority
   temperature?: TemperatureMeasurement
 }

@@ -1,7 +1,7 @@
 export enum Unit {
   Celcius = 'ºC',
   Cup = 'cup',
-  Drop = 'drop',
+  Drop = 'gtt',
   Gram = 'g',
   Hour = 'hr',
   Mililiter = 'ml',

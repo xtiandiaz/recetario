@@ -1,69 +1,79 @@
 import { LocalizedStringKey } from "@/models/localization";
 
-export const localizedStrings = new Map<LocalizedStringKey, string>([  
-  [LocalizedStringKey.Title_SectionFood, "Comida"],
-  // ---
-  [LocalizedStringKey.Title_CategoryBakery, "Panadería"],
-  [LocalizedStringKey.Title_CategoryMiscFood, "Varios"],
-  [LocalizedStringKey.Title_CategoryPastas, "Pastas"],
-  [LocalizedStringKey.Title_CategorySalads, "Ensaladas"],
-  [LocalizedStringKey.Title_CategorySauces, "Salsas"],
-  [LocalizedStringKey.Title_CategorySoups, "Sopas"],
-  // ---
-  [LocalizedStringKey.Title_RecipeBabaGanoush, "Baba Ganoush"],
-  [LocalizedStringKey.Title_RecipeCreamySalmonSoup, "Sopa de salmón cremosa"],
-  [LocalizedStringKey.Title_RecipeFocaccia, "Focaccia"],
-  [LocalizedStringKey.Title_RecipeGranola, "Granola"],
-  [LocalizedStringKey.Title_RecipeOnigiri, "Onigiri 🍙"],
-  [LocalizedStringKey.Title_RecipePita, "Pita"],
-  [LocalizedStringKey.Title_RecipePizza, "Pizza"],
-  [LocalizedStringKey.Title_RecipeRusticBread, "Pan rústico"],
-  [LocalizedStringKey.Title_RecipeTabbouleh, "Tabulé"], 
-  [LocalizedStringKey.Title_RecipeTzatziki, "Tzatziki"], 
-
-  [LocalizedStringKey.Title_SectionPersonalCare, "Cuidado personal"],
-  // ---
-  [LocalizedStringKey.Title_CategoryPersonalHygiene, "Higiene"],
-  // ---
-  [LocalizedStringKey.Title_RecipeLiquidDeodorant, "Desodorante líquido"],
-  [LocalizedStringKey.Title_RecipePastyDeodorant, "Desodorante pastoso"],
+export default new Map<string, string>([
+  [LocalizedStringKey.Title_Ingredients, 'Ingredientes'],
+  [LocalizedStringKey.Title_Instructions, 'Instrucciones'],
   
-  [LocalizedStringKey.Title_IngredientAllPurposeWheatFlour, "Harina de trigo común"],
-  [LocalizedStringKey.Title_IngredientActiveDryYeast, "Levadura seca"],
-  [LocalizedStringKey.Title_IngredientBakingSoda, "Bicarbonato de sodio"],
-  [LocalizedStringKey.Title_IngredientCarrierOil, "Aceite portador"],
-  [LocalizedStringKey.Title_IngredientCoconutOil, "Aceite de coco"],
-  [LocalizedStringKey.Title_IngredientCornStarch, "Fécula de maíz"],
-  [LocalizedStringKey.Title_IngredientDryFruitMix, "Variedad de frutos secos al gusto"],
-  [LocalizedStringKey.Title_IngredientEssentialOil, "Aceite esencial"],
-  [LocalizedStringKey.Title_IngredientGranulatedSalt, "Sal"],
-  [LocalizedStringKey.Title_IngredientGranulatedSugar, "Azúcar"],
-  [LocalizedStringKey.Title_IngredientHoney, "Miel de abejas"],
-  [LocalizedStringKey.Title_IngredientOatFlakes, "Hojuelas de avena"],
-  [LocalizedStringKey.Title_IngredientOliveOil, "Aceite de oliva"],
-  [LocalizedStringKey.Title_IngredientNutSeedMix, "Variedad de nueces y semillas al gusto"],
-  [LocalizedStringKey.Title_IngredientStrongWheatFlour, "Harina de fuerza \"00\""],
-  [LocalizedStringKey.Title_IngredientWater, "Agua"],
-  [LocalizedStringKey.Title_IngredientWholeMilk, "Leche entera"],
-  [LocalizedStringKey.Title_IngredientWholeRyeFlour, "Harina de centeno"],
-  [LocalizedStringKey.Title_IngredientWholeWheatFlour, "Harina de trigo integral"],
+  /////////////////////////////////////////////////
+  // ----------------------------------------------
+  ['section-food', 'Comida'],
+  // ----------------------------------------------
+  ['category-bakery', 'Panadería'],
+    ['recipe-pita', 'Pita'],
+    ['recipe-pizza', 'Pizza'],
+    ['recipe-rustic-bread', 'Pan rústico'],
   
-  [LocalizedStringKey.Title_Ingredients, "Ingredientes"],
-  [LocalizedStringKey.Title_Instructions, "Instrucciones"],
+  ['category-misc-food', 'Varios'],
+    ['recipe-granola', 'Granola'],
+    ['recipe-onigiri', 'Onigiri 🍙'],
   
-  [LocalizedStringKey.Unit_Cup, "Taza"],
-  [LocalizedStringKey.Unit_CupAbbr, "Tz."],
-  [LocalizedStringKey.Unit_Drop, "Gota"],
-  [LocalizedStringKey.Unit_DropAbbr, "gtt"],
-  [LocalizedStringKey.Unit_Gram, "gramo"],
-  [LocalizedStringKey.Unit_GramAbbr, "g"],
-  [LocalizedStringKey.Unit_Mililiter, "mililitro"],
-  [LocalizedStringKey.Unit_MililiterAbbr, "ml"],
-  [LocalizedStringKey.Unit_TableSpoon, "Cucharada"],
-  [LocalizedStringKey.Unit_TableSpoonAbbr, "Cda."],
-  [LocalizedStringKey.Unit_TeaSpoon, "cucharadita"],
-  [LocalizedStringKey.Unit_TeaSpoonAbbr, "cdta."],
+  ['category-salads', 'Ensaladas'],
+    ['recipe-tabbouleh', 'Tabulé'],
+    
+  ['category-sauces', 'Salsas'],
+    ['recipe-baba-ganoush', 'Baba Ganoush'],
+    ['recipe-hummus', "Hummus"],
+    ['recipe-tzatziki', 'Tzatziki'], 
+    
+  ['category-soups', 'Sopas'],
+    ['recipe-creamy-salmon-soup', 'Salmón cremosa'],
   
-  [LocalizedStringKey.Estimate_TemperatureTepid, "Tibio/a"],
-  [LocalizedStringKey.Estimate_TemperatureRoom, "Al clima"],
+  // ---------------------------------------------
+  ['section-personal-care', 'Cuidado personal'],
+  // ----------------------------------------------
+  ['category-personal-hygiene', 'Higiene'],
+    ['recipe-liquid-deodorant', 'Desodorante líquido'],
+    ['recipe-pasty-deodorant', 'Desodorante pastoso'],
+  
+  /////////////////////////////////////////////////
+  ['ingredient-all-purpose-wheat-flour', 'Harina de trigo común'],
+  ['ingredient-active-dry-yeast', 'Levadura seca'],
+  ['ingredient-baking-soda', 'Bicarbonato de sodio'],
+  ['ingredient-carrier-oil', 'Aceite portador'],
+  ['ingredient-coconut-oil', 'Aceite de coco'],
+  ['ingredient-corn-starch', 'Fécula de maíz'],
+  ['ingredient-dry-fruit-mix', 'Variedad de frutos secos al gusto'],
+  ['ingredient-essential-oil', "Aceite esencial"],
+  ['ingredient-granulated-salt', 'Sal'],
+  ['ingredient-granulated-sugar', 'Azúcar'],
+  ['ingredient-honey', 'Miel de abejas'],
+  ['ingredient-oat-flakes', 'Hojuelas de avena'],
+  ['ingredient-olive-oil', 'Aceite de oliva'],
+  ['ingredient-nut-seed-mix', 'Variedad de nueces y semillas al gusto'],
+  ['ingredient-strong-wheat-flour', 'Harina de fuerza "00"'],
+  ['ingredient-water', 'Agua'],
+  ['ingredient-whole-milk', 'Leche entera'],
+  ['ingredient-whole-wheat-flour', 'Harina de trigo integral'],
+  ['ingredient-rye-flour', 'Harina de centeno'],
+  
+  /////////////////////////////////////////////////
+  ['unit-cup', 'Taza'],
+  ['unit-cup-abbr', "Tz."],
+  ['unit-gtt', 'Gota'],
+  ['unit-gtt-abbr', 'gtt'],
+  ['unit-g', 'gramo'],
+  ['unit-g-abbr', 'g'],
+  ['unit-ml', 'mililitro'],
+  ['unit-ml-abbr', 'ml'],
+  ['unit-tbsp', 'Cucharada'],
+  ['unit-tbsp-abbr', 'Cda.'],
+  ['unit-tsp', 'cucharadita'],
+  ['unit-tsp-abbr', 'cdta.'],
+  
+  /////////////////////////////////////////////////
+  ['estimate-temperature-tepid', 'Tibio/a'],
+  ['estimate-temperature-room', 'Al clima'],
+  
+  /////////////////////////////////////////////////
+  ['priority-optional', 'Opcional'],
 ])
