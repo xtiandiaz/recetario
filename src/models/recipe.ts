@@ -1,42 +1,44 @@
-import type { CategoryKey } from "./catalog"
-import type { RawIngredient, Ingredient } from "./ingredient"
+import type { Consistency, Density } from "./data-sheet"
 import type { Language } from "./localization"
-
-export enum RecipeKey {
-  BabaGanoush = 'baba-ganoush',
-  Focaccia = 'focaccia',
-  Hummus = 'hummus',
-  Pita = 'pita',
-  Pizza = 'pizza',
-  RusticBread = 'rustic-bread',
-  Tabbouleh = 'tabbouleh',
-  Tzatziki = 'tzatziki',
-}
+import type { Measurement, TemperatureMeasurement } from "./measurement"
+import { IngredientKey } from "@/assets/types/inventory.types"
+import type { CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
 
 export type RecipeEntry = { key: RecipeKey, title: string }
 
-export interface RecipeInstructions {
-  language: Language
-  steps: string[]
+export interface RawRecipeIngredient {
+  amount: string
+  key: IngredientKey
+  
+  note?: { [key: string]: string }
+  optional?: boolean
+  temperature?: string
 }
 
 export interface RawRecipe {
   category: CategoryKey
-  ingredients: RawIngredient[]
-  instructions: RecipeInstructions[]
+  ingredients: RawRecipeIngredient[]
+  instructions: { [key: string]: string[] }
   key: RecipeKey
   
   origin?: string
 }
 
-export interface RecipeSummary {
-  category: CategoryKey
-  key: RecipeKey
-  title: string
+export interface RecipeIngredient {
+  key: IngredientKey
+  
+  amount?: Measurement
+  consistency?: Consistency
+  density?: Density
+  note?: Map<Language, string>
+  optional: boolean
+  temperature?: TemperatureMeasurement
 }
 
-export interface Recipe extends RecipeSummary {
-  ingredients: Ingredient[]
-  instructions: RecipeInstructions[]
+export interface Recipe {
+  category: CategoryKey
+  ingredients: RecipeIngredient[]
+  instructions: Map<Language, string[]>
+  key: RecipeKey
   origin?: string
 }

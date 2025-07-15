@@ -3,7 +3,7 @@ import { ref, onBeforeMount } from 'vue';
 import VuetyScene from './vueties/scenes/VuetyScene.vue'
 import { type VuetyNavigationBarVM } from './vueties/components/bars/view-models';
 import { Icon } from './assets/design-tokens/iconography';
-import { loadCatalog } from './services/content-provision';
+import { loadContent } from './services/content-provision';
 import VuetyProgressIndicator from '@/vueties/components/misc/VuetyProgressIndicator.vue';
 
 const isLoading = ref(true)
@@ -20,7 +20,7 @@ const navBarVM: VuetyNavigationBarVM = {
 }
 
 onBeforeMount(async () => {
-  await loadCatalog()
+  await loadContent()
   
   isLoading.value = false
 })

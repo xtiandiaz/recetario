@@ -16,25 +16,19 @@
       "key": "coconut-oil"
     },
     {
-      "amount": "5-10 gtt",
+      "amount": "8 gtt",
       "key": "essential-oil",
-      "extras": [
-        {
-          "language": "es",
-          "note": "E.g., lavanda, eucalipto, árbol de té (tea tree)."
-        }
-      ]
+      "note": {
+        "es": "E.g., lavanda, eucalipto, árbol de té (tea tree)."
+      }
     }
   ],
-  "instructions": [
-    {
-      "language": "es",
-      "steps": [
-        "Mezclar el bicarbonato de sodio y la fécula de maíz en un bol.",
-        "Derretir el aceite de coco y agregarlo a la mezcla seca.",
-        "Añadir los aceites esenciales preferidos.",
-        "Transferir la mezcla a un frasco o recipiente limpio y seco."
-      ]
-    }
-  ]
+  "instructions": {
+    "es": [
+      "Mezclar el bicarbonato de sodio y la fécula de maíz en un bol.",
+      "Derretir el aceite de coco y agregarlo a la mezcla seca.",
+      "Añadir los aceites esenciales preferidos.",
+      "Transferir la mezcla a un frasco o recipiente limpio y seco."
+    ]
+  }
 }

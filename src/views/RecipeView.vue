@@ -1,41 +1,39 @@
 <script setup lang="ts">
 import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
-import { RecipeKey, type Recipe } from '@/models/recipe';
-import { Priority } from '@/models/ingredient';
+import type { Recipe } from '@/models/recipe';
 import { LocalizedStringKey } from '@/models/localization';
-import useSettingsStore from '@/stores/settings'
-import useSessionStore from '@/stores/session'
-import { getRecipe } from '@/services/content-provision';
-import { localizedString } from '@/services/localization';
-import IngredientItem from '@/components/IngredientItem.vue';
+import useContentStore from '@/stores/content'
+import { fetchRecipe } from '@/services/content-provision'
+import { localizeRecipe } from '@/services/localization';
+import IngredientItem from '@/components/RecipeIngredient.vue';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
 import VuetyTaskFormRow from '@vueties/components/form/rows/VuetyTaskFormRow.vue';
 import VuetyProgressIndicator from '@vueties/components/misc/VuetyProgressIndicator.vue';
-import { priorityTitle } from '@/utils/localization.utils';
+import { RecipeKey } from '@/assets/types/catalog.types';
 import { Icon } from '@design-tokens/iconography';
+import '@/assets/tungsten/extensions/string.extensions'
 
 const { recipeKey } = defineProps<{
   recipeKey: RecipeKey
 }>()
 
 const route = useRoute()
-const settings = useSettingsStore()
-const session = useSessionStore()
+const content = useContentStore()
 
-const summary = computed(() => session.getRecipeSummary(recipeKey))
+const summary = computed(() => content.getRecipeSummary(recipeKey))
 const recipe = ref<Recipe | undefined>()
-const mandatoryIngredients = computed(() => recipe?.value?.ingredients.filter(i => i.priority === undefined))
-const optionalIngredients = computed(() => recipe?.value?.ingredients.filter(i => i.priority === Priority.Optional))
-const steps = computed(() => recipe.value?.instructions.find(i => i.language === settings.currentLanguage)?.steps)
+const localized = computed(() => recipe.value ? localizeRecipe(recipe.value) : undefined)
+const mandatoryIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => !i.optional))
+const optionalIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => i.optional === true))
 
 watch(summary, async (value) => {
   recipe.value = undefined
   route.meta.title.value = value?.title
   
   if (value) {
-    recipe.value = await getRecipe(value?.key)
+    recipe.value = await fetchRecipe(value?.key)
   }
 }, { deep: true, immediate: true })
 
@@ -50,42 +48,42 @@ onBeforeMount(() => {
     
     <h4 class="headline">{{ summary?.title }}</h4>
     
-    <VuetyForm v-if="recipe">
+    <VuetyForm v-if="localized">
       <VuetyFormSection
         :icon="Icon.Scale"
-        :title="localizedString(LocalizedStringKey.Title_Ingredients)"
         :showsLargeTitle="true"
+        :title="content.localized?.other.get(LocalizedStringKey.Title_Ingredients)"
       >
         <VuetyTaskFormRow 
           v-for="(ingredient, index) of mandatoryIngredients"
           :key="index"
           class="ingredient"
         >
-          <IngredientItem :ingredient="ingredient" />
+          <IngredientItem :localizedIngredient="ingredient" />
         </VuetyTaskFormRow>
         
         <span v-if="optionalIngredients && optionalIngredients.length > 0">
           <div class="divider">
-            {{ priorityTitle(Priority.Optional) }}
+            {{ content.localized?.other.get(LocalizedStringKey.Text_Optional)?.capitalized() }}
           </div>
           
           <VuetyTaskFormRow 
             v-for="(ingredient, index) of optionalIngredients"
-            :key="index"
             class="ingredient"
+            :key="index"
           >
-            <IngredientItem :ingredient="ingredient" />
+            <IngredientItem :localizedIngredient="ingredient" />
           </VuetyTaskFormRow>
         </span>
       </VuetyFormSection>
       
       <VuetyFormSection
         :icon="Icon.Doc"
-        :title="localizedString(LocalizedStringKey.Title_Instructions)"
         :showsLargeTitle="true"
+        :title="content.localized?.other.get(LocalizedStringKey.Title_Instructions)"
       >
-        <VuetyTaskFormRow v-for="(step, index) of steps" :key="index">
-          <span>{{ step }}</span>
+        <VuetyTaskFormRow v-for="(step, index) of localized.localizedInstructions" :key="index">
+          <span v-html="step"></span>
         </VuetyTaskFormRow>
       </VuetyFormSection>
     </VuetyForm>
@@ -96,15 +94,22 @@ onBeforeMount(() => {
 
 <style scoped lang="scss">
 @use '@/assets/styles/category-theme';
+@use '@/assets/styles/measurement';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
 @use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
+@use '@design-tokens/iconography';
 
 @include category-theme.backgrounds();
+@include measurement.label();
 
 :deep(.large-title *) {
+  @extend .serif;
+}
+
+.rows .divider {
   @extend .serif;
 }
 
@@ -120,4 +125,5 @@ onBeforeMount(() => {
   width: 3em;
   @include mixins.position(absolute, 0, 0, 0, 0);
 }
+
 </style>

@@ -1,22 +1,5 @@
-export enum Unit {
-  Celcius = 'ºC',
-  Cup = 'cup',
-  Drop = 'gtt',
-  Gram = 'g',
-  Hour = 'hr',
-  Mililiter = 'ml',
-  Minute = 'min',
-  TableSpoon = 'tbsp',
-  TeaSpoon = 'tsp',
-}
-
-export enum UnitKind {
-  CustomaryVolumeOrWeight = 'customary-volume-weight',
-  Temperature = 'temperature',
-  Time = 'time',
-  Volume = 'volume',
-  Weight = 'weight',
-}
+import type { TemperatureEstimate } from "./data-sheet"
+import { Unit } from "@/assets/types/data-sheet.types"
 
 export interface QuantityRange {
   max: number
@@ -24,15 +7,11 @@ export interface QuantityRange {
 }
 
 export interface Measurement {
-  quantity: number | QuantityRange
+  quantity: number
   unit: Unit
-}
-
-export enum TemperatureEstimate {
-  TemperatureRoom = 'room',
-  TemperatureTepid = 'tepid',
 }
 
 export interface TemperatureMeasurement extends Measurement {
   estimate?: TemperatureEstimate
+  label?: string
 }

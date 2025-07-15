@@ -1,50 +1,32 @@
-import type { RawCategory, Category, RawCatalog, Catalog, DataSheet } from "@/models/catalog";
-import type { RawRecipe, Recipe } from "@/models/recipe";
-import { refineRawIngredient } from "./ingredient.utils";
-import { categoryTitle, recipeTitle, sectionTitle } from "./localization.utils";
+import type { RawCategory, Category, RawCatalog, Catalog } from "@/models/catalog";
+import type { LocalizedContent } from "@/models/localization";
 
-export function refineRawCatalog(rawCatalog: RawCatalog): Catalog {
-  return {
-    dataSheet: rawCatalog.dataSheet,
-    sections: rawCatalog.sections.map(rs => {
-      return {
-        categories: rs.categories
-          .map(rc => refineRawCategory(rc))
-          .sort((a, b) => a.title.localeCompare(b.title)),
-        key: rs.key,
-        title: sectionTitle(rs.key)
-      }
-    }).sort((a, b) => a.title.localeCompare(b.title)),
-  }
-}
-
-export function refineRawCategory(rawCategory: RawCategory): Category {
+export function refineRawCategory(rawCategory: RawCategory, localizedContent: LocalizedContent): Category {
   return {
     color: rawCategory.color,
     emoji: rawCategory.emoji,
     key: rawCategory.key,
-    title: categoryTitle(rawCategory.key),
+    title: localizedContent.categories.get(rawCategory.key)!,
     recipes: rawCategory.recipes.map(key => {
       return {
         category: rawCategory.key,
         key,
-        title: recipeTitle(key)
+        title: localizedContent.recipes.get(key)!
       }
     }).sort((a, b) => a.title.localeCompare(b.title))
   }
 }
 
-export function refineRawRecipe(rawRecipe: RawRecipe, dataSheet: DataSheet): Recipe {
-  const ingredients = rawRecipe
-    .ingredients.map(ri => refineRawIngredient(ri, dataSheet))
-    .sort((a, b) => a.title.localeCompare(b.title))
-  
+export function refineRawCatalog(rawCatalog: RawCatalog, localizedContent: LocalizedContent): Catalog {
   return {
-    category: rawRecipe.category,
-    ingredients,
-    instructions: rawRecipe.instructions,
-    key: rawRecipe.key,
-    origin: rawRecipe.origin,
-    title: recipeTitle(rawRecipe.key)
+    sections: rawCatalog.sections.map(rs => {
+      return {
+        categories: rs.categories
+          .map(rc => refineRawCategory(rc, localizedContent))
+          .sort((a, b) => a.title.localeCompare(b.title)),
+        key: rs.key,
+        title: localizedContent.sections.get(rs.key)!
+      }
+    }).sort((a, b) => a.title.localeCompare(b.title)),
   }
 }

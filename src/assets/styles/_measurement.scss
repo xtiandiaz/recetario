@@ -1,5 +1,9 @@
+@use 'sass:map';
 @use 'sass:math';
 @use '@design-tokens/palette';
+@use '@design-tokens/typography';
+@use '@design-tokens/iconography';
+@use '@vueties/styles/mixins';
 
 @mixin temperature($value) {
   .temperature-#{$value} {
@@ -14,3 +18,31 @@
 @include temperature(50);
 @include temperature(75);
 @include temperature(100);
+
+@mixin label() {
+  :deep(.measurement-label) {
+    @extend .strong;
+    align-items: center;
+    display: inline-flex;
+    gap: 0.125em;
+    
+    $icon-map: (
+      'ºC': 'thermometer-medium',
+      'cup': 'cup',
+      'gtt': 'drop',
+      'hr': 'clock',
+      'min': 'clock',
+      'tbsp': 'table-spoon',
+      'tsp': 'tea-spoon',
+    );
+    
+    .icon {
+      @each $symbol, $icon in $icon-map {
+        &.#{$symbol} {
+          @include iconography.colored-icon-content-attribute($icon, 'tertiary-body');
+          @include mixins.size(1.25em);
+        }
+      }
+    }
+  }
+}

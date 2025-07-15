@@ -1,70 +1,37 @@
-import { CategoryKey, SectionKey } from "@/models/catalog";
-import type { RecipeKey } from "@/models/recipe";
-import type { IngredientKey, Priority } from "@/models/ingredient";
-import type { Measurement, TemperatureMeasurement } from '@/models/measurement'
-import { Unit } from '@/models/measurement'
-import { localizedString } from "@/services/localization"
+import type { Language, LocalizedContent, RawLocalizedContent } from "@/models/localization";
+import type { Measurement } from "@/models/measurement";
+import useContentStore from '@/stores/content'
 import '@/assets/tungsten/extensions/array.extensions'
 
-export const sectionTitle = (key: SectionKey): string => {
-  return localizedString(`section-${key}`)
-}
-
-export const categoryTitle = (key: CategoryKey): string => {
-  return localizedString(`category-${key}`)
-}
-
-export const recipeTitle = (key: RecipeKey): string => {
-  return localizedString(`recipe-${key}`)
-}
-
-export const ingredientTitle = (key: IngredientKey): string => {
-  return localizedString(`ingredient-${key}`)
-}
-
-export const priorityTitle = (key: Priority): string => {
-  return localizedString(`priority-${key}`)
-}
-
-export const localizedMeasurementUnit = (unit: Unit, abbreviated: boolean, pluralized: boolean): string => {
-  switch (unit) {
-    case Unit.Celcius:
-      return unit
-    default:
-      return localizedString(`unit-${unit}${abbreviated ? '-abbr' : ''}`)
-        + (pluralized && !abbreviated ? 's' : '')
-  }
-}
-
-const unitQuantitySeparator = (unit: Unit): string => {
-  switch (unit) {
-    case Unit.Celcius: 
-      return ''
-    default: 
-      return ' '
-  }
-}
-
-export const localizedQuantity = (measurement: Measurement, abbreviated: boolean = true): string => {
-  const temperatureMeasurement = measurement as TemperatureMeasurement
-  if (temperatureMeasurement && temperatureMeasurement.estimate) {
-    return localizedString(`estimate-temperature-${temperatureMeasurement.estimate}`)
+export function refineRawLocalizedContent(
+  rawLocalizedContent: RawLocalizedContent,
+  language: Language
+): LocalizedContent {
+  function createContentMap<Key>(content: object): Map<Key, string> {
+    return new Map(Object.entries(content).map(e => [e[0] as Key, e[1] as string]))
   }
   
-  if (measurement.quantity) {
-    const quantityValues = typeof measurement.quantity === 'object' 
-      ? [measurement.quantity.min, measurement.quantity.max]
-      : [measurement.quantity]
-    
-    return [
-      quantityValues.map(v => v.toLocaleString()).join('-'),
-      localizedMeasurementUnit(
-        measurement.unit, 
-        abbreviated, 
-        !abbreviated && (quantityValues.last()! > 1)
-      )
-    ].join(unitQuantitySeparator(measurement.unit))
+  return {
+    categories: createContentMap(rawLocalizedContent['categories']),
+    ingredients: createContentMap(rawLocalizedContent['ingredients']),
+    language: language,
+    other: createContentMap(rawLocalizedContent['other']),
+    recipes: createContentMap(rawLocalizedContent['recipes']),
+    sections: createContentMap(rawLocalizedContent['sections']),
+    temperatureEstimates: createContentMap(rawLocalizedContent['temperatureEstimates']),
+    units: createContentMap(rawLocalizedContent['units'])
   }
+}
+
+export const localizedMeasurementString = (measurement: Measurement): string => {
+  const localizedContent = useContentStore().localized
   
-  return '?'
+  return `${measurement.quantity} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}`
+}
+
+export const localizedMeasurementHTML = (measurement: Measurement): string => {
+  return `<div class="measurement-label">
+    <span class="label">${localizedMeasurementString(measurement)}</span>
+    <span class="icon ${measurement.unit}"></span>
+  </div>`
 }

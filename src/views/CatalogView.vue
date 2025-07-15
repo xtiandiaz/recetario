@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import useSessionStore from '@/stores/session'
+import useContentStore from '@/stores/content'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue';
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@/vueties/components/form/rows/VuetyPushFormRow.vue';
 
-const session = useSessionStore()
+const session = useContentStore()
 
 const catalog = computed(() => session.catalog)
 </script>

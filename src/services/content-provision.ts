@@ -1,52 +1,63 @@
-import type { RawCatalog, Catalog } from "@/models/catalog";
-import type { RawRecipe, Recipe, RecipeKey } from '@/models/recipe';
-import useSessionStore from '@/stores/session'
-import { refineRawCatalog, refineRawRecipe } from '@/utils/catalog.utils';
+import type { RawCatalog } from "@/models/catalog";
+import type { RawDataSheet } from "@/models/data-sheet";
+import type { RawInventory } from "@/models/inventory";
+import { Language, type RawLocalizedContent } from "@/models/localization";
+import type { RawRecipe, Recipe } from '@/models/recipe';
+import useContentStore from '@/stores/content'
+import useSettingsStore from '@/stores/settings'
+import { refineRawCatalog } from '@/utils/catalog.utils';
+import { refineRawInventory } from "@/utils/inventory.utils";
+import { refineRawRecipe } from "@/utils/recipe.utils";
+import { refineRawLocalizedContent as refineRawLocalizedContent } from "@/utils/localization.utils";
+import { refineRawDataSheet } from "@/utils/data-sheet.utils";
+import { RecipeKey } from "@/assets/types/catalog.types";
 
 const sourcePath = (import.meta.env.PROD 
   ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/src/assets/json'
   : 'json')
+  
+async function fetchData<T>(path: string): Promise<T> {
+  const response = await fetch(`${sourcePath}/${path}.json`)
+  // console.log(path, response.status, response.statusText, response)
+  
+  return await response.json() as T
+}
 
-let catalog: Catalog | undefined = undefined
-
-async function loadFile<T>(path: string): Promise<T | undefined> {
-  try {
-    const response = await fetch(`${sourcePath}/${path}.json`)
-    // console.log(path, response.status, response.statusText, response)
-    
-    return await response.json() as T
-  } catch (e: unknown) {
-    console.error(e)
-    
-    return undefined
+export async function loadContent() {
+  const content = useContentStore()
+  
+  if (!content.localized) {
+    const settings = useSettingsStore()
+    const rawLocalizedContent = await fetchData<RawLocalizedContent>(
+      `localized-content/${settings.currentLanguage}`
+    )
+    content.localized = refineRawLocalizedContent(rawLocalizedContent, settings.currentLanguage)
+  }
+  
+  if (!content.dataSheet) {
+    const rawDataSheet = await fetchData<RawDataSheet>('data-sheet')
+    content.dataSheet = refineRawDataSheet(rawDataSheet, content.localized)
+  }
+  
+  if (!content.inventory) {
+    const rawInventory = await fetchData<RawInventory>('inventory')
+    content.inventory = refineRawInventory(rawInventory, content.dataSheet)
+  }
+  
+  if (!content.catalog) {
+    const rawCatalog = await fetchData<RawCatalog>('catalog')
+    content.catalog = refineRawCatalog(rawCatalog, content.localized)
   }
 }
 
-async function getCatalog(): Promise<Catalog | undefined> {
-  if (catalog) {
-    return catalog
-  }
+export async function fetchRecipe(key: RecipeKey): Promise<Recipe | undefined> {
+  await loadContent()
   
-  const rawCatalog = await loadFile<RawCatalog>(`catalog`)
-  if (rawCatalog) {
-    catalog = refineRawCatalog(rawCatalog)
-    return catalog
-  }
+  const rawRecipe = await fetchData<RawRecipe>(`recipes/${key}`)
+  const content = useContentStore()
   
-  return undefined
-}
-
-export async function loadCatalog() {
-  const session = useSessionStore()
-  
-  session.catalog = await getCatalog()
-}
-
-export async function getRecipe(key: RecipeKey): Promise<Recipe | undefined> {
-  const rawRecipe = await loadFile<RawRecipe>(`recipes/${key}`)
-  const dataSheet = (await getCatalog())?.dataSheet
-  if (rawRecipe && dataSheet) {
-    return refineRawRecipe(rawRecipe, dataSheet)
+  if (rawRecipe && content.inventory) {
+    return refineRawRecipe(rawRecipe, content.inventory)
   }
   
   return undefined

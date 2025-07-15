@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, onBeforeMount, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { CategoryKey } from '@/models/catalog';
 import type { RecipeSummary } from '@/models/recipe';
-import useSessionStore from '@/stores/session'
+import useSessionStore from '@/stores/content'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@vueties/components/form/rows/VuetyPushFormRow.vue';
+import { CategoryKey } from '@/assets/keys/catalog.keys';
 import '@/assets/tungsten/extensions/array.extensions'
 
 const { categoryKey } = defineProps<{
@@ -35,7 +35,7 @@ onBeforeMount(() => {
     <div :id="category.key" class="category-background"></div>
     
     <div class="headline">
-      <h1>{{ category.emoji }}</h1>
+      <h1 class="emoji">{{ category.emoji }}</h1>
       <h5>{{ category.title }}</h5>
     </div>
     
@@ -71,6 +71,10 @@ onBeforeMount(() => {
   & > * {
     @extend .serif;
     margin: 0;
+  }
+  
+  .emoji {
+    line-height: 1;
   }
 }
 </style>
