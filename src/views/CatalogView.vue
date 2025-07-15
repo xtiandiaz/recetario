@@ -5,9 +5,9 @@ import VuetyForm from '@vueties/components/form/VuetyForm.vue';
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@/vueties/components/form/rows/VuetyPushFormRow.vue';
 
-const session = useContentStore()
+const content = useContentStore()
 
-const catalog = computed(() => session.catalog)
+const catalog = computed(() => content.catalog)
 </script>
 
 <template>

@@ -1,5 +1,6 @@
+import type { Catalog, Category } from "@/models/catalog"
 import type { Recipe } from "@/models/recipe"
-import type { LocalizedContent, LocalizedRecipe } from "@/models/localization"
+import type { LocalizedCatalog, LocalizedCategory, LocalizedContent, LocalizedRecipe, LocalizedRecipeSummary } from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
 import { parseMeasurement } from "@/utils/measurement.utils"
@@ -42,5 +43,40 @@ export function localizeRecipe(recipe: Recipe): LocalizedRecipe | undefined {
     }),
     localizedInstructions: localizeRecipeInstructions(recipe, localizedContent),
     title: localizedContent.recipes.get(recipe.key) ?? `{${recipe.key}}`,
+  }
+}
+
+export function localizeCategory(category: Category, localizedContent: LocalizedContent): LocalizedCategory {
+  return {
+    ...category,
+    recipeSummaries: category.recipes.map(
+      rKey => {
+        return {
+          key: rKey,
+          title: localizedContent.recipes.get(rKey)
+        } as LocalizedRecipeSummary
+      }
+    ).sort((a, b) => a.title.localeCompare(b.title)),
+    title: localizedContent.categories.get(category.key) ?? `${category.key}`
+  }
+}
+
+export function localizeCatalog(catalog: Catalog): LocalizedCatalog | undefined {
+  const localizedContent = useContentStore().localized
+  if (!localizedContent) {
+    return undefined
+  }
+  
+  return {
+    sections: catalog.sections.map(
+      s => {
+        return {
+          categories: s.categories
+            .map(c => localizeCategory(c, localizedContent))
+            .sort((a, b) => a.title.localeCompare(b.title)),
+          title: localizedContent.sections.get(s.key) ?? `${s.key}`
+        }
+      }
+    ).sort((a, b) => a.title.localeCompare(b.title)),
   }
 }

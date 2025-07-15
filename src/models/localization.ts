@@ -1,6 +1,7 @@
 import type { Unit, TemperatureEstimateKey } from "@/assets/types/data-sheet.types"
 import type { IngredientKey } from "@/assets/types/inventory.types"
 import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
+import type { Category} from '@/models/catalog'
 import type { Recipe, RecipeIngredient } from "./recipe"
 
 export enum Language {
@@ -39,4 +40,23 @@ export interface LocalizedRecipe extends Recipe {
   title: string
   
   localizedInstructions?: string[]
+}
+
+export interface LocalizedRecipeSummary {
+  key: RecipeKey
+  title: string
+}
+
+export interface LocalizedCategory extends Category {
+  recipeSummaries: LocalizedRecipeSummary[]
+  title: string
+}
+
+export interface LocalizedSection {
+  categories: LocalizedCategory[]
+  title: string
+}
+
+export interface LocalizedCatalog {
+  sections: LocalizedSection[]
 }

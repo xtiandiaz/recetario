@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, onBeforeMount, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import type { RecipeSummary } from '@/models/recipe';
-import useSessionStore from '@/stores/content'
+import type { LocalizedRecipeSummary } from '@/models/localization';
+import useContentStore from '@/stores/content'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@vueties/components/form/rows/VuetyPushFormRow.vue';
-import { CategoryKey } from '@/assets/keys/catalog.keys';
+import { CategoryKey } from '@/assets/types/catalog.types';
 import '@/assets/tungsten/extensions/array.extensions'
 
 const { categoryKey } = defineProps<{
@@ -14,14 +14,14 @@ const { categoryKey } = defineProps<{
 }>()
 
 const route = useRoute()
-const session = useSessionStore()
+const content = useContentStore()
 
-const category = computed(() => session.getCategory(categoryKey))
-const recipeEntries = computed(() => category.value?.recipes
-  .groupedBy((val: RecipeSummary) => val.title.substring(0, 1).toLocaleUpperCase())
+const localized = computed(() => content.getLocalizedCategory(categoryKey))
+const recipeEntries = computed(() => localized.value?.recipeSummaries
+  .groupedBy((val: LocalizedRecipeSummary) => val.title.substring(0, 1).toLocaleUpperCase())
 )
 
-watch(category, async (value) => {
+watch(localized, async (value) => {
   route.meta.title.value = value ? `${value.emoji} ${value.title}` : undefined
 }, { immediate: true })
 
@@ -31,12 +31,12 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main v-if="category">
-    <div :id="category.key" class="category-background"></div>
+  <main v-if="localized">
+    <div :id="localized.key" class="category-background"></div>
     
     <div class="headline">
-      <h1 class="emoji">{{ category.emoji }}</h1>
-      <h5>{{ category.title }}</h5>
+      <h1 class="emoji">{{ localized.emoji }}</h1>
+      <h5>{{ localized.title }}</h5>
     </div>
     
     <VuetyForm>

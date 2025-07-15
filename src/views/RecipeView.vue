@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
-import type { Recipe } from '@/models/recipe';
+import type { LocalizedRecipe } from '@/models/localization';
 import { LocalizedStringKey } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
@@ -22,19 +22,16 @@ const { recipeKey } = defineProps<{
 const route = useRoute()
 const content = useContentStore()
 
-const summary = computed(() => content.getRecipeSummary(recipeKey))
-const recipe = ref<Recipe | undefined>()
-const localized = computed(() => recipe.value ? localizeRecipe(recipe.value) : undefined)
+const localized = ref<LocalizedRecipe>()
 const mandatoryIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => !i.optional))
 const optionalIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => i.optional === true))
 
-watch(summary, async (value) => {
-  recipe.value = undefined
-  route.meta.title.value = value?.title
+watch(() => recipeKey, async (key) => {
+  localized.value = undefined
+  route.meta.title.value = content.localized?.recipes.get(key)
   
-  if (value) {
-    recipe.value = await fetchRecipe(value?.key)
-  }
+  const recipe = await fetchRecipe(key)
+  localized.value = recipe ? localizeRecipe(recipe) : undefined
 }, { deep: true, immediate: true })
 
 onBeforeMount(() => {
@@ -44,9 +41,9 @@ onBeforeMount(() => {
 
 <template>
   <main>
-    <div :id="summary?.category" class="category-background"></div>
+    <div :id="localized?.category" class="category-background"></div>
     
-    <h4 class="headline">{{ summary?.title }}</h4>
+    <h4 class="headline">{{ localized?.title }}</h4>
     
     <VuetyForm v-if="localized">
       <VuetyFormSection
