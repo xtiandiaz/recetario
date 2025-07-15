@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Measurement } from '@/models/measurement';
-import { localizedMeasurementHTML, localizedMeasurementString } from '@/utils/localization.utils';
-import { measurementIcon } from '@/utils/measurement.utils';
-import VuetySvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue'
-import { UnitKind } from '@/assets/keys/data-sheet.keys';
-import { clamp } from '@/assets/tungsten/math';
+import { localizedMeasurementHTML } from '@/utils/localization.utils';
+// import { measurementIcon } from '@/utils/measurement.utils';
 
 const { measurement } = defineProps<{
   measurement?: Measurement
@@ -13,7 +10,7 @@ const { measurement } = defineProps<{
   equivalent?: Measurement
 }>()
 
-const icon = computed(() => measurement ? measurementIcon(measurement) : undefined)
+// const icon = computed(() => measurement ? measurementIcon(measurement) : undefined)
 const measurementKindClass = computed(() => {
   // switch (measurement.unit.kind) {
   //   case UnitKind.Temperature:

@@ -2,13 +2,13 @@ import {
   ConsistencyKey, 
   DensityKey, 
   TemperatureEstimateKey, 
-  UnitKey, 
-  UnitKind
-} from "@/assets/keys/data-sheet.keys";
+  Unit, 
+  // UnitKind
+} from "@/assets/types/data-sheet.types";
 
 export interface RawConsistency {
   key: ConsistencyKey
-  preciseUnits: UnitKey[]
+  preciseUnits: Unit[]
 }
 
 export interface Consistency {
@@ -19,15 +19,6 @@ export interface Consistency {
 export interface Density {
   key: DensityKey
   value: number
-}
-
-export interface Unit {
-  key: UnitKey
-  kind: UnitKind
-  symbol: string
-  
-  customaryVolumeML?: number
-  localizedSymbol?: string
 }
 
 export interface TemperatureEstimate {

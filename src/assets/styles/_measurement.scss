@@ -39,8 +39,8 @@
     .icon {
       @each $symbol, $icon in $icon-map {
         &.#{$symbol} {
-          @include iconography.colored-icon-content-attribute($icon, 'tertiary-body');
           @include mixins.size(1.25em);
+          @include iconography.colored-icon-content-attribute($icon, 'tertiary-body');
         }
       }
     }

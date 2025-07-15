@@ -1,0 +1,94 @@
+{
+  "ingredients": [
+    {
+      "key": "active-dry-yeast",
+      "density": "granulated-yeast",
+      "consistency": "granulated"
+    },
+    {
+      "key": "all-purpose-wheat-flour",
+      "density": "flour",
+      "consistency": "powder"
+    },
+    {
+      "key": "baking-soda",
+      "density": "baking-soda",
+      "consistency": "powder"
+    },
+    {
+      "key": "carrier-oil",
+      "density": "0.9",
+      "consistency": "liquid"
+    },
+    {
+      "key": "coconut-oil",
+      "density": "coconut-oil",
+      "consistency": "semi-solid"
+    },
+    {
+      "key": "corn-starch",
+      "density": "corn-starch",
+      "consistency": "powder"
+    },
+    {
+      "key": "dry-fruit-mix"
+    },
+    {
+      "key": "essential-oil",
+      "consistency": "viscous"
+    },
+    {
+      "key": "granulated-salt",
+      "density": "granulated-salt",
+      "consistency": "granulated"
+    },
+    {
+      "key": "granulated-sugar",
+      "density": "granulated-sugar",
+      "consistency": "granulated"
+    },
+    {
+      "key": "honey",
+      "density": "honey",
+      "consistency": "viscous"
+    },
+    {
+      "key": "nut-seed-mix"
+    },
+    {
+      "key": "oat-flakes"
+    },
+    {
+      "key": "olive-oil",
+      "density": "olive-oil",
+      "consistency": "viscous"
+    },
+    {
+      "key": "strong-wheat-flour",
+      "density": "flour",
+      "consistency": "powder"
+    },
+    {
+      "key": "water",
+      "density": "water",
+      "consistency": "liquid"
+    },
+    {
+      "key": "whole-milk",
+      "density": "water",
+      "consistency": "liquid"
+    },
+    {
+      "key": "whole-rye-flour",
+      "density": "flour",
+      "consistency": "powder"
+    },
+    {
+      "key": "whole-wheat-flour",
+      "density": "flour",
+      "consistency": "powder"
+    }
+  ],
+  "materials": [],
+  "tools": []
+}
