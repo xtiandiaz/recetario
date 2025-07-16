@@ -23,15 +23,13 @@ export function refineRawLocalizedContent(
   }
 }
 
-export const localizedMeasurementString = (measurement: Measurement): string => {
+export const localizedMeasurementHTML = (measurement: Measurement): string => {
   const localizedContent = useContentStore().localized
   
-  return `${measurement.quantity} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}`
-}
-
-export const localizedMeasurementHTML = (measurement: Measurement): string => {
   return `<div class="measurement-label">
-    <span class="label">${localizedMeasurementString(measurement)}</span>
+    <span class="label">
+      ${measurement.quantity.htmlString} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}
+    </span>
     <span class="icon ${measurement.unit}"></span>
   </div>`
 }

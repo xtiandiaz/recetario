@@ -1,4 +1,5 @@
 import type { Measurement } from "@/models/measurement"
+import { Quantity } from "@/models/measurement"
 import { Unit } from "@/assets/types/data-sheet.types";
 import { measurementRegExp } from "@/assets/reg-exps";
 import { clamp } from "@/assets/tungsten/math";
@@ -10,7 +11,7 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
       return Icon.Cup
     case Unit.Celcius:
       const icons = [Icon.ThermometerLow, Icon.ThermometerMedium, Icon.ThermometerHigh]
-      const index = clamp(Math.floor(measurement.quantity / 50), 0, icons.length)
+      const index = clamp(Math.floor(measurement.quantity.value / 50), 0, icons.length)
       return icons[index]
     case Unit.Drop:
       return Icon.Drop
@@ -29,10 +30,10 @@ export function parseMeasurement(text: string): Measurement | undefined {
     return undefined
   }
   
-  const quantity = Number(parts[1])
+  const quantity = parts[1]
   const unit = parts[3] as Unit
   if (quantity && unit) {
-    return { quantity, unit }
+    return { quantity: new Quantity(...quantity.split('/')), unit }
   }
   
   return undefined
