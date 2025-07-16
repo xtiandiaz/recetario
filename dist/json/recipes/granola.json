@@ -8,32 +8,32 @@
       "key": "oat-flakes"
     },
     {
-      "amount": "1.5 cup",
+      "amount": "3/2 cup",
       "key": "nut-seed-mix",
       "note": {
         "es": "E.g., marañón, almendra, nuez de Brasil, semilla Chía, semilla de calabaza, etc."
       }
     },
     {
-      "amount": "0.5 cup",
+      "amount": "1/2 cup",
       "key": "dry-fruit-mix",
       "note": {
         "es": "E.g., arándanos deshidratados, uvas pasas, hojuelas de coco, etc."
       }
     },
     {
-      "amount": "0.5 cup",
+      "amount": "1/2 cup",
       "key": "coconut-oil",
       "temperature": "tepid"
     },
     {
       "key": "honey",
-      "amount": "0.667 cup",
+      "amount": "1/2 cup",
       "temperature": "tepid"
     },
     {
       "key": "granulated-salt",
-      "amount": "0.75 tsp"
+      "amount": "3/4 tsp"
     }
   ],
   "instructions": {
