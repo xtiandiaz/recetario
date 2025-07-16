@@ -36,7 +36,7 @@ export async function loadContent() {
   
   if (!content.dataSheet) {
     const rawDataSheet = await fetchData<RawDataSheet>('data-sheet')
-    content.dataSheet = refineRawDataSheet(rawDataSheet, content.localized)
+    content.dataSheet = refineRawDataSheet(rawDataSheet)
   }
   
   if (!content.inventory) {

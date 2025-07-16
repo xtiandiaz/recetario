@@ -35,10 +35,14 @@
     {
       "amount": "2 tbsp",
       "key": "whole-milk",
+      "note": {
+        "es": "Para embarnizar el pan y que dore más."
+      },
+      "optional": true,
       "temperature": "room"
     },
     {
-      "amount": "50 g",
+      "amount": "60 g",
       "key": "nut-seed-mix",
       "note": {
         "es": "E.g., marañón (anacardo), semillas de girasol, de calabaza, y/o linaza."
