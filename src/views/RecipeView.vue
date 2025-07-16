@@ -2,10 +2,10 @@
 import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
 import type { LocalizedRecipe } from '@/models/localization';
+import type { LocalizedRecipeSummary } from '@/models/localization';
 import { LocalizedStringKey } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
-import { localizeRecipe } from '@/services/localization';
 import IngredientItem from '@/components/RecipeIngredient.vue';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
@@ -22,19 +22,19 @@ const { recipeKey } = defineProps<{
 const route = useRoute()
 const content = useContentStore()
 
-const localized = ref<LocalizedRecipe>()
-const mandatoryIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => !i.optional))
-const optionalIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => i.optional === true))
+const summary = ref<LocalizedRecipeSummary>()
+const recipe = ref<LocalizedRecipe>()
+const mandatoryIngredients = computed(() => recipe?.value?.localizedIngredients.filter(i => !i.optional))
+const optionalIngredients = computed(() => recipe?.value?.localizedIngredients.filter(i => i.optional === true))
 const hasOptionalIngredients = computed(() => {
   return optionalIngredients.value && optionalIngredients.value.length > 0
 })
 
-watch(() => recipeKey, async (key) => {
-  localized.value = undefined
-  route.meta.title.value = content.localized?.recipes.get(key)
+watch(() => recipeKey, async (newKey) => {
+  summary.value = content.getLocalizedRecipeSummary(newKey)
+  route.meta.title.value = summary.value?.title
   
-  const recipe = await fetchRecipe(key)
-  localized.value = recipe ? localizeRecipe(recipe) : undefined
+  recipe.value = await fetchRecipe(newKey)
 }, { deep: true, immediate: true })
 
 onBeforeMount(() => {
@@ -44,11 +44,11 @@ onBeforeMount(() => {
 
 <template>
   <main>
-    <div :id="localized?.category" class="category-background"></div>
+    <div :id="recipe?.category" class="category-background"></div>
     
-    <h4 class="headline">{{ localized?.title }}</h4>
+    <h4 class="headline">{{ recipe?.title }}</h4>
     
-    <VuetyForm v-if="localized">
+    <VuetyForm v-if="recipe">
       <VuetyFormSection
         :icon="Icon.Scale"
         :showsLargeTitle="true"
@@ -80,7 +80,7 @@ onBeforeMount(() => {
         :showsLargeTitle="true"
         :title="content.localized?.other.get(LocalizedStringKey.Title_Instructions)"
       >
-        <VuetyTaskFormRow v-for="(step, index) of localized.localizedInstructions" :key="index">
+        <VuetyTaskFormRow v-for="(step, index) of recipe.localizedInstructions" :key="index">
           <span v-html="step"></span>
         </VuetyTaskFormRow>
       </VuetyFormSection>

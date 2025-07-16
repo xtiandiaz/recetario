@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 import { ref } from 'vue'
 import type { Inventory } from "@/models/inventory";
 import type { DataSheet } from "@/models/data-sheet";
-import type { LocalizedContent, LocalizedCategory, LocalizedCatalog } from "@/models/localization";
-import { CategoryKey } from "@/assets/types/catalog.types";
+import type { LocalizedContent, LocalizedCategory, LocalizedCatalog, LocalizedRecipeSummary } from "@/models/localization";
+import { CategoryKey, RecipeKey } from "@/assets/types/catalog.types";
 
 export default defineStore('content', () => {
   const catalog = ref<LocalizedCatalog>()
@@ -15,12 +15,20 @@ export default defineStore('content', () => {
     return catalog.value?.sections.flatMap(s => s.categories).find(c => c.key === key)
   }
   
+  function getLocalizedRecipeSummary(key: RecipeKey): LocalizedRecipeSummary | undefined {
+    return catalog.value?.sections
+      .flatMap(s => s.categories)
+      .flatMap(c => c.recipeSummaries)
+      .find(rs => rs.key === key)
+  }
+  
   return {
     catalog,
     dataSheet,
     inventory,
     localized,
     
-    getLocalizedCategory
+    getLocalizedCategory,
+    getLocalizedRecipeSummary
   }
 })

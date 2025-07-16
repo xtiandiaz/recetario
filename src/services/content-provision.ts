@@ -1,11 +1,11 @@
 import type { Catalog } from "@/models/catalog";
 import type { DataSheet } from "@/models/data-sheet";
 import type { Inventory } from "@/models/inventory";
-import { type RawLocalizedContent } from "@/models/localization";
+import { type LocalizedRecipe, type RawLocalizedContent } from "@/models/localization";
 import type { RawRecipe, Recipe } from '@/models/recipe';
 import useContentStore from '@/stores/content'
 import useSettingsStore from '@/stores/settings'
-import { localizeCatalog } from "./localization";
+import { localizeCatalog, localizeRecipe } from "./localization";
 import { refineRawRecipe } from "@/utils/recipe.utils";
 import { refineRawLocalizedContent as refineRawLocalizedContent } from "@/utils/localization.utils";
 import { RecipeKey } from "@/assets/types/catalog.types";
@@ -46,14 +46,14 @@ export async function loadContent() {
   }
 }
 
-export async function fetchRecipe(key: RecipeKey): Promise<Recipe | undefined> {
+export async function fetchRecipe(key: RecipeKey): Promise<LocalizedRecipe | undefined> {
   await loadContent()
   
   const rawRecipe = await fetchData<RawRecipe>(`recipes/${key}`)
   const content = useContentStore()
   
   if (rawRecipe && content.inventory) {
-    return refineRawRecipe(rawRecipe, content.inventory)
+    return localizeRecipe(refineRawRecipe(rawRecipe, content.inventory))
   }
   
   return undefined

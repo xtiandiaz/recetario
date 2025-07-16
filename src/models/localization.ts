@@ -43,6 +43,7 @@ export interface LocalizedRecipe extends Recipe {
 }
 
 export interface LocalizedRecipeSummary {
+  category: CategoryKey
   key: RecipeKey
   title: string
 }

@@ -58,9 +58,10 @@ export function localizeCategory(category: Category, localizedContent: Localized
     recipeSummaries: category.recipes.map(
       rKey => {
         return {
+          category: category.key,
           key: rKey,
-          title: localizedContent.recipes.get(rKey)
-        } as LocalizedRecipeSummary
+          title: localizedContent.recipes.get(rKey) ?? `{${rKey}}`
+        }
       }
     ).sort((a, b) => a.title.localeCompare(b.title)),
     title: localizedContent.categories.get(category.key) ?? `${category.key}`
