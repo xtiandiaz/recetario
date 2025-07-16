@@ -1,7 +1,7 @@
 import { 
   ConsistencyKey, 
   DensityKey, 
-  TemperatureEstimateKey, 
+  TemperatureEstimate, 
   Unit, 
   // UnitKind
 } from "@/assets/types/data-sheet.types";
@@ -19,13 +19,6 @@ export interface Consistency {
 export interface Density {
   key: DensityKey
   value: number
-}
-
-export interface TemperatureEstimate {
-  key: TemperatureEstimateKey
-  value: number
-  
-  label?: string
 }
 
 export interface RawDataSheet {

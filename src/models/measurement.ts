@@ -1,4 +1,3 @@
-import type { TemperatureEstimate } from "./data-sheet"
 import { Unit } from "@/assets/types/data-sheet.types"
 
 export class Quantity {
@@ -51,9 +50,4 @@ export class Quantity {
 export interface Measurement {
   quantity: Quantity
   unit: Unit
-}
-
-export interface TemperatureMeasurement extends Measurement {
-  estimate?: TemperatureEstimate
-  label?: string
 }

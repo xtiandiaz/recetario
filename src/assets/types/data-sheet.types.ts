@@ -24,11 +24,7 @@ export const enum DensityKey {
   Water = "water"
 }
 
-export const enum Priority {
-  Optional = "optional"
-}
-
-export const enum TemperatureEstimateKey {
+export const enum TemperatureEstimate {
   Room = "room",
   Tepid = "tepid"
 }

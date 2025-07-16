@@ -32,7 +32,7 @@ export interface RecipeIngredient {
   density?: Density
   note?: Map<Language, string>
   optional: boolean
-  temperature?: TemperatureMeasurement
+  temperature?: Measurement | TemperatureMeasurement
 }
 
 export interface Recipe {

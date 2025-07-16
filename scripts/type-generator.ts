@@ -25,8 +25,7 @@ ${keySets.sort().map(ks => enumTemplate(ks[0], ks[1], ks[2])).join('\n\n')}
   
   const consistencyKeys = dataSheet.consistencies.map(c => c.key)
   const densityRawKeys = dataSheet.densities.map(d => d.key)
-  const priorities = dataSheet.priorities
-  const temperatureEstimateKeys = dataSheet.temperatureEstimates.map(te => te.key)
+  const temperatureEstimates = dataSheet.temperatureEstimates
   const unitRawKeys = dataSheet.units.map(u => u.key)
   const unitKinds = dataSheet.units.map(u => u.kind).uniqued()
   
@@ -35,8 +34,7 @@ ${keySets.sort().map(ks => enumTemplate(ks[0], ks[1], ks[2])).join('\n\n')}
     keysTemplate(
       ['ConsistencyKey', consistencyKeys],
       ['DensityKey', densityRawKeys],
-      ['Priority', priorities],
-      ['TemperatureEstimateKey', temperatureEstimateKeys],
+      ['TemperatureEstimate', temperatureEstimates],
       ['Unit', unitRawKeys, dataSheet.units.map(u => u.symbol)],
       ['UnitKind', unitKinds],
     )

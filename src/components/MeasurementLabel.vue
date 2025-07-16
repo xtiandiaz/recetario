@@ -1,33 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { Measurement } from '@/models/measurement';
-import { localizedMeasurementHTML } from '@/utils/localization.utils';
-// import { measurementIcon } from '@/utils/measurement.utils';
+import { localizedMeasurementOrTemperatureEstimateHTML } from '@/utils/localization.utils';
+import type { TemperatureEstimate } from '@/assets/types/data-sheet.types';
 
 const { measurement } = defineProps<{
-  measurement?: Measurement
+  measurement?: Measurement | TemperatureEstimate
   abbreviated?: boolean
   equivalent?: Measurement
 }>()
-
-// const icon = computed(() => measurement ? measurementIcon(measurement) : undefined)
-const measurementKindClass = computed(() => {
-  // switch (measurement.unit.kind) {
-  //   case UnitKind.Temperature:
-  //     const quantity = typeof measurement.quantity === 'object' ? measurement.quantity.max : measurement.quantity
-  //     const tVal = clamp(Math.floor(quantity / 25) * 25, 0, 100)
-  //     return `temperature-${tVal}`
-  //   default:
-      return undefined
-  // }
-})
 </script>
 
 <template>
   <div 
     v-if="measurement" 
-    v-html="localizedMeasurementHTML(measurement)"
-    :class="['measurement-label', measurement.unit, measurementKindClass]"
+    v-html="localizedMeasurementOrTemperatureEstimateHTML(measurement)"
   >
   </div>
 </template>

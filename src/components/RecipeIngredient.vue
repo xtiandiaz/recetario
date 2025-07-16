@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { LocalizedRecipeIngredient } from '@/models/localization';
 import MeasurementLabel from './MeasurementLabel.vue';
 
@@ -15,8 +14,6 @@ const { localizedIngredient: ingredient } = defineProps<{
 //     return undefined
 //   }
 // })
-
-// const extras = computed(() => ingredient.extras?.find(e => e.language === settings.currentLanguage))
 </script>
 
 <template>
@@ -51,5 +48,6 @@ const { localizedIngredient: ingredient } = defineProps<{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 0.75em;
 }
 </style>

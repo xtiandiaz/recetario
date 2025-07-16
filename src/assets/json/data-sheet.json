@@ -75,18 +75,9 @@
       "value": 1
     }
   ],
-  "priorities": [
-    "optional"
-  ],
   "temperatureEstimates": [
-    {
-      "key": "room",
-      "value": 20
-    },   
-    {
-      "key": "tepid",
-      "value": 30
-    }
+    "room", 
+    "tepid"
   ],
   "units": [
     {

@@ -1,10 +1,8 @@
 import type { Measurement } from "@/models/measurement";
 import type { Inventory } from "@/models/inventory";
 import type { RawRecipeIngredient, RecipeIngredient, RawRecipe, Recipe } from "@/models/recipe";
-import {
-  // convertCustomaryVolumeOrWeight, 
-  parseMeasurement
-} from "./measurement.utils";
+import { parseMeasurement } from "./measurement.utils";
+import type { TemperatureEstimate } from "@/assets/types/data-sheet.types";
 import '@/assets/tungsten/extensions/map.extensions'
 
 export function refineRawRecipeIngredient(
@@ -14,9 +12,8 @@ export function refineRawRecipeIngredient(
   const amount = parseMeasurement(rawRecipeIngredient.amount)
   const ingredient = inventory.ingredients.find(i => i.key === rawRecipeIngredient.key)
   
-  // const temperature = rawRecipeIngredient.temperature 
-  //   ? decodeTemperatureMeasurementString(rawRecipeIngredient.temperature) 
-  //   : undefined
+  const rawTemperature = rawRecipeIngredient.temperature
+  const temperature = rawTemperature ? (parseMeasurement(rawTemperature) ?? rawTemperature as TemperatureEstimate) : undefined
   
   return {
     amount,
@@ -25,6 +22,7 @@ export function refineRawRecipeIngredient(
     key: rawRecipeIngredient.key,
     note: rawRecipeIngredient.note ? Map.fromObject(rawRecipeIngredient.note) : undefined,
     optional: rawRecipeIngredient.optional === true,
+    temperature
   }
 }
 

@@ -1,15 +1,6 @@
 import type { RawDataSheet, DataSheet } from "@/models/data-sheet";
-import type { LocalizedContent } from "@/models/localization";
 
-export function refineRawDataSheet(
-  rawDataSheet: RawDataSheet, 
-  localizedContent: LocalizedContent
-): DataSheet {
-  // const units = rawDataSheet.units.map(u => {
-  //   u.localizedSymbol = localizedContent.units.get(u.key)  
-  //   return u
-  // })
-  
+export function refineRawDataSheet(rawDataSheet: RawDataSheet): DataSheet {  
   return {
     consistencies: rawDataSheet.consistencies.map(rc => {
       return {
@@ -18,10 +9,7 @@ export function refineRawDataSheet(
       }
     }),
     densities: rawDataSheet.densities,
-    temperatureEstimates: rawDataSheet.temperatureEstimates.map(te => {
-      te.label = localizedContent.temperatureEstimates.get(te.key)
-      return te
-    }),
+    temperatureEstimates: rawDataSheet.temperatureEstimates,
     units: rawDataSheet.units
   }
 }

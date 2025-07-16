@@ -25,6 +25,9 @@ const content = useContentStore()
 const localized = ref<LocalizedRecipe>()
 const mandatoryIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => !i.optional))
 const optionalIngredients = computed(() => localized?.value?.localizedIngredients.filter(i => i.optional === true))
+const hasOptionalIngredients = computed(() => {
+  return optionalIngredients.value && optionalIngredients.value.length > 0
+})
 
 watch(() => recipeKey, async (key) => {
   localized.value = undefined
@@ -59,19 +62,17 @@ onBeforeMount(() => {
           <IngredientItem :localizedIngredient="ingredient" />
         </VuetyTaskFormRow>
         
-        <span v-if="optionalIngredients && optionalIngredients.length > 0">
-          <div class="divider">
-            {{ content.localized?.other.get(LocalizedStringKey.Text_Optional)?.capitalized() }}
-          </div>
+        <div v-if="hasOptionalIngredients" class="divider">
+          {{ content.localized?.other.get(LocalizedStringKey.Text_Optional)?.capitalized() }}
+        </div>
           
-          <VuetyTaskFormRow 
-            v-for="(ingredient, index) of optionalIngredients"
-            class="ingredient"
-            :key="index"
-          >
-            <IngredientItem :localizedIngredient="ingredient" />
-          </VuetyTaskFormRow>
-        </span>
+        <VuetyTaskFormRow 
+          v-for="(ingredient, index) of optionalIngredients"
+          class="ingredient"
+          :key="index"
+        >
+          <IngredientItem :localizedIngredient="ingredient" />
+        </VuetyTaskFormRow>
       </VuetyFormSection>
       
       <VuetyFormSection

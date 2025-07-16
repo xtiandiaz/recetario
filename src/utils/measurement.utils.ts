@@ -4,6 +4,7 @@ import { Unit } from "@/assets/types/data-sheet.types";
 import { measurementRegExp } from "@/assets/reg-exps";
 import { clamp } from "@/assets/tungsten/math";
 import { Icon } from '@design-tokens/iconography'
+import '@/assets/tungsten/extensions/string.extensions'
 
 export const measurementIcon = (measurement: Measurement): Icon | undefined => {
   switch (measurement.unit) {
@@ -38,25 +39,6 @@ export function parseMeasurement(text: string): Measurement | undefined {
   
   return undefined
 }
-
-// export function decodeTemperatureMeasurementString(measurementString: string): TemperatureMeasurement {
-//   const dataSheet = useContentStore().dataSheet
-  
-//   const estimatePattern = dataSheet?.temperatureEstimates.map(te => te.key).join('|')
-//   const estimateRegExp = new RegExp(`^\\s*(${estimatePattern})\\s*$`)
-//   const estimateMatch = measurementString.match(estimateRegExp)
-//   const estimate = dataSheet?.temperatureEstimates.find(te => te.key === estimateMatch?.[1])
-  
-//   if (estimate) {
-//     return { 
-//       estimate, 
-//       quantity: estimate.value, 
-//       unit: dataSheet!.units.find(u => u.kind === UnitKind.Temperature)! 
-//     }
-//   }
-  
-//   return decodeMeasurementString(measurementString) as TemperatureMeasurement
-// }
 
 // export function convertCustomaryVolumeOrWeight(
 //   measurement: Measurement, 

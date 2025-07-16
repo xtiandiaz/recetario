@@ -1,4 +1,4 @@
-import type { Unit, TemperatureEstimateKey } from "@/assets/types/data-sheet.types"
+import type { Unit, TemperatureEstimate } from "@/assets/types/data-sheet.types"
 import type { IngredientKey } from "@/assets/types/inventory.types"
 import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
 import type { Category} from '@/models/catalog'
@@ -25,7 +25,7 @@ export interface LocalizedContent {
   other: Map<LocalizedStringKey, string>
   recipes: Map<RecipeKey, string>
   sections: Map<SectionKey, string>
-  temperatureEstimates: Map<TemperatureEstimateKey, string>
+  temperatureEstimates: Map<TemperatureEstimate, string>
   units: Map<Unit, string>
 }
 
