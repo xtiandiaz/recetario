@@ -1,7 +1,24 @@
 import { Unit } from "@/assets/types/data-sheet.types"
 
-export class Quantity {
-  _units: number
+export interface Quantity {
+  htmlString: string
+  value: number
+}
+
+export class DecimalQuantity implements Quantity {
+  value: number
+  
+  constructor(value: number | string) {
+    this.value = Math.round(Number(value) * 10) / 10
+  }
+  
+  get htmlString(): string {
+    return this.value.toLocaleString()
+  }
+}
+
+export class FractionQuantity implements Quantity {
+  _whole: number
   _fractionNumerator: number
   _fractionDenominator: number
   
@@ -10,10 +27,10 @@ export class Quantity {
     const denominator = parts.length > 1 ? Number(parts[1]) : 1
     
     if (numerator >= denominator) {
-      this._units = Math.floor(numerator / denominator)
-      this._fractionNumerator = numerator - this._units * denominator
+      this._whole = Math.floor(numerator / denominator)
+      this._fractionNumerator = numerator - this._whole * denominator
     } else {
-      this._units = 0
+      this._whole = 0
       this._fractionNumerator = numerator
     }
     
@@ -21,14 +38,14 @@ export class Quantity {
   }
   
   get value(): number {
-    return this._units + this._fractionNumerator / this._fractionDenominator
+    return this._whole + this._fractionNumerator / this._fractionDenominator
   }
   
   get htmlString(): string {
     if (this._hasFraction) {
       return `${this._unitsHTMLString}${this._fractionHTMLString}`
     } else {
-      return `${this._units.toLocaleString()}`
+      return `${this._whole.toLocaleString()}`
     }
   }
   
@@ -37,7 +54,7 @@ export class Quantity {
   }
   
   private get _unitsHTMLString(): string {
-    return this._units > 0 ? `${this._units}${this._hasFraction ? '&nbsp;' : ''}` : ''
+    return this._whole > 0 ? `${this._whole}${this._hasFraction ? '&nbsp;' : ''}` : ''
   }
   
   private get _fractionHTMLString(): string {

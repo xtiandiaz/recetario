@@ -1,5 +1,5 @@
 import type { Measurement } from "@/models/measurement"
-import { Quantity } from "@/models/measurement"
+import { DecimalQuantity, FractionQuantity } from "@/models/measurement"
 import type { Ingredient } from "@/models/inventory";
 import useContentStore from '@/stores/content'
 import { Consistency, Unit } from "@/assets/types/data-sheet.types";
@@ -34,10 +34,13 @@ export function parseMeasurement(text: string): Measurement | undefined {
     return undefined
   }
   
-  const quantity = parts[1]
+  const quantityString = parts[1]
   const unit = parts[3] as Unit
-  if (quantity && unit) {
-    return { quantity: new Quantity(...quantity.split('/')), unit }
+  if (quantityString && unit) {
+    const fractionParts = quantityString.split('/')
+    const quantity = fractionParts.length > 1 ? new FractionQuantity(...fractionParts) : new DecimalQuantity(quantityString)
+    
+    return { quantity, unit }
   }
   
   return undefined
@@ -72,8 +75,8 @@ export function ingredientMeasurementEquivalent(
   switch (consistency) {
     case Consistency.Liquid:
     case Consistency.Viscous:
-      return { quantity: new Quantity(volumeML / density), unit: Unit.Mililiter }
+      return { quantity: new DecimalQuantity(volumeML / density), unit: Unit.Mililiter }
     default:
-      return { quantity: new Quantity(volumeML * density), unit: Unit.Gram }
+      return { quantity: new DecimalQuantity(volumeML * density), unit: Unit.Gram }
   }
 }
