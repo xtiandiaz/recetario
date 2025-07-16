@@ -1,15 +1,13 @@
 import type { Catalog } from "@/models/catalog";
-import type { RawDataSheet } from "@/models/data-sheet";
-import type { RawInventory } from "@/models/inventory";
+import type { DataSheet } from "@/models/data-sheet";
+import type { Inventory } from "@/models/inventory";
 import { type RawLocalizedContent } from "@/models/localization";
 import type { RawRecipe, Recipe } from '@/models/recipe';
 import useContentStore from '@/stores/content'
 import useSettingsStore from '@/stores/settings'
 import { localizeCatalog } from "./localization";
-import { refineRawInventory } from "@/utils/inventory.utils";
 import { refineRawRecipe } from "@/utils/recipe.utils";
 import { refineRawLocalizedContent as refineRawLocalizedContent } from "@/utils/localization.utils";
-import { refineRawDataSheet } from "@/utils/data-sheet.utils";
 import { RecipeKey } from "@/assets/types/catalog.types";
 
 const sourcePath = (import.meta.env.PROD 
@@ -35,13 +33,11 @@ export async function loadContent() {
   }
   
   if (!content.dataSheet) {
-    const rawDataSheet = await fetchData<RawDataSheet>('data-sheet')
-    content.dataSheet = refineRawDataSheet(rawDataSheet)
+    content.dataSheet = await fetchData<DataSheet>('data-sheet')
   }
   
   if (!content.inventory) {
-    const rawInventory = await fetchData<RawInventory>('inventory')
-    content.inventory = refineRawInventory(rawInventory, content.dataSheet)
+    content.inventory = await fetchData<Inventory>('inventory')
   }
   
   if (!content.catalog) {

@@ -1,6 +1,6 @@
-import type { Consistency, Density } from "./data-sheet"
 import type { Language } from "./localization"
 import type { Measurement } from "./measurement"
+import type { Ingredient } from "./inventory"
 import { IngredientKey } from "@/assets/types/inventory.types"
 import type { TemperatureEstimate } from "@/assets/types/data-sheet.types"
 import type { CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
@@ -25,14 +25,10 @@ export interface RawRecipe {
   origin?: string
 }
 
-export interface RecipeIngredient {
-  key: IngredientKey
-  
+export interface RecipeIngredient extends Ingredient {  
   amount?: Measurement
-  consistency?: Consistency
-  density?: Density
   note?: Map<Language, string>
-  optional: boolean
+  optional?: boolean
   temperature?: Measurement | TemperatureEstimate
 }
 

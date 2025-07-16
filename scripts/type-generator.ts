@@ -23,7 +23,7 @@ ${keySets.sort().map(ks => enumTemplate(ks[0], ks[1], ks[2])).join('\n\n')}
 (async function main() {
   const keysPath = './src/assets/types/'
   
-  const consistencyKeys = dataSheet.consistencies.map(c => c.key)
+  const consistencies = dataSheet.consistencies
   const densityRawKeys = dataSheet.densities.map(d => d.key)
   const temperatureEstimates = dataSheet.temperatureEstimates
   const unitRawKeys = dataSheet.units.map(u => u.key)
@@ -32,7 +32,7 @@ ${keySets.sort().map(ks => enumTemplate(ks[0], ks[1], ks[2])).join('\n\n')}
   await FS.promises.writeFile(
     `${keysPath}/data-sheet.types.ts`, 
     keysTemplate(
-      ['ConsistencyKey', consistencyKeys],
+      ['Consistency', consistencies],
       ['DensityKey', densityRawKeys],
       ['TemperatureEstimate', temperatureEstimates],
       ['Unit', unitRawKeys, dataSheet.units.map(u => u.symbol)],

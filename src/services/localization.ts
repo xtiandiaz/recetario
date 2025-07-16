@@ -1,6 +1,12 @@
 import type { Catalog, Category } from "@/models/catalog"
 import type { Recipe } from "@/models/recipe"
-import type { LocalizedCatalog, LocalizedCategory, LocalizedContent, LocalizedRecipe, LocalizedRecipeSummary } from "@/models/localization"
+import type { 
+  LocalizedCatalog, 
+  LocalizedCategory, 
+  LocalizedContent, 
+  LocalizedRecipe, 
+  LocalizedRecipeSummary 
+} from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
 import { parseMeasurement } from "@/utils/measurement.utils"

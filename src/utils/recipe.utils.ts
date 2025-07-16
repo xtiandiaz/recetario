@@ -1,4 +1,3 @@
-import type { Measurement } from "@/models/measurement";
 import type { Inventory } from "@/models/inventory";
 import type { RawRecipeIngredient, RecipeIngredient, RawRecipe, Recipe } from "@/models/recipe";
 import { parseMeasurement } from "./measurement.utils";
@@ -16,9 +15,8 @@ export function refineRawRecipeIngredient(
   const temperature = rawTemperature ? (parseMeasurement(rawTemperature) ?? rawTemperature as TemperatureEstimate) : undefined
   
   return {
+    ...ingredient,
     amount,
-    consistency: ingredient?.consistency,
-    density: ingredient?.density,
     key: rawRecipeIngredient.key,
     note: rawRecipeIngredient.note ? Map.fromObject(rawRecipeIngredient.note) : undefined,
     optional: rawRecipeIngredient.optional === true,
@@ -34,20 +32,4 @@ export function refineRawRecipe(rawRecipe: RawRecipe, inventory: Inventory): Rec
     key: rawRecipe.key,
     origin: rawRecipe.origin,
   }
-}
-
-export function calculateAmountWeightOrVolumeEquivalent(ingredient: RecipeIngredient): Measurement | undefined {  
-  // if (!ingredient.density || !ingredient.consistency) {
-  //   console.warn('Undefined density or consistency for ingredient:', ingredient.key)
-    return undefined
-  // }
-  
-  // const altUnits = ingredient.consistency.preciseUnits
-  // const equivalenceUnit = altUnits.find(au => au.key !== ingredient.amount.unit.key)
-  // if (!equivalenceUnit) {
-  //   console.warn('Undefined equivalence Unit for ingredient:', ingredient.key)
-  //   return undefined
-  // }
-  
-  // return convertCustomaryVolumeOrWeight(ingredient.amount, ingredient.density, equivalenceUnit)
 }

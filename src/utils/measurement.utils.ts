@@ -1,10 +1,13 @@
 import type { Measurement } from "@/models/measurement"
 import { Quantity } from "@/models/measurement"
-import { Unit } from "@/assets/types/data-sheet.types";
+import type { Ingredient } from "@/models/inventory";
+import useContentStore from '@/stores/content'
+import { Consistency, Unit } from "@/assets/types/data-sheet.types";
 import { measurementRegExp } from "@/assets/reg-exps";
 import { clamp } from "@/assets/tungsten/math";
-import { Icon } from '@design-tokens/iconography'
 import '@/assets/tungsten/extensions/string.extensions'
+import { Icon } from '@design-tokens/iconography'
+import type { RecipeIngredient } from "@/models/recipe";
 
 export const measurementIcon = (measurement: Measurement): Icon | undefined => {
   switch (measurement.unit) {
@@ -40,78 +43,37 @@ export function parseMeasurement(text: string): Measurement | undefined {
   return undefined
 }
 
-// export function convertCustomaryVolumeOrWeight(
-//   measurement: Measurement, 
-//   density: Density, 
-//   to: Unit
-// ): Measurement {
-//   const customaryVolumeML = measurement.unit.customaryVolumeML
-//   if (!customaryVolumeML) {
-//     throw new Error(`Invalid Unit for customary volume/weight conversion: ${measurement.unit}`)
-//   }
-    
-//   if (measurement.quantity === undefined) {
-//     throw new Error(`Undefined quantity for customary volume/weight conversion: ${measurement.quantity}`)
-//   }
+export function recipeIngredientMeasurementEquivalent(
+  recipeIngredient: RecipeIngredient
+): Measurement | undefined {
+  if (recipeIngredient.amount) {
+    return ingredientMeasurementEquivalent(recipeIngredient, recipeIngredient.amount)
+  }
   
-//   const toUnitKind = to.kind
-//   if (!(toUnitKind === UnitKind.Volume || toUnitKind === UnitKind.Weight)) {
-//     throw new Error(`Invalid target kind for customary volume/weight conversion: ${toUnitKind}`)
-//   }
-  
-//   function convert(volumeMl: number): number {
-//     switch (to) {
-//       case UnitKey.Gram:
-//         return volumeMl * density.value
-//       case UnitKey.Mililiter:
-//         return volumeMl / density.value
-//       default:
-//         throw new Error(`Undefined conversion target Unit: ${to}`)
-//     }
-//   }
-  
-//   // console.log(measurement.quantity, measurement.unit, volumeMl, `(${unitVolume})`, density.key, density.value)
-  
-//   if (typeof measurement.quantity === 'object') {
-//     return { 
-//       quantity: {
-//         min: convert(measurement.quantity.min * customaryVolumeML),
-//         max: convert(measurement.quantity.max * customaryVolumeML)
-//       }, 
-//       unit: to
-//     }
-//   }
-  
-//   return { quantity: convert(measurement.quantity * customaryVolumeML), unit: to }
-// }
+  return undefined
+}
 
-// const unitQuantitySeparator = (key: UnitKey): string => {
-//   switch (key) {
-//     case UnitKey.Celcius: 
-//       return ''
-//     default: 
-//       return ' '
-//   }
-// }
-
-// export const localizedQuantity = (measurement: Measurement): string | undefined => {
-//   const content = useContentStore()
+export function ingredientMeasurementEquivalent(
+  ingredient: Ingredient, 
+  measurement: Measurement
+): Measurement | undefined {
+  const dataSheet = useContentStore().dataSheet
+  const density = dataSheet?.densities.find(d => d.key === ingredient.densityKey)?.value
+  const consistency = ingredient.consistency
+  const customaryVolume = dataSheet?.customaryVolumes.find(cv => cv.unit === measurement.unit)
   
-//   const temperatureMeasurement = measurement as TemperatureMeasurement
-//   if (temperatureMeasurement && temperatureMeasurement.estimate) {
-//     return content.localized?.temperatureEstimates.get(temperatureMeasurement.estimate.key)
-//   }
+  if (!dataSheet || !customaryVolume || !density || !consistency) {
+    // console.log(customaryVolume, density, consistency)
+    return undefined
+  }
   
-//   if (measurement.quantity) {
-//     const quantityValues = typeof measurement.quantity === 'object' 
-//       ? [measurement.quantity.min, measurement.quantity.max]
-//       : [measurement.quantity]
-    
-//     return [
-//       quantityValues.map(v => v.toLocaleString()).join('-'),
-//       measurement.unit.localizedSymbol ?? measurement.unit.symbol
-//     ].join(unitQuantitySeparator(measurement.unit.key))
-//   }
+  const volumeML = customaryVolume.mL * measurement.quantity.value
   
-//   return '?'
-// }
+  switch (consistency) {
+    case Consistency.Liquid:
+    case Consistency.Viscous:
+      return { quantity: new Quantity(volumeML / density), unit: Unit.Mililiter }
+    default:
+      return { quantity: new Quantity(volumeML * density), unit: Unit.Gram }
+  }
+}

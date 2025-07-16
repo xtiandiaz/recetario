@@ -1,6 +1,6 @@
 /* File automatically generated; DO NOT edit! */
 
-export const enum ConsistencyKey {
+export const enum Consistency {
   Granulated = "granulated",
   Liquid = "liquid",
   Powder = "powder",

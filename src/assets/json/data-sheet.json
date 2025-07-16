@@ -1,28 +1,24 @@
 {
-  "consistencies": [ 
+  "consistencies": [
+    "granulated",
+    "liquid",
+    "powder",
+    "semi-solid",
+    "solid",
+    "viscous"
+  ],
+  "customaryVolumes": [
     {
-      "key": "granulated",
-      "preciseUnits": ["gram"]
+      "mL": 240,
+      "unit": "cup"
     },
     {
-      "key": "liquid",
-      "preciseUnits": ["mililiter"]
+      "mL": 15,
+      "unit": "tbsp"
     },
     {
-      "key": "powder",
-      "preciseUnits": ["gram"]
-    },
-    {
-      "key": "semi-solid",
-      "preciseUnits": ["gram", "mililiter"]
-    },
-    {
-      "key": "solid",
-      "preciseUnits": ["gram"]
-    },
-    {
-      "key": "viscous",
-      "preciseUnits": ["mililiter"]
+      "mL": 5,
+      "unit": "tsp"
     }
   ],
   "densities": [
