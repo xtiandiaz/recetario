@@ -15,7 +15,7 @@ const sourcePath = (import.meta.env.PROD
   : 'json')
   
 async function fetchData<T>(path: string): Promise<T> {
-  const response = await fetch(`${sourcePath}/${path}.json`)
+  const response = await fetch(`${sourcePath}/${path}.json?salt=${Math.random()}`)
   // console.log(path, response.status, response.statusText, response)
   
   return await response.json() as T
