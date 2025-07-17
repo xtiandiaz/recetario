@@ -1,7 +1,7 @@
 {
   "title": "Pan para hamburguesa",
   "key": "bread-burger",
-  "units": 4,
+  "portions": 4,
   "ingredients": [
     {
       "name": "Harina de trigo",

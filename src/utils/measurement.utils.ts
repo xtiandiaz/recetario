@@ -1,5 +1,4 @@
-import type { Measurement } from "@/models/measurement"
-import { DecimalQuantity, FractionQuantity } from "@/models/measurement"
+import type { Quantity, FractionalQuantity, Measurement } from "@/models/measurement"
 import type { Ingredient } from "@/models/inventory";
 import useContentStore from '@/stores/content'
 import { Consistency, Unit } from "@/assets/types/data-sheet.types";
@@ -28,35 +27,61 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
   }
 }
 
+function produceFractionalQuantity([numerator, denominator]: (number | string)[]): FractionalQuantity {
+  numerator = Number(numerator)
+  denominator = Number(denominator) ?? 1
+
+  let wholes: number
+  if (numerator >= denominator) {
+    wholes = Math.floor(numerator / denominator)
+    numerator = numerator - wholes * denominator
+  } else {
+    wholes = 0
+  }
+
+  return { 
+    wholes, 
+    numerator, 
+    denominator, 
+    value: (wholes * denominator + numerator) / denominator
+  }
+}
+
+function parseQuantity(quantityString: string): Quantity | undefined {
+  const fractionParts = quantityString.split('/')
+  if (fractionParts.length > 1) {
+    return produceFractionalQuantity(fractionParts)
+  }
+  
+  return { value: Number(quantityString) }
+}
+
 export function parseMeasurement(text: string): Measurement | undefined {
   const parts = text.match(measurementRegExp)
   if (!parts) {
     return undefined
   }
   
-  const quantityString = parts[1]
+  const quantity = parseQuantity(parts[1])
   const unit = parts[3] as Unit
-  if (quantityString && unit) {
-    const fractionParts = quantityString.split('/')
-    const quantity = fractionParts.length > 1 ? new FractionQuantity(...fractionParts) : new DecimalQuantity(quantityString)
-    
+  if (quantity && unit) {    
     return { quantity, unit }
   }
   
   return undefined
 }
 
-export function recipeIngredientMeasurementEquivalent(
+export function calculateRecipeIngredientMeasurementEquivalent(
   recipeIngredient: RecipeIngredient
 ): Measurement | undefined {
   if (recipeIngredient.amount) {
-    return ingredientMeasurementEquivalent(recipeIngredient, recipeIngredient.amount)
+    return calculateIngredientMeasurementEquivalent(recipeIngredient, recipeIngredient.amount)
   }
   
   return undefined
 }
 
-export function ingredientMeasurementEquivalent(
+export function calculateIngredientMeasurementEquivalent(
   ingredient: Ingredient, 
   measurement: Measurement
 ): Measurement | undefined {
@@ -75,8 +100,31 @@ export function ingredientMeasurementEquivalent(
   switch (consistency) {
     case Consistency.Liquid:
     case Consistency.Viscous:
-      return { quantity: new DecimalQuantity(volumeML / density), unit: Unit.Mililiter }
+      return { quantity: { value: volumeML / density }, unit: Unit.Mililiter }
     default:
-      return { quantity: new DecimalQuantity(volumeML * density), unit: Unit.Gram }
+      return { quantity: { value: volumeML * density }, unit: Unit.Gram }
   }
+}
+
+export function htmlifyQuantity(quantity: Quantity, by: number): string {
+  if ('numerator' in quantity) {
+    const fractionalQuantity = quantity as FractionalQuantity
+    const wholes = fractionalQuantity.wholes * by + Math.floor(fractionalQuantity.numerator * by / fractionalQuantity.denominator)
+    const numerator = fractionalQuantity.numerator * by % fractionalQuantity.denominator
+    const denominator = fractionalQuantity.denominator
+    
+    const hasFraction = numerator >= 1
+    if (hasFraction) {
+      const wholesHTMLString = wholes > 0 ? `${wholes}${hasFraction ? '&nbsp;' : ''}` : ''
+      const fractionHTMLString = hasFraction 
+        ? `<sup>${numerator}</sup>&frasl;<sub>${denominator}</sub>`
+        : ''
+      
+      return `${wholesHTMLString}${fractionHTMLString}`
+    } else {
+      return `${wholes.toLocaleString()}`
+    }
+  }
+  
+  return (quantity.value * by).toLocaleString()
 }

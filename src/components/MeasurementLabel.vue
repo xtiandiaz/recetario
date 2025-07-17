@@ -6,6 +6,7 @@ import type { TemperatureEstimate } from '@/assets/types/data-sheet.types';
 const { measurement } = defineProps<{
   measurement: Measurement | TemperatureEstimate
   equivalent?: Measurement
+  multiplier?: number
 }>()
 </script>
 
@@ -13,11 +14,11 @@ const { measurement } = defineProps<{
   <div class="measurement-label-wrapper">
     <div 
       v-if="measurement" 
-      v-html="localizedMeasurementOrTemperatureEstimateHTML(measurement)"
+      v-html="localizedMeasurementOrTemperatureEstimateHTML(measurement, multiplier ?? 1)"
     >
     </div>
     <span v-if="equivalent" class="equivalent">
-      ({{ localizedMeasurementString(equivalent) }})
+      ({{ localizedMeasurementString(equivalent, multiplier ?? 1) }})
     </span>
   </div>
 </template>

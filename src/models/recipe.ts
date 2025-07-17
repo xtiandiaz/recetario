@@ -23,6 +23,7 @@ export interface RawRecipe {
   key: RecipeKey
   
   origin?: string
+  portions?: number
 }
 
 export interface RecipeIngredient extends Ingredient {  
@@ -37,5 +38,7 @@ export interface Recipe {
   ingredients: RecipeIngredient[]
   instructions: Map<Language, string[]>
   key: RecipeKey
+  
   origin?: string
+  portions?: number 
 }

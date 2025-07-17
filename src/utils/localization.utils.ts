@@ -2,6 +2,7 @@ import type { Language, LocalizedContent, RawLocalizedContent } from "@/models/l
 import type { Measurement } from "@/models/measurement";
 import useContentStore from '@/stores/content'
 import type { TemperatureEstimate } from "@/assets/types/data-sheet.types";
+import { htmlifyQuantity } from "./measurement.utils";
 import '@/assets/tungsten/extensions/array.extensions'
 
 export function refineRawLocalizedContent(
@@ -24,24 +25,25 @@ export function refineRawLocalizedContent(
   }
 }
 
-export const localizedMeasurementString = (measurement: Measurement): string => {
+export const localizedMeasurementString = (measurement: Measurement, by: number): string => {
   const localizedContent = useContentStore().localized
   
-  return `${measurement.quantity.htmlString} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}`
+  return `${htmlifyQuantity(measurement.quantity, by)} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}`
 }
 
-export const localizedMeasurementHTML = (measurement: Measurement): string => {
+export const localizedMeasurementHTML = (measurement: Measurement, by: number): string => {
   return `<div class="measurement-label">
-    <span class="label">${localizedMeasurementString(measurement)}</span>
+    <span class="label">${localizedMeasurementString(measurement, by)}</span>
     <span class="icon ${measurement.unit}"></span>
   </div>`
 }
 
 export const localizedMeasurementOrTemperatureEstimateHTML = (
-  measurementOrEstimate: Measurement | TemperatureEstimate
+  measurementOrEstimate: Measurement | TemperatureEstimate,
+  by: number
 ): string => {
   if (typeof measurementOrEstimate !== 'string') {
-    return localizedMeasurementHTML(measurementOrEstimate)
+    return localizedMeasurementHTML(measurementOrEstimate, by)
   }
   
   const localizedContent = useContentStore().localized

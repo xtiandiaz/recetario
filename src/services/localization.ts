@@ -4,8 +4,7 @@ import type {
   LocalizedCatalog, 
   LocalizedCategory, 
   LocalizedContent, 
-  LocalizedRecipe, 
-  LocalizedRecipeSummary 
+  LocalizedRecipe
 } from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
@@ -23,7 +22,7 @@ function localizeRecipeInstructions(recipe: Recipe, localizedContent: LocalizedC
     const result = [...ins.matchAll(regExp)].reduce((str, m) => {
       const wholeMatch = m[0]
       const parsedMeasurement = parseMeasurement(wholeMatch)
-      const replacement = parsedMeasurement ? localizedMeasurementHTML(parsedMeasurement) : wholeMatch
+      const replacement = parsedMeasurement ? localizedMeasurementHTML(parsedMeasurement, 1) : wholeMatch
       
       return str.replace(wholeMatch, replacement)
     }, ins)

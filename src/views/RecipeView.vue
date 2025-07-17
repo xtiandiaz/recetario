@@ -24,8 +24,11 @@ const content = useContentStore()
 
 const summary = ref<LocalizedRecipeSummary>()
 const recipe = ref<LocalizedRecipe>()
-const mandatoryIngredients = computed(() => recipe?.value?.localizedIngredients.filter(i => !i.optional))
-const optionalIngredients = computed(() => recipe?.value?.localizedIngredients.filter(i => i.optional === true))
+const ingredientAmountMultiplier = ref<number>(1)
+
+const ingredients = computed(() => recipe.value?.localizedIngredients)
+const mandatoryIngredients = computed(() => ingredients.value?.filter(i => !i.optional))
+const optionalIngredients = computed(() => ingredients.value?.filter(i => i.optional === true))
 const hasOptionalIngredients = computed(() => {
   return optionalIngredients.value && optionalIngredients.value.length > 0
 })
@@ -46,20 +49,24 @@ onBeforeMount(() => {
   <main>
     <div :id="recipe?.category" class="category-background"></div>
     
-    <h4 class="headline">{{ recipe?.title }}</h4>
+    <h4 class="headline">{{ recipe?.title }} {{ recipe?.origin }}</h4>
     
     <VuetyForm v-if="recipe">
       <VuetyFormSection
         :icon="Icon.Scale"
         :showsLargeTitle="true"
         :title="content.localized?.other.get(LocalizedStringKey.Title_Ingredients)"
+        :subtitle="recipe.portions ? `${recipe.portions * ingredientAmountMultiplier} porciones` : undefined"
       >
         <VuetyTaskFormRow 
           v-for="(ingredient, index) of mandatoryIngredients"
           :key="index"
           class="ingredient"
         >
-          <IngredientItem :localizedIngredient="ingredient" />
+          <IngredientItem 
+            :localizedIngredient="ingredient" 
+            :amountMultiplier="ingredientAmountMultiplier" 
+          />
         </VuetyTaskFormRow>
         
         <div v-if="hasOptionalIngredients" class="divider">
@@ -71,7 +78,10 @@ onBeforeMount(() => {
           class="ingredient"
           :key="index"
         >
-          <IngredientItem :localizedIngredient="ingredient" />
+          <IngredientItem 
+            :localizedIngredient="ingredient" 
+            :amountMultiplier="ingredientAmountMultiplier" 
+          />
         </VuetyTaskFormRow>
       </VuetyFormSection>
       

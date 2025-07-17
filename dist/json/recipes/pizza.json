@@ -1,7 +1,6 @@
 {
   "key": "pizza",
   "category": "bakery",
-  "units": 2,
   "origin": "🇮🇹",
   "ingredients": [
     {

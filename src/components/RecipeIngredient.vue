@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { LocalizedRecipeIngredient } from '@/models/localization';
-import { recipeIngredientMeasurementEquivalent } from '@/utils/measurement.utils';
+import { calculateRecipeIngredientMeasurementEquivalent } from '@/utils/measurement.utils';
 import MeasurementLabel from './MeasurementLabel.vue';
 
 const { localizedIngredient: ingredient } = defineProps<{
-  localizedIngredient: LocalizedRecipeIngredient
+  localizedIngredient: LocalizedRecipeIngredient,
+  amountMultiplier: number
 }>()
 </script>
 
@@ -17,7 +18,8 @@ const { localizedIngredient: ingredient } = defineProps<{
     <MeasurementLabel 
       v-if="ingredient.amount"
       :measurement="ingredient.amount" 
-      :equivalent="recipeIngredientMeasurementEquivalent(ingredient)"
+      :equivalent="calculateRecipeIngredientMeasurementEquivalent(ingredient)"
+      :multiplier="amountMultiplier"
     />
     
     <MeasurementLabel 

@@ -31,5 +31,6 @@ export function refineRawRecipe(rawRecipe: RawRecipe, inventory: Inventory): Rec
     instructions: Map.fromObject(rawRecipe.instructions),
     key: rawRecipe.key,
     origin: rawRecipe.origin,
+    portions: rawRecipe.portions
   }
 }
