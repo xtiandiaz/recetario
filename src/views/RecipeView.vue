@@ -7,7 +7,7 @@ import { LocalizedStringKey } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
 import { RecipeKey } from '@/assets/types/catalog.types';
-import RecipeScaleRow from '@/components/RecipeScaleRow.vue';
+import RecipeScaleRow from '@/components/RecipeScaleFormRow.vue';
 import IngredientItem from '@/components/RecipeIngredient.vue';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
@@ -55,7 +55,7 @@ onBeforeMount(() => {
     
     <div class="headline">
       <h4>{{ recipe?.title }} {{ recipe?.origin }}</h4>
-      <span v-if="recipe?.portions">{{ portions }} porciones</span>
+      <!-- <span v-if="recipe?.portions">{{ portions }} porciones</span> -->
     </div>
     
     <VuetyForm v-if="recipe">
@@ -65,6 +65,10 @@ onBeforeMount(() => {
         :title="content.localized?.other.get(LocalizedStringKey.Title_Ingredients)"
       >
         <RecipeScaleRow @scale="(mult) => ingredientAmountMultiplier = mult" />
+        
+        <div class="divider">
+          <span v-if="portions">{{ portions }} porciones</span>
+        </div>
         
         <VuetyTaskFormRow 
           v-for="(ingredient, index) of mandatoryIngredients"

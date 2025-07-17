@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import type { VuetySegmentedButtonSegment } from '@vueties/components/buttons/view-models';
 import VuetySegmentedButtonFormRow from '@vueties/components/form/rows/VuetySegmentedButtonFormRow.vue';
+import { Icon } from '@/assets/design-tokens/iconography';
 
 const emits = defineEmits<{
   scale: [by: number]
@@ -23,12 +24,12 @@ function onMultiplierSelected(multiplier: number) {
 <template>
   <VuetySegmentedButtonFormRow 
     :choice="selectedMultiplier" 
-    :segments="scale" 
-    :title="'Escala'"
+    :icon="Icon.Ruler"
+    :segments="scale"
     @select="(mult) => onMultiplierSelected(mult)"
   />
 </template>
 
 <style scoped lang="scss">
-
+@use '@design-tokens/typography';
 </style>
