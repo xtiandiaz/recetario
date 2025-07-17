@@ -6,12 +6,13 @@ import type { LocalizedRecipeSummary } from '@/models/localization';
 import { LocalizedStringKey } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
+import { RecipeKey } from '@/assets/types/catalog.types';
+import RecipeScaleRow from '@/components/RecipeScaleRow.vue';
 import IngredientItem from '@/components/RecipeIngredient.vue';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
 import VuetyTaskFormRow from '@vueties/components/form/rows/VuetyTaskFormRow.vue';
 import VuetyProgressIndicator from '@vueties/components/misc/VuetyProgressIndicator.vue';
-import { RecipeKey } from '@/assets/types/catalog.types';
 import { Icon } from '@design-tokens/iconography';
 import '@/assets/tungsten/extensions/string.extensions'
 
@@ -25,10 +26,13 @@ const content = useContentStore()
 const summary = ref<LocalizedRecipeSummary>()
 const recipe = ref<LocalizedRecipe>()
 const ingredientAmountMultiplier = ref<number>(1)
-
+const portions = computed(() => 
+  recipe.value?.portions ? recipe.value.portions * ingredientAmountMultiplier.value : undefined
+)
 const ingredients = computed(() => recipe.value?.localizedIngredients)
 const mandatoryIngredients = computed(() => ingredients.value?.filter(i => !i.optional))
 const optionalIngredients = computed(() => ingredients.value?.filter(i => i.optional === true))
+
 const hasOptionalIngredients = computed(() => {
   return optionalIngredients.value && optionalIngredients.value.length > 0
 })
@@ -49,15 +53,19 @@ onBeforeMount(() => {
   <main>
     <div :id="recipe?.category" class="category-background"></div>
     
-    <h4 class="headline">{{ recipe?.title }} {{ recipe?.origin }}</h4>
+    <div class="headline">
+      <h4>{{ recipe?.title }} {{ recipe?.origin }}</h4>
+      <span v-if="recipe?.portions">{{ portions }} porciones</span>
+    </div>
     
     <VuetyForm v-if="recipe">
       <VuetyFormSection
         :icon="Icon.Scale"
         :showsLargeTitle="true"
         :title="content.localized?.other.get(LocalizedStringKey.Title_Ingredients)"
-        :subtitle="recipe.portions ? `${recipe.portions * ingredientAmountMultiplier} porciones` : undefined"
       >
+        <RecipeScaleRow @scale="(mult) => ingredientAmountMultiplier = mult" />
+        
         <VuetyTaskFormRow 
           v-for="(ingredient, index) of mandatoryIngredients"
           :key="index"
@@ -122,10 +130,13 @@ onBeforeMount(() => {
 }
 
 .headline {
-  @extend .serif;
-  margin: 0.5em auto;
-  padding: 0 2em;
+  padding: 0.5em 2em;
   text-align: center;
+  
+  > * {
+    @extend .serif;
+    margin: 0.25em auto;
+  }
 }
 
 .vuety-progress-indicator {
@@ -133,5 +144,4 @@ onBeforeMount(() => {
   width: 3em;
   @include mixins.position(absolute, 0, 0, 0, 0);
 }
-
 </style>

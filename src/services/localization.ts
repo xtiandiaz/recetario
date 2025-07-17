@@ -45,7 +45,7 @@ export function localizeRecipe(recipe: Recipe): LocalizedRecipe | undefined {
         localizedNote: ri.note?.get(localizedContent.language),
         name: localizedContent.ingredients.get(ri.key) ?? `{${ri.key}}`,
       }
-    }),
+    }).sort((a, b) => a.name.localeCompare(b.name)),
     localizedInstructions: localizeRecipeInstructions(recipe, localizedContent),
     title: localizedContent.recipes.get(recipe.key) ?? `{${recipe.key}}`,
   }
