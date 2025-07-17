@@ -1,7 +1,7 @@
 {
   "key": "pita",
   "category": "bakery",
-  "origin": "🇸🇦",
+  "portions": 6,
   "ingredients": [
     {
       "amount": "1 cup",
