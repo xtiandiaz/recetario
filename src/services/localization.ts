@@ -5,7 +5,6 @@ import type {
   LocalizedCategory, 
   LocalizedContent, 
   LocalizedRecipe,
-  LocalizedStringKey
 } from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
@@ -98,7 +97,7 @@ export function interpolateLocalizedString(keyPrefix: string, options: Interpola
   const count = options.count
   if (count) {
     const localizedString = localizedContent?.other.get(
-      `${keyPrefix}-${count === 1 ? 'one' : 'other'}` as LocalizedStringKey
+      `${keyPrefix}-${count === 1 ? 'one' : 'other'}`
     )
     return localizedString?.replace('{{count}}', count.toLocaleString());
   }

@@ -56,8 +56,10 @@
     "tsp": "cdta."
   },
   "other": {
-    "text-optional": "opcional",
     "title-ingredients": "Ingredientes",
-    "title-instructions": "Instrucciones"
+    "title-instructions": "Instrucciones",
+    "title-optional": "opcional",
+    "title-portions-one": "{{count}} porción",
+    "title-portions-other": "{{count}} porciones"
   }
 }
