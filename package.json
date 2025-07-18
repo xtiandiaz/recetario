@@ -1,12 +1,12 @@
 {
   "name": "recetario",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "generate-types": "tsx scripts/type-generator.ts",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- && rm -rf dist/json",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
