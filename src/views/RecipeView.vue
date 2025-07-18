@@ -3,7 +3,6 @@ import { ref, computed, watch, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
 import type { LocalizedRecipe } from '@/models/localization';
 import type { LocalizedRecipeSummary } from '@/models/localization';
-import { LocalizedStringKey } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
 import { RecipeKey } from '@/assets/types/catalog.types';
@@ -15,6 +14,7 @@ import VuetyTaskFormRow from '@vueties/components/form/rows/VuetyTaskFormRow.vue
 import VuetyProgressIndicator from '@vueties/components/misc/VuetyProgressIndicator.vue';
 import { Icon } from '@design-tokens/iconography';
 import '@/assets/tungsten/extensions/string.extensions'
+import { interpolateLocalizedString } from '@/services/localization';
 
 const { recipeKey } = defineProps<{
   recipeKey: RecipeKey
@@ -55,19 +55,18 @@ onBeforeMount(() => {
     
     <div class="headline">
       <h4>{{ recipe?.title }} {{ recipe?.origin }}</h4>
-      <!-- <span v-if="recipe?.portions">{{ portions }} porciones</span> -->
     </div>
     
     <VuetyForm v-if="recipe">
       <VuetyFormSection
         :icon="Icon.Scale"
         :showsLargeTitle="true"
-        :title="content.localized?.other.get(LocalizedStringKey.Title_Ingredients)"
+        :title="content.localized?.other.get('title-ingredients')"
       >
         <RecipeScaleRow @scale="(mult) => ingredientAmountMultiplier = mult" />
         
         <div class="divider">
-          <span v-if="portions">{{ portions }} porciones</span>
+          <span v-if="portions">{{ interpolateLocalizedString('title-portions', { count: portions }) }}</span>
         </div>
         
         <VuetyTaskFormRow 
@@ -82,7 +81,7 @@ onBeforeMount(() => {
         </VuetyTaskFormRow>
         
         <div v-if="hasOptionalIngredients" class="divider">
-          {{ content.localized?.other.get(LocalizedStringKey.Text_Optional)?.capitalized() }}
+          {{ content.localized?.other.get('title-optional')?.capitalized() }}
         </div>
           
         <VuetyTaskFormRow 
@@ -100,7 +99,7 @@ onBeforeMount(() => {
       <VuetyFormSection
         :icon="Icon.Doc"
         :showsLargeTitle="true"
-        :title="content.localized?.other.get(LocalizedStringKey.Title_Instructions)"
+        :title="content.localized?.other.get('title-instructions')"
       >
         <VuetyTaskFormRow v-for="(step, index) of recipe.localizedInstructions" :key="index">
           <span v-html="step"></span>

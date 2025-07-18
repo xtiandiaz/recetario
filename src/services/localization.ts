@@ -4,7 +4,8 @@ import type {
   LocalizedCatalog, 
   LocalizedCategory, 
   LocalizedContent, 
-  LocalizedRecipe
+  LocalizedRecipe,
+  LocalizedStringKey
 } from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
@@ -84,5 +85,21 @@ export function localizeCatalog(catalog: Catalog): LocalizedCatalog | undefined 
         }
       }
     ).sort((a, b) => a.title.localeCompare(b.title)),
+  }
+}
+
+export interface InterpolationOptions {
+  count?: number  
+}
+
+export function interpolateLocalizedString(keyPrefix: string, options: InterpolationOptions): string | undefined {
+  const localizedContent = useContentStore()?.localized
+  
+  const count = options.count
+  if (count) {
+    const localizedString = localizedContent?.other.get(
+      `${keyPrefix}-${count === 1 ? 'one' : 'other'}` as LocalizedStringKey
+    )
+    return localizedString?.replace('{{count}}', count.toLocaleString());
   }
 }

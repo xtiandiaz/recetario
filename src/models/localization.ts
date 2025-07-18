@@ -8,12 +8,6 @@ export enum Language {
   Spanish = 'es',
 }
 
-export enum LocalizedStringKey {
-  Text_Optional = 'text-optional',
-  Title_Ingredients = 'title-ingredients',
-  Title_Instructions = 'title-instructions',
-}
-
 export type RawLocalizedContent = {
   [key: string]: object 
 }
@@ -22,7 +16,7 @@ export interface LocalizedContent {
   categories: Map<CategoryKey, string>
   ingredients: Map<IngredientKey, string>
   language: Language
-  other: Map<LocalizedStringKey, string>
+  other: Map<string, string>
   recipes: Map<RecipeKey, string>
   sections: Map<SectionKey, string>
   temperatureEstimates: Map<TemperatureEstimate, string>
