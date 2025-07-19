@@ -53,13 +53,13 @@ const { localizedIngredient: ingredient } = defineProps<{
   gap: 0 1em;
   
   .cut {
-    @extend .italic;
+    @extend .caption, .italic;
     align-items: center;
     display: inline-flex;
     gap: 0.25em;
     
     .svg-icon {
-      @include mixins.size(1.25em);
+      @include mixins.size(1.75em);
     }
   }
 }
