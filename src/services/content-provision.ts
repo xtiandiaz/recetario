@@ -8,7 +8,7 @@ import useSettingsStore from '@/stores/settings'
 import { localizeCatalog, localizeRecipe } from "./localization";
 import { refineRawRecipe } from "@/utils/recipe.utils";
 import { refineRawLocalizedContent as refineRawLocalizedContent } from "@/utils/localization.utils";
-import { RecipeKey } from "@/assets/types/catalog.types";
+import { RecipeKey } from "@/assets/keys/catalog.keys";
 
 const sourcePath = (import.meta.env.PROD 
   ? 'https://raw.githubusercontent.com/xtiandiaz/recetario/refs/heads/main/src/assets/json'

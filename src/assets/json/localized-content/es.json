@@ -25,6 +25,16 @@
     "tabbouleh": "Tabulé",
     "tzatziki": "Tzatziki"
   },
+  "ingredientCuts": {
+    "diced": "en cubos",
+    "finely-diced": "en cubitos",
+    "into-strips": "en tiras",
+    "into-wedges": "en cascos",
+    "julienned": "en juliana",
+    "minced": "molido/a",
+    "round-sliced": "en rodajas",
+    "sliced": "en tajadas"
+  },
   "ingredients": {
     "all-purpose-wheat-flour": "Harina de trigo común",
     "active-dry-yeast": "Levadura seca",

@@ -24,6 +24,17 @@ export const enum DensityKey {
   Water = "water"
 }
 
+export const enum IngredientCut {
+  Diced = "diced",
+  FinelyDiced = "finely-diced",
+  IntoStrips = "into-strips",
+  IntoWedges = "into-wedges",
+  Julienned = "julienned",
+  Minced = "minced",
+  RoundSliced = "round-sliced",
+  Sliced = "sliced"
+}
+
 export const enum TemperatureEstimate {
   Room = "room",
   Tepid = "tepid"
@@ -39,11 +50,4 @@ export const enum Unit {
   Minute = "min",
   TableSpoon = "tbsp",
   TeaSpoon = "tsp"
-}
-
-export const enum UnitKind {
-  Temperature = "temperature",
-  Time = "time",
-  Volume = "volume",
-  Weight = "weight"
 }

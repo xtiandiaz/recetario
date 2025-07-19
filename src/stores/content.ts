@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import type { Inventory } from "@/models/inventory";
 import type { DataSheet } from "@/models/data-sheet";
 import type { LocalizedContent, LocalizedCategory, LocalizedCatalog, LocalizedRecipeSummary } from "@/models/localization";
-import { CategoryKey, RecipeKey } from "@/assets/types/catalog.types";
+import { CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys";
 
 export default defineStore('content', () => {
   const catalog = ref<LocalizedCatalog>()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Measurement } from '@/models/measurement';
 import { localizedMeasurementOrTemperatureEstimateHTML, localizedMeasurementString } from '@/utils/localization.utils';
-import type { TemperatureEstimate } from '@/assets/types/data-sheet.types';
+import type { TemperatureEstimate } from '@/assets/keys/data-sheet.keys';
 
 const { measurement } = defineProps<{
   measurement: Measurement | TemperatureEstimate
@@ -25,6 +25,7 @@ const { measurement } = defineProps<{
 
 <style scoped lang="scss">
 @use '../assets/styles/measurement';
+@use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
 @use '@design-tokens/typography';
 
@@ -45,7 +46,7 @@ const { measurement } = defineProps<{
   }
   
   .svg-icon {
-    width: 1.25em;
+    @include mixins.size(1.25em);
     @include palette.color-attribute('color', 'tertiary-body');
   }
 }

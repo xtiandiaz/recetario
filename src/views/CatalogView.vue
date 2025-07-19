@@ -32,7 +32,7 @@ const catalog = computed(() => content.catalog)
 
 <style scoped lang="scss">
 @use '@/assets/varties';
-@use '@/assets/styles/category-theme';
+@use '@/assets/styles/theme';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );

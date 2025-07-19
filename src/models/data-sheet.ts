@@ -3,7 +3,7 @@ import {
   DensityKey, 
   TemperatureEstimate, 
   Unit
-} from "@/assets/types/data-sheet.types";
+} from "@/assets/keys/data-sheet.keys";
 
 export interface CustomaryVolume {
   unit: Unit

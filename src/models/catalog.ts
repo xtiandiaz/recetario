@@ -1,4 +1,4 @@
-import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
+import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys"
 import type { Color } from "@design-tokens/palette"
 
 export interface Category {

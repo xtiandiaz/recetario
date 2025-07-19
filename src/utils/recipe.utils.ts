@@ -1,8 +1,28 @@
 import type { Inventory } from "@/models/inventory";
 import type { RawRecipeIngredient, RecipeIngredient, RawRecipe, Recipe } from "@/models/recipe";
 import { parseMeasurement } from "./measurement.utils";
-import type { TemperatureEstimate } from "@/assets/types/data-sheet.types";
+import { IngredientCut, type TemperatureEstimate } from "@/assets/keys/data-sheet.keys";
 import '@/assets/tungsten/extensions/map.extensions'
+import { Icon } from "@/assets/design-tokens/iconography";
+
+export const ingredientCutIcon = (cut: IngredientCut): Icon => {
+  switch(cut) {
+    case IngredientCut.Diced:
+      return Icon.Dice
+    case IngredientCut.FinelyDiced:
+    case IngredientCut.Minced:
+      return Icon.Brunoise
+    case IngredientCut.IntoWedges:
+      return Icon.Wedges
+    case IngredientCut.Julienned:
+    case IngredientCut.IntoStrips:
+      return Icon.Julienne
+    case IngredientCut.RoundSliced:
+      return Icon.RoundSlices
+    case IngredientCut.Sliced:
+      return Icon.Slices 
+  }
+}
 
 export function refineRawRecipeIngredient(
   rawRecipeIngredient: RawRecipeIngredient, 
@@ -17,6 +37,7 @@ export function refineRawRecipeIngredient(
   return {
     ...ingredient,
     amount,
+    cut: rawRecipeIngredient.cut,
     key: rawRecipeIngredient.key,
     note: rawRecipeIngredient.note ? Map.fromObject(rawRecipeIngredient.note) : undefined,
     optional: rawRecipeIngredient.optional === true,

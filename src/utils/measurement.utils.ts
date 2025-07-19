@@ -1,7 +1,7 @@
 import type { Quantity, FractionalQuantity, Measurement } from "@/models/measurement"
 import type { Ingredient } from "@/models/inventory";
 import useContentStore from '@/stores/content'
-import { Consistency, Unit } from "@/assets/types/data-sheet.types";
+import { Consistency, Unit } from "@/assets/keys/data-sheet.keys";
 import { measurementRegExp } from "@/assets/reg-exps";
 import { clamp } from "@/assets/tungsten/math";
 import '@/assets/tungsten/extensions/string.extensions'

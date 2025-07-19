@@ -1,5 +1,5 @@
-import { IngredientKey } from "@/assets/types/inventory.types"
-import { Consistency, DensityKey } from "@/assets/types/data-sheet.types"
+import { IngredientKey } from "@/assets/keys/inventory.keys"
+import { Consistency, DensityKey } from "@/assets/keys/data-sheet.keys"
 
 export interface Ingredient {
   key: IngredientKey

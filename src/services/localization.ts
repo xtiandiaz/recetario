@@ -42,6 +42,7 @@ export function localizeRecipe(recipe: Recipe): LocalizedRecipe | undefined {
     localizedIngredients: recipe.ingredients.map(ri => {
       return {
         ...ri,
+        localizedCut: ri.cut ? localizedContent.ingredientCuts.get(ri.cut) : undefined,
         localizedNote: ri.note?.get(localizedContent.language),
         name: localizedContent.ingredients.get(ri.key) ?? `{${ri.key}}`,
       }

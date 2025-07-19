@@ -1,6 +1,6 @@
-import type { Unit, TemperatureEstimate } from "@/assets/types/data-sheet.types"
-import type { IngredientKey } from "@/assets/types/inventory.types"
-import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
+import type { Unit, TemperatureEstimate, IngredientCut } from "@/assets/keys/data-sheet.keys"
+import type { IngredientKey } from "@/assets/keys/inventory.keys"
+import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys"
 import type { Category} from '@/models/catalog'
 import type { Recipe, RecipeIngredient } from "./recipe"
 
@@ -9,11 +9,12 @@ export enum Language {
 }
 
 export type RawLocalizedContent = {
-  [key: string]: object 
+  [key: string]: object
 }
 
 export interface LocalizedContent {
   categories: Map<CategoryKey, string>
+  ingredientCuts: Map<IngredientCut, string>
   ingredients: Map<IngredientKey, string>
   language: Language
   other: Map<string, string>
@@ -26,6 +27,7 @@ export interface LocalizedContent {
 export interface LocalizedRecipeIngredient extends RecipeIngredient {
   name: string
   
+  localizedCut?: string
   localizedNote?: string
 }
 

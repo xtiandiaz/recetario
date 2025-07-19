@@ -1,4 +1,4 @@
-import { Unit } from "@/assets/types/data-sheet.types"
+import { Unit } from "@/assets/keys/data-sheet.keys"
 
 export interface Quantity {
   value: number

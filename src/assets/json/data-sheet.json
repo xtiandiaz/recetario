@@ -71,6 +71,16 @@
       "value": 1
     }
   ],
+  "ingredientCuts": [
+    "diced",
+    "finely-diced",
+    "into-strips",
+    "into-wedges",
+    "julienned",
+    "minced",
+    "round-sliced",
+    "sliced"
+  ],
   "temperatureEstimates": [
     "room", 
     "tepid"
@@ -84,44 +94,36 @@
     {
       "customaryVolumeML": 240,
       "key": "cup",
-      "kind": "volume",
       "symbol": "cup"
     },
     {
       "key": "drop",
-      "kind": "volume",
       "symbol": "gtt"
     },
     {
       "key": "gram",
-      "kind": "weight",
       "symbol": "g"
     },
     {
       "key": "hour",
-      "kind": "time",
       "symbol": "hr"
     },
     {
       "key": "mililiter",
-      "kind": "volume",
       "symbol": "mL"
     },
     {
       "key": "minute",
-      "kind": "time",
       "symbol": "min"
     },
     {
       "customaryVolumeML": 15,
       "key": "table-spoon",
-      "kind": "volume",
       "symbol": "tbsp"
     },
     {
       "customaryVolumeML": 5,
       "key": "tea-spoon",
-      "kind": "volume",
       "symbol": "tsp"
     }
   ]

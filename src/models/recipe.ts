@@ -1,9 +1,9 @@
 import type { Language } from "./localization"
 import type { Measurement } from "./measurement"
 import type { Ingredient } from "./inventory"
-import { IngredientKey } from "@/assets/types/inventory.types"
-import type { TemperatureEstimate } from "@/assets/types/data-sheet.types"
-import type { CategoryKey, RecipeKey } from "@/assets/types/catalog.types"
+import { IngredientKey } from "@/assets/keys/inventory.keys"
+import type { IngredientCut, TemperatureEstimate } from "@/assets/keys/data-sheet.keys"
+import type { CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys"
 
 export type RecipeEntry = { key: RecipeKey, title: string }
 
@@ -11,6 +11,7 @@ export interface RawRecipeIngredient {
   amount: string
   key: IngredientKey
   
+  cut?: IngredientCut
   note?: { [key: string]: string }
   optional?: boolean
   temperature?: string
@@ -28,6 +29,7 @@ export interface RawRecipe {
 
 export interface RecipeIngredient extends Ingredient {  
   amount?: Measurement
+  cut?: IngredientCut
   note?: Map<Language, string>
   optional?: boolean
   temperature?: Measurement | TemperatureEstimate

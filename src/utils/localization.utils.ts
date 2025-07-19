@@ -1,7 +1,7 @@
 import type { Language, LocalizedContent, RawLocalizedContent } from "@/models/localization";
 import type { Measurement } from "@/models/measurement";
 import useContentStore from '@/stores/content'
-import type { TemperatureEstimate } from "@/assets/types/data-sheet.types";
+import type { TemperatureEstimate } from "@/assets/keys/data-sheet.keys";
 import { htmlifyQuantity } from "./measurement.utils";
 import '@/assets/tungsten/extensions/array.extensions'
 
@@ -15,6 +15,7 @@ export function refineRawLocalizedContent(
   
   return {
     categories: createContentMap(rawLocalizedContent['categories']),
+    ingredientCuts: createContentMap(rawLocalizedContent['ingredientCuts']),
     ingredients: createContentMap(rawLocalizedContent['ingredients']),
     language: language,
     other: createContentMap(rawLocalizedContent['other']),

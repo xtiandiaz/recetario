@@ -5,7 +5,7 @@ import type { LocalizedRecipe } from '@/models/localization';
 import type { LocalizedRecipeSummary } from '@/models/localization';
 import useContentStore from '@/stores/content'
 import { fetchRecipe } from '@/services/content-provision'
-import { RecipeKey } from '@/assets/types/catalog.types';
+import { RecipeKey } from '@/assets/keys/catalog.keys';
 import RecipeScaleRow from '@/components/RecipeScaleFormRow.vue';
 import IngredientItem from '@/components/RecipeIngredient.vue';
 import VuetyForm from '@vueties/components/form/VuetyForm.vue'
@@ -50,11 +50,11 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main>
-    <div :id="recipe?.category" class="category-background"></div>
+  <main :class="['theme-category', summary?.category]">
+    <div class="theme-background"></div>
     
     <div class="headline">
-      <h4>{{ recipe?.title }} {{ recipe?.origin }}</h4>
+      <h4>{{ summary?.title }} {{ recipe?.origin }}</h4>
     </div>
     
     <VuetyForm v-if="recipe">
@@ -112,7 +112,7 @@ onBeforeMount(() => {
 </template>
 
 <style scoped lang="scss">
-@use '@/assets/styles/category-theme';
+@use '@/assets/styles/theme';
 @use '@/assets/styles/measurement';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
@@ -121,7 +121,7 @@ onBeforeMount(() => {
 @use '@design-tokens/palette';
 @use '@design-tokens/iconography';
 
-@include category-theme.backgrounds();
+@include theme.categories();
 @include measurement.label();
 
 :deep(.large-title *) {
