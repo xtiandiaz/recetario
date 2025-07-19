@@ -2,33 +2,41 @@
   "ingredients": [
     {
       "key": "active-dry-yeast",
-      "densityKey": "granulated-yeast",
-      "consistency": "granulated"
+      "consistency": "granular",
+      "density": "granulated-yeast"
     },
     {
       "key": "all-purpose-wheat-flour",
-      "densityKey": "flour",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "flour"
     },
     {
       "key": "baking-soda",
-      "densityKey": "baking-soda",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "baking-soda"
+    },
+    {
+      "key": "bulgur",
+      "consistency": "granular",
+      "density": "bulgur"
     },
     {
       "key": "carrier-oil",
-      "densityKey": "0.9",
-      "consistency": "liquid"
+      "consistency": "liquid",
+      "density": "0.9"
     },
     {
       "key": "coconut-oil",
-      "densityKey": "coconut-oil",
-      "consistency": "semi-solid"
+      "consistency": "semi-solid",
+      "density": "coconut-oil"
     },
     {
       "key": "corn-starch",
-      "densityKey": "corn-starch",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "corn-starch"
+    },
+    {
+      "key": "cucumber"
     },
     {
       "key": "dry-fruit-mix"
@@ -39,18 +47,26 @@
     },
     {
       "key": "granulated-salt",
-      "densityKey": "granulated-salt",
-      "consistency": "granulated"
+      "consistency": "granular",
+      "density": "granulated-salt"
     },
     {
       "key": "granulated-sugar",
-      "densityKey": "granulated-sugar",
-      "consistency": "granulated"
+      "consistency": "granular",
+      "density": "granulated-sugar"
     },
     {
       "key": "honey",
-      "densityKey": "honey",
-      "consistency": "viscous"
+      "consistency": "viscous",
+      "density": "honey"
+    },
+    {
+      "key": "lime-juice",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
+      "key": "mint"
     },
     {
       "key": "nut-seed-mix"
@@ -60,33 +76,42 @@
     },
     {
       "key": "olive-oil",
-      "densityKey": "olive-oil",
-      "consistency": "viscous"
+      "consistency": "viscous",
+      "density": "olive-oil"
+    },
+    {
+      "key": "parsley"
+    },
+    {
+      "key": "round-onion"
     },
     {
       "key": "strong-wheat-flour",
-      "densityKey": "flour",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "flour"
+    },
+    {
+      "key": "tomato"
     },
     {
       "key": "water",
-      "densityKey": "water",
-      "consistency": "liquid"
+      "consistency": "liquid",
+      "density": "water"
     },
     {
       "key": "whole-milk",
-      "densityKey": "water",
-      "consistency": "liquid"
+      "consistency": "liquid",
+      "density": "water"
     },
     {
       "key": "whole-rye-flour",
-      "densityKey": "flour",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "flour"
     },
     {
       "key": "whole-wheat-flour",
-      "densityKey": "flour",
-      "consistency": "powder"
+      "consistency": "powder",
+      "density": "flour"
     }
   ],
   "materials": [],

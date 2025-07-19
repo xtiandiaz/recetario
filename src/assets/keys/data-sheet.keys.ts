@@ -11,6 +11,7 @@ export const enum Consistency {
 
 export const enum DensityKey {
   BakingSoda = "baking-soda",
+  Bulgur = "bulgur",
   Butter = "butter",
   CarrierOil = "carrier-oil",
   CoconutOil = "coconut-oil",
@@ -26,6 +27,7 @@ export const enum DensityKey {
 
 export const enum IngredientCut {
   Diced = "diced",
+  FinelyChopped = "finely-chopped",
   FinelyDiced = "finely-diced",
   IntoStrips = "into-strips",
   IntoWedges = "into-wedges",

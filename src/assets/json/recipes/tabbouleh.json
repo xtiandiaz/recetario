@@ -1,0 +1,51 @@
+{
+  "key": "tabbouleh",
+  "category": "salads",
+  "origin": "🇱🇧",
+  "portions": 2,
+  "ingredients": [
+    {
+      "key": "bulgur",
+      "amount": "1/4 cup"
+    },
+    {
+      "key": "cucumber",
+      "amount": "1/2 cup",
+      "cut": "diced"
+    },
+    {
+      "key": "tomato",
+      "amount": "1/2 cup",
+      "cut": "diced"
+    },
+    {
+      "key": "round-onion",
+      "amount": "1/4 cup",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "mint",
+      "amount": "1/4 cup",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "parsley",
+      "amount": "1/4 cup",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "olive-oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "key": "lime-juice",
+      "amount": "1 tbsp"
+    }
+  ],
+  "instructions": {
+    "es": [
+      "Hervir el bulgur durante 5 min. Escurrirlo y exprimirlo con la mano para extraer un poco más de agua, y dejarlo reposar por 10 min.",
+      "Mezclar todos los ingredientes en un bol, revolverlos, y agregarles una pizca de sal al gusto."
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 import { Unit } from "@/assets/keys/data-sheet.keys"
+import type { Fraction } from "@/assets/tungsten/math"
 
 export interface Quantity {
   value: number
@@ -6,8 +7,7 @@ export interface Quantity {
 
 export interface FractionalQuantity extends Quantity {
   wholes: number
-  numerator: number
-  denominator: number
+  fraction: Fraction
 }
 
 export interface Measurement {

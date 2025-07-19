@@ -9,6 +9,7 @@ export const ingredientCutIcon = (cut: IngredientCut): Icon => {
   switch(cut) {
     case IngredientCut.Diced:
       return Icon.Dice
+    case IngredientCut.FinelyChopped:
     case IngredientCut.FinelyDiced:
     case IngredientCut.Minced:
       return Icon.Brunoise

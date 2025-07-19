@@ -27,6 +27,10 @@
       "value": 2.16
     },
     {
+      "key": "bulgur",
+      "value": 0.59
+    },
+    {
       "key": "butter",
       "value": 0.911
     },
@@ -78,6 +82,7 @@
     "into-wedges",
     "julienned",
     "minced",
+    "finely-chopped",
     "round-sliced",
     "sliced"
   ],

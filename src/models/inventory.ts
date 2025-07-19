@@ -5,7 +5,7 @@ export interface Ingredient {
   key: IngredientKey
   
   consistency?: Consistency
-  densityKey?: DensityKey
+  density?: DensityKey
 }
 
 export interface Inventory {

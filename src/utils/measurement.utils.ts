@@ -1,12 +1,12 @@
 import type { Quantity, FractionalQuantity, Measurement } from "@/models/measurement"
 import type { Ingredient } from "@/models/inventory";
+import type { RecipeIngredient } from "@/models/recipe";
 import useContentStore from '@/stores/content'
 import { Consistency, Unit } from "@/assets/keys/data-sheet.keys";
 import { measurementRegExp } from "@/assets/reg-exps";
-import { clamp } from "@/assets/tungsten/math";
+import { clamp, simplifyFraction } from "@/assets/tungsten/math";
 import '@/assets/tungsten/extensions/string.extensions'
 import { Icon } from '@design-tokens/iconography'
-import type { RecipeIngredient } from "@/models/recipe";
 
 export const measurementIcon = (measurement: Measurement): Icon | undefined => {
   switch (measurement.unit) {
@@ -27,23 +27,23 @@ export const measurementIcon = (measurement: Measurement): Icon | undefined => {
   }
 }
 
-function produceFractionalQuantity([numerator, denominator]: (number | string)[]): FractionalQuantity {
-  numerator = Number(numerator)
-  denominator = Number(denominator) ?? 1
+function produceFractionalQuantity([n, d]: (number | string)[]): FractionalQuantity {
+  const fraction = simplifyFraction(
+    { numerator: Number(n), denominator: Number(d) }
+  )
 
   let wholes: number
-  if (numerator >= denominator) {
-    wholes = Math.floor(numerator / denominator)
-    numerator = numerator - wholes * denominator
+  if (fraction.numerator >= fraction.denominator) {
+    wholes = Math.floor(fraction.numerator / fraction.denominator)
+    fraction.numerator = fraction.numerator - wholes * fraction.denominator
   } else {
     wholes = 0
   }
 
   return { 
     wholes, 
-    numerator, 
-    denominator, 
-    value: (wholes * denominator + numerator) / denominator
+    fraction,
+    value: (wholes * fraction.denominator + fraction.numerator) / fraction.denominator
   }
 }
 
@@ -86,7 +86,7 @@ export function calculateIngredientMeasurementEquivalent(
   measurement: Measurement
 ): Measurement | undefined {
   const dataSheet = useContentStore().dataSheet
-  const density = dataSheet?.densities.find(d => d.key === ingredient.densityKey)?.value
+  const density = dataSheet?.densities.find(d => d.key === ingredient.density)?.value
   const consistency = ingredient.consistency
   const customaryVolume = dataSheet?.customaryVolumes.find(cv => cv.unit === measurement.unit)
   
@@ -107,17 +107,19 @@ export function calculateIngredientMeasurementEquivalent(
 }
 
 export function htmlifyQuantity(quantity: Quantity, by: number): string {
-  if ('numerator' in quantity) {
-    const fractionalQuantity = quantity as FractionalQuantity
-    const wholes = fractionalQuantity.wholes * by + Math.floor(fractionalQuantity.numerator * by / fractionalQuantity.denominator)
-    const numerator = fractionalQuantity.numerator * by % fractionalQuantity.denominator
-    const denominator = fractionalQuantity.denominator
+  if ('fraction' in quantity) {
+    const fQuantity = quantity as FractionalQuantity
+    const wholes = fQuantity.wholes * by + Math.floor(fQuantity.fraction.numerator * by / fQuantity.fraction.denominator)
+    const fraction = simplifyFraction({
+      numerator: fQuantity.fraction.numerator * by % fQuantity.fraction.denominator,
+      denominator: fQuantity.fraction.denominator
+    })
     
-    const hasFraction = numerator >= 1
+    const hasFraction = fraction.numerator >= 1
     if (hasFraction) {
       const wholesHTMLString = wholes > 0 ? `${wholes}${hasFraction ? '&nbsp;' : ''}` : ''
       const fractionHTMLString = hasFraction 
-        ? `<sup>${numerator}</sup>&frasl;<sub>${denominator}</sub>`
+        ? `<sup>${fraction.numerator}</sup>&frasl;<sub>${fraction.denominator}</sub>`
         : ''
       
       return `${wholesHTMLString}${fractionHTMLString}`

@@ -59,7 +59,7 @@ const { localizedIngredient: ingredient } = defineProps<{
     gap: 0.25em;
     
     .svg-icon {
-      @include mixins.size(1.5em);
+      @include mixins.size(1.25em);
     }
   }
 }

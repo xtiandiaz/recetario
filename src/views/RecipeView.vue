@@ -40,6 +40,7 @@ const hasOptionalIngredients = computed(() => {
 watch(() => recipeKey, async (newKey) => {
   summary.value = content.getLocalizedRecipeSummary(newKey)
   route.meta.title.value = summary.value?.title
+  recipe.value = undefined
   
   recipe.value = await fetchRecipe(newKey)
 }, { deep: true, immediate: true })
