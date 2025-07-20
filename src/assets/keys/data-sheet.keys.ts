@@ -2,6 +2,7 @@
 
 export const enum Consistency {
   Granulated = "granulated",
+  Ground = "ground",
   Liquid = "liquid",
   Powder = "powder",
   SemiSolid = "semi-solid",
@@ -20,15 +21,23 @@ export const enum DensityKey {
   GranulatedSalt = "granulated-salt",
   GranulatedSugar = "granulated-sugar",
   GranulatedYeast = "granulated-yeast",
+  GreekYogurt = "greek-yogurt",
+  GroundSpice = "ground-spice",
   Honey = "honey",
   OliveOil = "olive-oil",
+  Tahini = "tahini",
   Water = "water"
 }
 
 export const enum IngredientCut {
+  Chopped = "chopped",
   Diced = "diced",
   FinelyChopped = "finely-chopped",
   FinelyDiced = "finely-diced",
+  Grated = "grated",
+  Ground = "ground",
+  HalfRoundSliced = "half-round-sliced",
+  IntoSmallWedges = "into-small-wedges",
   IntoStrips = "into-strips",
   IntoWedges = "into-wedges",
   Julienned = "julienned",

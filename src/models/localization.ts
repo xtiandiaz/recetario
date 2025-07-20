@@ -35,6 +35,7 @@ export interface LocalizedRecipe extends Recipe {
   localizedIngredients: LocalizedRecipeIngredient[]
   title: string
   
+  localizedDescription?: string
   localizedInstructions?: string[]
 }
 

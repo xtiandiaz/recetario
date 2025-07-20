@@ -1,6 +1,9 @@
 {
   "key": "tabbouleh",
   "category": "salads",
+  "description": {
+    "es": "Ensalada mentolada, fresca y nutritiva, característica de la comida libanesa."
+  },
   "origin": "🇱🇧",
   "portions": 2,
   "ingredients": [
@@ -11,12 +14,12 @@
     {
       "key": "cucumber",
       "amount": "1/2 cup",
-      "cut": "diced"
+      "cut": "finely-diced"
     },
     {
       "key": "tomato",
       "amount": "1/2 cup",
-      "cut": "diced"
+      "cut": "finely-diced"
     },
     {
       "key": "round-onion",

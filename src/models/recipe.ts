@@ -8,9 +8,9 @@ import type { CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys"
 export type RecipeEntry = { key: RecipeKey, title: string }
 
 export interface RawRecipeIngredient {
-  amount: string
   key: IngredientKey
   
+  amount?: string
   cut?: IngredientCut
   note?: { [key: string]: string }
   optional?: boolean
@@ -24,6 +24,7 @@ export interface RawRecipe {
   key: RecipeKey
   
   origin?: string
+  description?: { [key: string]: string }
   portions?: number
 }
 
@@ -41,6 +42,7 @@ export interface Recipe {
   instructions: Map<Language, string[]>
   key: RecipeKey
   
+  description?: Map<Language, string>
   origin?: string
   portions?: number 
 }

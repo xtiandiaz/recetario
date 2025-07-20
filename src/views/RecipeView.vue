@@ -56,6 +56,7 @@ onBeforeMount(() => {
     
     <div class="headline">
       <h4>{{ summary?.title }} {{ recipe?.origin }}</h4>
+      <span class="description">{{ recipe?.localizedDescription }}</span>
     </div>
     
     <VuetyForm v-if="recipe">
@@ -66,8 +67,8 @@ onBeforeMount(() => {
       >
         <RecipeScaleRow @scale="(mult) => ingredientAmountMultiplier = mult" />
         
-        <div class="divider">
-          <span v-if="portions">{{ interpolateLocalizedString('title-portions', { count: portions }) }}</span>
+        <div class="divider highlighted">
+          = {{ interpolateLocalizedString('title-portions', { count: portions }) }}
         </div>
         
         <VuetyTaskFormRow 
@@ -120,6 +121,7 @@ onBeforeMount(() => {
 );
 @use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
+@use '@design-tokens/typography';
 @use '@design-tokens/iconography';
 
 @include theme.categories();
@@ -129,17 +131,24 @@ onBeforeMount(() => {
   @extend .serif;
 }
 
-.rows .divider {
-  @extend .serif;
+.divider {
+  @extend strong;
 }
 
 .headline {
+  margin: 0 auto;
+  max-width: 400px;
   padding: 0.5em 2em;
   text-align: center;
   
   > * {
     @extend .serif;
-    margin: 0.25em auto;
+    margin: 0.5em auto;
+  }
+  
+  .description {
+    @extend .italic;
+    @include palette.color-attribute('color', 'secondary-body');
   }
 }
 

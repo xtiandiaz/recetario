@@ -10,7 +10,6 @@ export const enum CategoryKey {
 }
 
 export const enum RecipeKey {
-  BabaGanoush = "baba-ganoush",
   CreamySalmonSoup = "creamy-salmon-soup",
   Granola = "granola",
   Hummus = "hummus",

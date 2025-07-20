@@ -5,7 +5,7 @@
       "categories": [
         {
           "color": "yellow",
-          "emoji": "🥖",
+          "emoji": "🌾",
           "key": "bakery",
           "recipes": [
             "pita",
@@ -35,7 +35,6 @@
           "emoji": "🥘",
           "key": "sauces",
           "recipes": [
-            "baba-ganoush",
             "hummus",
             "tzatziki"
           ]

@@ -16,14 +16,25 @@
       "density": "baking-soda"
     },
     {
+      "key": "ground-black-pepper",
+      "consistency": "powder",
+      "density": "ground-spice"
+    },
+    {
       "key": "bulgur",
       "consistency": "granular",
       "density": "bulgur"
     },
     {
+      "key": "carrot"
+    },
+    {
       "key": "carrier-oil",
       "consistency": "liquid",
       "density": "0.9"
+    },
+    {
+      "key": "chickpea"
     },
     {
       "key": "coconut-oil",
@@ -39,11 +50,22 @@
       "key": "cucumber"
     },
     {
+      "key": "dill"
+    },
+    {
       "key": "dry-fruit-mix"
     },
     {
       "key": "essential-oil",
       "consistency": "viscous"
+    },
+    {
+      "key": "fish-stock",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
+      "key": "garlic"
     },
     {
       "key": "granulated-salt",
@@ -56,12 +78,25 @@
       "density": "granulated-sugar"
     },
     {
+      "key": "greek-yogurt",
+      "consistency": "semi-solid",
+      "density": "greek-yogurt"
+    },
+    {
       "key": "honey",
       "consistency": "viscous",
       "density": "honey"
     },
     {
+      "key": "leek"
+    },
+    {
       "key": "lime-juice",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
+      "key": "milk-cream",
       "consistency": "liquid",
       "density": "water"
     },
@@ -83,12 +118,23 @@
       "key": "parsley"
     },
     {
+      "key": "potato"
+    },
+    {
       "key": "round-onion"
+    },
+    {
+      "key": "salmon"
     },
     {
       "key": "strong-wheat-flour",
       "consistency": "powder",
       "density": "flour"
+    },
+    {
+      "key": "tahini",
+      "consistency": "viscous",
+      "density": "tahini"
     },
     {
       "key": "tomato"

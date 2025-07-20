@@ -39,6 +39,7 @@ export function localizeRecipe(recipe: Recipe): LocalizedRecipe | undefined {
   
   return {
     ...recipe,
+    localizedDescription: recipe.description?.get(localizedContent.language),
     localizedIngredients: recipe.ingredients.map(ri => {
       return {
         ...ri,

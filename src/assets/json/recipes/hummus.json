@@ -1,0 +1,45 @@
+{
+  "key": "hummus",
+  "category": "sauces",
+  "description": {
+    "es": "Salsa a base de garbanzo para untar en panes, carnes y vegetales asados, fritura, etc."
+  },
+  "portions": 3,
+  "ingredients": [
+    {
+      "key": "chickpea",
+      "amount": "1/2 cup"
+    },
+    {
+      "key": "greek-yogurt",
+      "amount": "1 tbsp"
+    },
+    {
+      "key": "olive-oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "key": "tahini",
+      "amount": "1 tsp"
+    },
+    {
+      "key": "garlic",
+      "amount": "1/4 tsp"
+    },
+    {
+      "key": "granulated-salt"
+    },
+    {
+      "key": "black-pepper",
+      "cut": "ground"
+    }
+  ],
+  "instructions": {
+    "es": [
+      "Cocinar el garbanzo en solo agua, a presión, hasta que esté muy blando.",
+      "Escurrir y dejar reposar el garbanzo hasta que esté tibio.",
+      "En un triturador de alimentos, agregar todos los ingredientes y triturarlos hasta que adquieran una textura homogénea.",
+      "Agregar la sal y pimienta al gusto."
+    ]
+  }
+}

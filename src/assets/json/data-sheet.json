@@ -1,6 +1,7 @@
 {
   "consistencies": [
     "granulated",
+    "ground",
     "liquid",
     "powder",
     "semi-solid",
@@ -63,6 +64,14 @@
       "value": 0.75
     },
     {
+      "key": "greek-yogurt",
+      "value": 0.96
+    },
+    {
+      "key": "ground-spice",
+      "value": 0.5
+    },
+    {
       "key": "honey",
       "value": 1.42
     },
@@ -71,18 +80,27 @@
       "value": 0.915
     },
     {
+      "key": "tahini",
+      "value": 0.95
+    },
+    {
       "key": "water",
       "value": 1
     }
   ],
   "ingredientCuts": [
+    "chopped",
     "diced",
+    "finely-chopped",
     "finely-diced",
+    "grated",
+    "ground",
+    "half-round-sliced",
+    "into-small-wedges",
     "into-strips",
     "into-wedges",
     "julienned",
     "minced",
-    "finely-chopped",
     "round-sliced",
     "sliced"
   ],

@@ -58,7 +58,7 @@ function parseQuantity(quantityString: string): Quantity | undefined {
 
 export function parseMeasurement(text: string): Measurement | undefined {
   const parts = text.match(measurementRegExp)
-  if (!parts) {
+  if (!parts || parts.length < 4) {
     return undefined
   }
   

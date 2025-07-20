@@ -1,0 +1,52 @@
+{
+  "key": "tzatziki",
+  "category": "sauces",
+  "description": {
+    "es": "Salsa a base de yogur griego para untar en carnes y vegetales asados."
+  },
+  "origin": "🇬🇷",
+  "portions": 2,
+  "ingredients": [
+    {
+      "key": "greek-yogurt",
+      "amount": "4 tbsp"
+    },
+    {
+      "key": "cucumber",
+      "amount": "1/4 cup",
+      "cut": "finely-diced"
+    },
+    {
+      "key": "dill",
+      "amount": "1 tbsp",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "olive-oil",
+      "amount": "1 tbsp"
+    },
+    {
+      "key": "lime-juice",
+      "amount": "1 tsp"
+    },
+    {
+      "key": "granulated-salt"
+    },
+    {
+      "key": "black-pepper",
+      "cut": "ground"
+    },
+    {
+      "key": "garlic",
+      "amount": "1/4 tsp",
+      "cut": "grated",
+      "optional": true
+    }
+  ],
+  "instructions": {
+    "es": [
+      "Mezclar todos los ingredientes en un bol de tamaño apto para la cantidad que se quiere.",
+      "Agregar la sal y pimienta al gusto."
+    ]
+  }
+}

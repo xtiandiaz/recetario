@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import type { LocalizedRecipeIngredient } from '@/models/localization';
+import useContentStore from '@/stores/content'
 import { calculateRecipeIngredientMeasurementEquivalent } from '@/utils/measurement.utils';
 import MeasurementLabel from './MeasurementLabel.vue';
 import SvgIcon from '@/vueties/components/misc/VuetySvgIcon.vue';
 import { ingredientCutIcon } from '@/utils/recipe.utils';
+import '@/assets/tungsten/extensions/string.extensions'
 
 const { localizedIngredient: ingredient } = defineProps<{
   localizedIngredient: LocalizedRecipeIngredient,
   amountMultiplier: number
 }>()
+
+const localizedContent = useContentStore().localized
 </script>
 
 <template>
@@ -23,6 +27,7 @@ const { localizedIngredient: ingredient } = defineProps<{
       :equivalent="calculateRecipeIngredientMeasurementEquivalent(ingredient)"
       :multiplier="amountMultiplier"
     />
+    <span v-else class="unspecified-amount">{{ localizedContent?.other.get('text-to-taste')?.capitalized() }}</span>
     
     <MeasurementLabel 
       v-if="ingredient.temperature" 
@@ -62,5 +67,10 @@ const { localizedIngredient: ingredient } = defineProps<{
       @include mixins.size(1.75em);
     }
   }
+}
+
+.unspecified-amount {
+  @extend .italic;
+  @include palette.color-attribute('color', 'tertiary-body');
 }
 </style>

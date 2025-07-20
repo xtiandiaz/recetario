@@ -1,0 +1,65 @@
+{
+  "key": "creamy-salmon-soup",
+  "category": "soups",
+  "origin": "🇸🇪",
+  "portions": 2,
+  "ingredients": [
+    {
+      "key": "salmon",
+      "amount": "300 g"
+    },
+    {
+      "key": "leek",
+      "amount": "3/4 cup",
+      "cut": "half-round-sliced"
+    },
+    {
+      "key": "potato",
+      "amount": "1.5 cup",
+      "cut": "into-wedges"
+    },
+    {
+      "key": "carrot",
+      "amount": "1 cup",
+      "cut": "into-wedges"
+    },
+    {
+      "key": "round-onion",
+      "amount": "1/4 cup",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "garlic",
+      "amount": "1 tsp",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "fish-stock",
+      "amount": "3 cup"
+    },
+    {
+      "key": "dill",
+      "amount": "2 tbsp",
+      "cut": "finely-chopped"
+    },
+    {
+      "key": "milk-cream",
+      "amount": "4 tbsp"
+    },
+    {
+      "key": "granulated-salt"
+    }
+    
+  ],
+  "instructions": {
+    "es": [
+      "En una olla suficientemente grande, sofreir el puerro, el ajo y la cebolla a fuego lento hasta que se cristalicen. Usar aceite de oliva preferiblemente.",
+      "Vertir el caldo de pescado, elevar la olla a temperatura media y taparla hasta que hierva.",
+      "Una vez esté hirviendo, agregar la papa y la zanahoria, tapar la olla, volver a ponerla a fuego lento, y dejarla hervir por 20 min hasta que ablanden los ingredientes.",
+      "Mientras tanto, sellar el salmón en un sartén antiadherente, dorándolo a fuego alto por tan solo 1 min a cada lado. Remover la piel del salmón (si aún la tiene) dorándola y luego retirándola suavemente con ayuda de una espátula. Sellar también la cara expuesta luego de haberle quitado la piel.",
+      "Completado el tiempo de cocción en la olla, agregar el pescado partido en trozos grandes, y la crema de leche, y dejarlo todo hervir por otros 5 min.",
+      "Apagar la olla, agregar en ella la mitad del eneldo junto con la sal al gusto, revolver y dejar reposar por 5 min antes de servir.",
+      "Servir las porciones deseadas, distribuyendo en ellas el eneldo remanente para darle un útlimo toque de textura y sabor a la sopa. ¡Buen provecho!"
+    ]
+  }
+}

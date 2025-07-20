@@ -7,12 +7,17 @@ import { Icon } from "@/assets/design-tokens/iconography";
 
 export const ingredientCutIcon = (cut: IngredientCut): Icon => {
   switch(cut) {
+    case IngredientCut.Chopped:
     case IngredientCut.Diced:
       return Icon.Dice
     case IngredientCut.FinelyChopped:
-    case IngredientCut.FinelyDiced:
+    case IngredientCut.Grated:
+    case IngredientCut.Ground:
     case IngredientCut.Minced:
       return Icon.Brunoise
+    case IngredientCut.FinelyDiced:
+      return Icon.SmallDice
+    case IngredientCut.IntoSmallWedges:
     case IngredientCut.IntoWedges:
       return Icon.Wedges
     case IngredientCut.Julienned:
@@ -20,6 +25,8 @@ export const ingredientCutIcon = (cut: IngredientCut): Icon => {
       return Icon.Julienne
     case IngredientCut.RoundSliced:
       return Icon.RoundSlices
+    case IngredientCut.HalfRoundSliced:
+      return Icon.HalfRoundSlices
     case IngredientCut.Sliced:
       return Icon.Slices 
   }
@@ -29,7 +36,7 @@ export function refineRawRecipeIngredient(
   rawRecipeIngredient: RawRecipeIngredient, 
   inventory: Inventory,
 ): RecipeIngredient {
-  const amount = parseMeasurement(rawRecipeIngredient.amount)
+  const amount = rawRecipeIngredient.amount ? parseMeasurement(rawRecipeIngredient.amount) : undefined
   const ingredient = inventory.ingredients.find(i => i.key === rawRecipeIngredient.key)
   
   const rawTemperature = rawRecipeIngredient.temperature
@@ -48,10 +55,11 @@ export function refineRawRecipeIngredient(
 
 export function refineRawRecipe(rawRecipe: RawRecipe, inventory: Inventory): Recipe {
   return {
+    key: rawRecipe.key,
     category: rawRecipe.category,
+    description: rawRecipe.description ? Map.fromObject(rawRecipe.description) : undefined,
     ingredients: rawRecipe.ingredients.map(ri => refineRawRecipeIngredient(ri, inventory)),
     instructions: Map.fromObject(rawRecipe.instructions),
-    key: rawRecipe.key,
     origin: rawRecipe.origin,
     portions: rawRecipe.portions
   }
