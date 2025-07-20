@@ -55,7 +55,7 @@ const localizedContent = useContentStore().localized
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 0 1em;
+  gap: 0 0.75em;
   
   .cut {
     @extend .caption, .italic;

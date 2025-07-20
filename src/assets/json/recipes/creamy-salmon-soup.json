@@ -1,12 +1,12 @@
 {
   "key": "creamy-salmon-soup",
   "category": "soups",
-  "origin": "🇸🇪",
+  "origin": "🇸🇪🇫🇮",
   "portions": 2,
   "ingredients": [
     {
       "key": "salmon",
-      "amount": "300 g"
+      "amount": "320 g"
     },
     {
       "key": "leek",
@@ -54,12 +54,14 @@
   "instructions": {
     "es": [
       "En una olla suficientemente grande, sofreir el puerro, el ajo y la cebolla a fuego lento hasta que se cristalicen. Usar aceite de oliva preferiblemente.",
-      "Vertir el caldo de pescado, elevar la olla a temperatura media y taparla hasta que hierva.",
-      "Una vez esté hirviendo, agregar la papa y la zanahoria, tapar la olla, volver a ponerla a fuego lento, y dejarla hervir por 20 min hasta que ablanden los ingredientes.",
-      "Mientras tanto, sellar el salmón en un sartén antiadherente, dorándolo a fuego alto por tan solo 1 min a cada lado. Remover la piel del salmón (si aún la tiene) dorándola y luego retirándola suavemente con ayuda de una espátula. Sellar también la cara expuesta luego de haberle quitado la piel.",
-      "Completado el tiempo de cocción en la olla, agregar el pescado partido en trozos grandes, y la crema de leche, y dejarlo todo hervir por otros 5 min.",
-      "Apagar la olla, agregar en ella la mitad del eneldo junto con la sal al gusto, revolver y dejar reposar por 5 min antes de servir.",
-      "Servir las porciones deseadas, distribuyendo en ellas el eneldo remanente para darle un útlimo toque de textura y sabor a la sopa. ¡Buen provecho!"
+      "Verter el caldo de pescado, elevar la olla a temperatura media y taparla hasta que la mezcla hierva.",
+      "Una vez esté hirviendo, agregar la papa y la zanahoria, tapar la olla, y dejar hervir por 20 min hasta que se ablanden los vegetales.",
+      "Mientras tanto, precalentar un sartén antiadherente a fuego algo.",
+      "Cortar el salmón en trozos gruesos de apróx. 40 g c/u.",
+      "En el sartén caliente, sellar todas las piezas de salmón dorándolas por 1 min en cada cara. Remover la piel (si aún la tienen) dorándola y luego halándola suavemente (con ayuda de una espátula). Sellar también las caras expuesta luego de haberles quitado la piel.",
+      "Completado el tiempo de cocción en la olla, agregar los trozos de pescado sellado, la crema de leche, y dejar todo hervir por otros 5 min.",
+      "Apagar la olla, agregar la mitad del eneldo, la sal al gusto, revolver y dejar reposar por 5 min antes de servir.",
+      "Servir las porciones deseadas, regar sobre ellas el eneldo remanente, ja nauti!"
     ]
   }
 }

@@ -68,7 +68,7 @@ onBeforeMount(() => {
         <RecipeScaleRow @scale="(mult) => ingredientAmountMultiplier = mult" />
         
         <div class="divider highlighted">
-          = {{ interpolateLocalizedString('title-portions', { count: portions }) }}
+          <span v-if="portions">= {{ interpolateLocalizedString('title-portions', { count: portions }) }}</span>
         </div>
         
         <VuetyTaskFormRow 
