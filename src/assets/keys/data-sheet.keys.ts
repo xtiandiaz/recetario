@@ -15,6 +15,7 @@ export const enum DensityKey {
   Bulgur = "bulgur",
   Butter = "butter",
   CarrierOil = "carrier-oil",
+  ChiaSeed = "chia-seed",
   CoconutOil = "coconut-oil",
   CornStarch = "corn-starch",
   Flour = "flour",

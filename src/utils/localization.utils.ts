@@ -28,8 +28,12 @@ export function refineRawLocalizedContent(
 
 export const localizedMeasurementString = (measurement: Measurement, by: number): string => {
   const localizedContent = useContentStore().localized
+  const localizedUnit = measurement.unit 
+    ? ` ${(localizedContent?.units.get(measurement.unit) ?? measurement.unit)}`
+    : undefined
+  const prefix = localizedUnit ? '' : '×'
   
-  return `${htmlifyQuantity(measurement.quantity, by)} ${localizedContent?.units.get(measurement.unit) ?? measurement.unit}`
+  return `${prefix}${htmlifyQuantity(measurement.quantity, by)}${localizedUnit ?? ''}`
 }
 
 export const localizedMeasurementHTML = (measurement: Measurement, by: number): string => {

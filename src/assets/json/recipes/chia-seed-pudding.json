@@ -1,0 +1,49 @@
+{
+  "key": "chia-seed-pudding",
+  "category": "misc",
+  "portions": 2,
+  "ingredients": [
+    {
+      "key": "chia-seed",
+      "amount": "1/4 cup"
+    },
+    {
+      "key": "milk",
+      "amount": "4/3 cup",
+      "note": {
+        "es": "Combina diferentes tipos de leche si se tienen (e.g., regular, de almendra, y/o de soya)."
+      }
+    },
+    {
+      "key": "nut-seed-mix",
+      "amount": "1/2 cup"
+    },
+    {
+      "key": "fresh-fruit",
+      "amount": "3/2 cup",
+      "cut": "sliced",
+      "note": {
+        "es": "Variada si se puede, incluyendo banano preferiblemente."
+      }
+    },
+    {
+      "key": "fruit-jam",
+      "amount": "2 tbsp",
+      "note": {
+        "es": "Hecha con frutas complementarios para con las frescas que se estén usando."
+      }
+    },
+    {
+      "key": "honey",
+      "amount": "2 tsp",
+      "optional": true
+    }
+  ],
+  "instructions": {
+    "es": [
+      "Dentro de un recipiente con tapa, mezclar las semillas de chía y la leche. Revolver bien, tapar, y refrigerar por 12 hr.",
+      "Retirar el recipiente del refrigerador y dejarlo alcanzar la temperatura ambiente. O si se quiere, verter el pudín en una olla y tibiarlo a la temperatura deseada.",
+      "Distribuir y servir el pudín en las porciones planeadas, y sobre ellas repartir proporcionalmente la fruta, semillas, nueces, y dulces que se quieran."
+    ]
+  }
+}

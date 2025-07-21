@@ -1,0 +1,68 @@
+{
+  "key": "onigiri",
+  "category": "misc",
+  "description": {
+    "es": "Famosas bolas de arroz, típicas de la \"comida rápida\" japonesa."
+  },
+  "origin": "🇯🇵",
+  "portions": 6,
+  "ingredients": [
+    {
+      "key": "sushi-rice",
+      "amount": "1 cup"
+    },
+    {
+      "key": "rice-vinegar",
+      "amount": "2 tbsp"
+    },
+    {
+      "key": "water",
+      "amount": "3/2 cup"
+    },
+    {
+      "key": "sesame-seed",
+      "amount": "2 tbsp",
+      "note": {
+        "es": "Preferiblemente blanco y negro combinados."
+      }
+    },
+    {
+      "key": "canned-tuna",
+      "amount": "80 g",
+      "optional": true
+    },
+    {
+      "key": "lime-juice",
+      "amount": "1 tbsp",
+      "optional": true
+    }, 
+    {
+      "key": "prune",
+      "amount": "1/4 cup",
+      "optional": true
+    },
+    {
+      "key": "mayonnaise",
+      "amount": "1 tbsp",
+      "optional": true
+    },
+    {
+      "key": "nori-algae-sheet",
+      "amount": "1",
+      "optional": true
+    }
+  ],
+  "instructions": {
+    "es": [
+      "Poner a hervir el agua, a fuego alto, en una olla con tapa.",
+      "Tan pronto como hierva, verter el arroz, poner la olla a fuego lento y taparla inmediatamente. Dejar así cocer el arroz durante 20 min.",
+      "Mientras tanto, preparar los rellenos que se quieran para las bolas de arroz. Una opción es mezclando el atún, la mayonesa y el zumo de limón, con sal y pimienta al gusto. Otra opción, es hervir por aparte y durante 5 min las ciruelas pasas, con una pizca de sal y azúcar, y un poco de agua, hasta formar una pasta o mermelada espesa de ciruela. O si no, cualquier otra opción según tu gusto y creatividad.",
+      "Completado el tiempo de cocción, apagar la olla, destaparla y dejar enfriar el arroz durante 10 min.",
+      "Regar sobre el arroz las cucharadas de vinagre, tratando de distribuirlo lo mejor posible, revolviéndolo bien con una cuchara.",
+      "Cuando el arroz ya NO esté muy caliente al tacto, remojarse las manos en agua fría (para que el arroz no se adhiera tanto), y formar las bolas de arroz completas, aún sin relleno.",
+      "Hechas las bolas y teniendo listos los rellenos a utilizar, presionar cada bola en el centro e ir formando con ella una especie de cuenco. Con ayuda una cucharita rellenar la concavidad con el relleno deseado, sin excederse, para poder cerrarla aproximando y uniendo los bordes del cuenco. Luego redondear, elongar, o darle la forma semi-triangular deseada a cada \"bola\".",
+      "Opcionalmente, ya formadas y rellenas las bolas, cortar la(s) hoja(s) de nori en trozos rectangulares. Ubicar trasversalmente un trozo en la base de cada bola, y elevarlo y presionarlo suavemente para adherirlo.",
+      "Regar y desparramar el ajonjolí en un plato pequeño. Luego rodar cada bola sobre el plato en el area en que se quiere decorar con las semillas. Y eso es todo, ¡que las disfrutes!"
+    ]
+  }
+}

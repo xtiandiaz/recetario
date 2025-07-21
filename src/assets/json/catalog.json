@@ -18,6 +18,7 @@
           "emoji": "🥣",
           "key": "misc-food",
           "recipes": [
+            "chia-seed-pudding",
             "granola",
             "onigiri"
           ]

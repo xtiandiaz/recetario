@@ -58,13 +58,13 @@ function parseQuantity(quantityString: string): Quantity | undefined {
 
 export function parseMeasurement(text: string): Measurement | undefined {
   const parts = text.match(measurementRegExp)
-  if (!parts || parts.length < 4) {
+  if (!parts) {
     return undefined
   }
   
   const quantity = parseQuantity(parts[1])
   const unit = parts[3] as Unit
-  if (quantity && unit) {    
+  if (quantity) {
     return { quantity, unit }
   }
   

@@ -11,6 +11,11 @@
       "density": "flour"
     },
     {
+      "key": "apple-vinegar",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
       "key": "baking-soda",
       "consistency": "powder",
       "density": "baking-soda"
@@ -26,12 +31,20 @@
       "density": "bulgur"
     },
     {
+      "key": "canned-tuna"
+    },
+    {
       "key": "carrot"
     },
     {
       "key": "carrier-oil",
       "consistency": "liquid",
       "density": "0.9"
+    },
+    {
+      "key": "chia-seed",
+      "consistency": "granular",
+      "density": "chia-seed"
     },
     {
       "key": "chickpea"
@@ -65,6 +78,12 @@
       "density": "water"
     },
     {
+      "key": "fresh-fruit"
+    },
+    {
+      "key": "fruit-jam"
+    },
+    {
       "key": "garlic"
     },
     {
@@ -96,12 +115,25 @@
       "density": "water"
     },
     {
+      "key": "mayonnaise",
+      "consistency": "viscous",
+      "density": "mayonnaise"
+    },
+    {
+      "key": "milk",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
       "key": "milk-cream",
       "consistency": "liquid",
       "density": "water"
     },
     {
       "key": "mint"
+    },
+    {
+      "key": "nori-algae-sheet"
     },
     {
       "key": "nut-seed-mix"
@@ -121,15 +153,30 @@
       "key": "potato"
     },
     {
+      "key": "rice-vinegar",
+      "consistency": "liquid",
+      "density": "water"
+    },
+    {
       "key": "round-onion"
     },
     {
       "key": "salmon"
     },
     {
+      "key": "sesame-seed",
+      "consistency": "granular",
+      "density": "sesame-seed"
+    },
+    {
       "key": "strong-wheat-flour",
       "consistency": "powder",
       "density": "flour"
+    },
+    {
+      "key": "sushi-rice",
+      "consistency": "granular",
+      "density": "sushi-rice"
     },
     {
       "key": "tahini",
@@ -141,11 +188,6 @@
     },
     {
       "key": "water",
-      "consistency": "liquid",
-      "density": "water"
-    },
-    {
-      "key": "whole-milk",
       "consistency": "liquid",
       "density": "water"
     },

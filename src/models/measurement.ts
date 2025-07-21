@@ -12,5 +12,5 @@ export interface FractionalQuantity extends Quantity {
 
 export interface Measurement {
   quantity: Quantity
-  unit: Unit
+  unit?: Unit
 }

@@ -40,6 +40,10 @@
       "value": 0.9
     },
     {
+      "key": "chia-seed",
+      "value": 0.81
+    },
+    {
       "key": "coconut-oil",
       "value": 0.922
     },
@@ -76,8 +80,20 @@
       "value": 1.42
     },
     {
+      "key": "mayonnaise",
+      "value": 0.93
+    },
+    {
       "key": "olive-oil",
       "value": 0.915
+    },
+    {
+      "key": "sesame-seed",
+      "value": 0.61
+    },
+    {
+      "key": "sushi-rice",
+      "value": 1.05
     },
     {
       "key": "tahini",

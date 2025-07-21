@@ -34,9 +34,9 @@
     },
     {
       "amount": "2 tbsp",
-      "key": "whole-milk",
+      "key": "milk",
       "note": {
-        "es": "Para embarnizar el pan y que dore más."
+        "es": "Preferiblemente entera de vaca, para embarnizar el pan y que dore más."
       },
       "optional": true,
       "temperature": "room"

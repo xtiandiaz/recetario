@@ -1,1 +1,1 @@
-export const measurementRegExp = /(\d+([.,\-\/]\d+)?)\s*([a-zA-Zº]+)/
+export const measurementRegExp = /(\d+([.,\-\/]\d+)?)\s*([a-zA-Zº]+)?/
