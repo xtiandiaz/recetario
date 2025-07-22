@@ -21,9 +21,10 @@
       "density": "baking-soda"
     },
     {
-      "key": "black-pepper",
-      "consistency": "powder",
-      "density": "ground-spice"
+      "key": "bay-leaf"
+    },
+    {
+      "key": "black-pepper"
     },
     {
       "key": "bulgur",

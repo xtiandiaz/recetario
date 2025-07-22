@@ -48,13 +48,26 @@
     },
     {
       "key": "granulated-salt"
+    },
+    {
+      "key": "bay-leaf",
+      "amount": "2",
+      "optional": true
+    },
+    {
+      "key": "black-pepper",
+      "amount": "1 tsp",
+      "note": {
+        "es": "Usar la pimienta en grano entero (sin moler), si se tiene."
+      },
+      "optional": true
     }
     
   ],
   "instructions": {
     "es": [
       "En una olla suficientemente grande, sofreir el puerro, el ajo y la cebolla a fuego lento hasta que se cristalicen. Usar aceite de oliva preferiblemente.",
-      "Verter el caldo de pescado, elevar la olla a temperatura media y taparla hasta que la mezcla hierva.",
+      "Verter el caldo de pescado, agregar la pimienta y las hojas de laurel (si se tienen), elevar la olla a temperatura media y taparla hasta que la mezcla hierva.",
       "Una vez esté hirviendo, agregar la papa y la zanahoria, tapar la olla, y dejar hervir por 20 min hasta que se ablanden los vegetales.",
       "Mientras tanto, precalentar un sartén antiadherente a fuego algo.",
       "Cortar el salmón en trozos gruesos de apróx. 40 g c/u.",
