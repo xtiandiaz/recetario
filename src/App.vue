@@ -27,7 +27,7 @@ onBeforeMount(async () => {
 
 <template>
   <VuetyScene v-if="!isLoading" :navigationBarVM="navBarVM" />
-  <VuetyProgressIndicator v-else  />
+  <VuetyProgressIndicator v-else />
 </template>
 
 <style scoped lang="scss">
