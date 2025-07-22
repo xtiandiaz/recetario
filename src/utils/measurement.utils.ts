@@ -4,18 +4,16 @@ import type { RecipeIngredient } from "@/models/recipe";
 import useContentStore from '@/stores/content'
 import { Consistency, Unit } from "@/assets/keys/data-sheet.keys";
 import { measurementRegExp } from "@/assets/reg-exps";
-import { clamp, simplifyFraction } from "@/assets/tungsten/math";
+import { simplifyFraction } from "@/assets/tungsten/math";
 import '@/assets/tungsten/extensions/string.extensions'
 import { Icon } from '@design-tokens/iconography'
 
-export const measurementIcon = (measurement: Measurement): Icon | undefined => {
-  switch (measurement.unit) {
+export const unitIcon = (unit: Unit): Icon | undefined => {
+  switch (unit) {
     case Unit.Cup:
       return Icon.Cup
     case Unit.Celcius:
-      const icons = [Icon.ThermometerLow, Icon.ThermometerMedium, Icon.ThermometerHigh]
-      const index = clamp(Math.floor(measurement.quantity.value / 50), 0, icons.length)
-      return icons[index]
+      return Icon.ThermometerMedium
     case Unit.Drop:
       return Icon.Drop
     case Unit.TableSpoon:

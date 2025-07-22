@@ -6,7 +6,6 @@ import useContentStore from '@/stores/content'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue';
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@/vueties/components/form/rows/VuetyPushFormRow.vue';
-import type { DensityKey } from '@/assets/keys/data-sheet.keys';
 import '@/assets/tungsten/extensions/array.extensions'
 
 const route = useRoute()
@@ -16,13 +15,9 @@ const groupedIngredients = content.inventory?.localizedIngredients
   .filter(ing => ing.density)
   .sort((a, b) => a.localizedName.localeCompare(b.localizedName))
   .groupedBy((ing: LocalizedIngredient) => ing.localizedName[0])
-  
-function stringifyDensityValue(key: DensityKey): string {
-  return `${content.dataSheet!.densities.find(d => d.key === key)?.value.toLocaleString()} g/mL`
-}
 
 onMounted(() => {
-  route.meta.setTitle(content.localized?.other.get('title-calculator'), false)
+  route.meta.setTitle(content.localized?.other.get('title-inventory'), false)
 })
 </script>
 
@@ -37,8 +32,8 @@ onMounted(() => {
         v-for="(ingredient, index) of group"
         :key="index"
         :title="ingredient.localizedName"
-        :path="''"
-        :value="stringifyDensityValue(ingredient.density!)"
+        :path="`${$route.path}/${ingredient.key}`"
+        :value="`${ingredient.density?.value} g/mL`"
       />
     </VuetyFormSection>
   </VuetyForm>

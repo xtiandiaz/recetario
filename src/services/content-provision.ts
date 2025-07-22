@@ -1,11 +1,12 @@
 import type { Catalog } from "@/models/catalog";
 import type { DataSheet } from "@/models/data-sheet";
-import type { Inventory } from "@/models/inventory";
+import type { RawInventory } from "@/models/inventory";
 import type { LocalizedRecipe, RawLocalizedContent } from "@/models/localization";
 import type { RawRecipe } from '@/models/recipe';
 import useContentStore from '@/stores/content'
 import useSettingsStore from '@/stores/settings'
 import { localizeCatalog, localizeRecipe, localizeInventory } from "./localization";
+import { refineRawInventory } from "@/utils/inventory.utils";
 import { refineRawRecipe } from "@/utils/recipe.utils";
 import { refineRawLocalizedContent } from "@/utils/localization.utils";
 import { RecipeKey } from "@/assets/keys/catalog.keys";
@@ -37,7 +38,8 @@ export async function loadContent() {
   }
   
   if (!content.inventory) {
-    content.inventory = localizeInventory(await fetchData<Inventory>('inventory'), content.localized)
+    const rawInventory = await fetchData<RawInventory>('inventory')
+    content.inventory = localizeInventory(refineRawInventory(rawInventory, content.dataSheet), content.localized)
   }
   
   if (!content.catalog) {

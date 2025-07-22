@@ -13,7 +13,7 @@ const navBarVM: VuetyNavigationBarVM = {
   rightBarItems: [
     {
       icon: Icon.Scale,
-      path: '{current}/calculator'
+      path: '{current}/inventory'
     },
   ]
 }

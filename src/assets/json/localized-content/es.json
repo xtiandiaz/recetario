@@ -106,7 +106,8 @@
     "tsp": "cdta."
   },
   "other": {
-    "title-calculator": "Índice de ingredientes",
+    "title-density": "Densidad",
+    "title-inventory": "Inventario de ingredientes",
     "title-ingredients": "Ingredientes",
     "title-instructions": "Instrucciones",
     "title-optional": "opcional",
