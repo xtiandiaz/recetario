@@ -1,14 +1,19 @@
 import { defineStore } from "pinia";
 import { ref } from 'vue'
-import type { Inventory } from "@/models/inventory";
 import type { DataSheet } from "@/models/data-sheet";
-import type { LocalizedContent, LocalizedCategory, LocalizedCatalog, LocalizedRecipeSummary } from "@/models/localization";
+import type { 
+  LocalizedContent, 
+  LocalizedCategory, 
+  LocalizedCatalog, 
+  LocalizedInventory,
+  LocalizedRecipeSummary 
+} from "@/models/localization";
 import { CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys";
 
 export default defineStore('content', () => {
   const catalog = ref<LocalizedCatalog>()
   const dataSheet = ref<DataSheet>()
-  const inventory = ref<Inventory>()
+  const inventory = ref<LocalizedInventory>()
   const localized = ref<LocalizedContent>()
   
   function getLocalizedCategory(key: CategoryKey): LocalizedCategory | undefined {

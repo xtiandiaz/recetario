@@ -1,5 +1,5 @@
-import type { Inventory } from "@/models/inventory";
 import type { RawRecipeIngredient, RecipeIngredient, RawRecipe, Recipe } from "@/models/recipe";
+import type { LocalizedInventory } from "@/models/localization";
 import { parseMeasurement } from "./measurement.utils";
 import { IngredientCut, type TemperatureEstimate } from "@/assets/keys/data-sheet.keys";
 import '@/assets/tungsten/extensions/map.extensions'
@@ -34,10 +34,10 @@ export const ingredientCutIcon = (cut: IngredientCut): Icon => {
 
 export function refineRawRecipeIngredient(
   rawRecipeIngredient: RawRecipeIngredient, 
-  inventory: Inventory,
+  inventory: LocalizedInventory,
 ): RecipeIngredient {
   const amount = rawRecipeIngredient.amount ? parseMeasurement(rawRecipeIngredient.amount) : undefined
-  const ingredient = inventory.ingredients.find(i => i.key === rawRecipeIngredient.key)
+  const ingredient = inventory.localizedIngredients.find(i => i.key === rawRecipeIngredient.key)
   
   const rawTemperature = rawRecipeIngredient.temperature
   const temperature = rawTemperature ? (parseMeasurement(rawTemperature) ?? rawTemperature as TemperatureEstimate) : undefined
@@ -53,7 +53,7 @@ export function refineRawRecipeIngredient(
   }
 }
 
-export function refineRawRecipe(rawRecipe: RawRecipe, inventory: Inventory): Recipe {
+export function refineRawRecipe(rawRecipe: RawRecipe, inventory: LocalizedInventory): Recipe {
   return {
     key: rawRecipe.key,
     category: rawRecipe.category,

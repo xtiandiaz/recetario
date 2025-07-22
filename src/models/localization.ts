@@ -1,8 +1,9 @@
+import type { Category} from './catalog'
+import type { Recipe, RecipeIngredient } from "./recipe"
+import type { Ingredient } from "./inventory"
 import type { Unit, TemperatureEstimate, IngredientCut } from "@/assets/keys/data-sheet.keys"
 import type { IngredientKey } from "@/assets/keys/inventory.keys"
 import type { SectionKey, CategoryKey, RecipeKey } from "@/assets/keys/catalog.keys"
-import type { Category} from '@/models/catalog'
-import type { Recipe, RecipeIngredient } from "./recipe"
 
 export enum Language {
   Spanish = 'es',
@@ -24,9 +25,15 @@ export interface LocalizedContent {
   units: Map<Unit, string>
 }
 
-export interface LocalizedRecipeIngredient extends RecipeIngredient {
-  name: string
-  
+export interface LocalizedIngredient extends Ingredient {
+  localizedName: string
+}
+
+export interface LocalizedInventory {
+  localizedIngredients: LocalizedIngredient[]
+}
+
+export interface LocalizedRecipeIngredient extends RecipeIngredient, LocalizedIngredient {
   localizedCut?: string
   localizedNote?: string
 }

@@ -8,8 +8,10 @@
     },
     {
       "amount": "2 cup",
-      "alt_keys": ["whole-rye-flour"],
-      "key": "whole-wheat-flour"
+      "key": "whole-wheat-flour",
+      "note": {
+        "es": "Alternativamente, usa harina de centeno, o ambas (50:50)."
+      }
     },
     {
       "amount": "1 tsp",

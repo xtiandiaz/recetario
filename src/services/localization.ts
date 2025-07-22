@@ -4,12 +4,25 @@ import type {
   LocalizedCatalog, 
   LocalizedCategory, 
   LocalizedContent, 
+  LocalizedInventory,
   LocalizedRecipe,
 } from "@/models/localization"
 import useContentStore from '@/stores/content'
 import { measurementRegExp } from "@/assets/reg-exps"
 import { parseMeasurement } from "@/utils/measurement.utils"
 import { localizedMeasurementHTML } from "@/utils/localization.utils"
+import type { Inventory } from "@/models/inventory"
+
+export function localizeInventory(inventory: Inventory, localizedContent: LocalizedContent): LocalizedInventory {
+  return {
+    localizedIngredients: inventory.ingredients.map(ing => {
+      return {
+        ...ing,
+        localizedName: localizedContent.ingredients.get(ing.key) ?? `{${ing.key}}`
+      }
+    })
+  }
+}
 
 function localizeRecipeInstructions(recipe: Recipe, localizedContent: LocalizedContent): string[] | undefined {
   const instructions = recipe.instructions.get(localizedContent.language)
@@ -44,10 +57,10 @@ export function localizeRecipe(recipe: Recipe): LocalizedRecipe | undefined {
       return {
         ...ri,
         localizedCut: ri.cut ? localizedContent.ingredientCuts.get(ri.cut) : undefined,
+        localizedName: localizedContent.ingredients.get(ri.key) ?? `{${ri.key}}`,
         localizedNote: ri.note?.get(localizedContent.language),
-        name: localizedContent.ingredients.get(ri.key) ?? `{${ri.key}}`,
       }
-    }).sort((a, b) => a.name.localeCompare(b.name)),
+    }).sort((a, b) => a.localizedName.localeCompare(b.localizedName)),
     localizedInstructions: localizeRecipeInstructions(recipe, localizedContent),
     title: localizedContent.recipes.get(recipe.key) ?? `{${recipe.key}}`,
   }

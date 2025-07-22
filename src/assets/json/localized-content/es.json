@@ -92,7 +92,8 @@
     "tahini": "Tahini (pasta de ajonjolí)",
     "tomato": "Tomate",
     "water": "Agua",
-    "whole-wheat-flour": "Harina de trigo integral"
+    "whole-wheat-flour": "Harina de trigo integral",
+    "whole-rye-flour": "Harina de centeno integral"
   },
   "temperatureEstimates": {
     "room": "Al clima",
@@ -104,6 +105,7 @@
     "tsp": "cdta."
   },
   "other": {
+    "title-calculator": "Índice de ingredientes",
     "title-ingredients": "Ingredientes",
     "title-instructions": "Instrucciones",
     "title-optional": "opcional",

@@ -16,7 +16,7 @@ const localizedContent = useContentStore().localized
 </script>
 
 <template>
-  {{ ingredient.name }}
+  {{ ingredient.localizedName }}
   
   <div v-if="ingredient.localizedNote" class="note">{{ ingredient.localizedNote }}</div>
   

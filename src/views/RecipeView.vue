@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onBeforeMount } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router';
 import type { LocalizedRecipe } from '@/models/localization';
 import type { LocalizedRecipeSummary } from '@/models/localization';
@@ -39,15 +39,11 @@ const hasOptionalIngredients = computed(() => {
 
 watch(() => recipeKey, async (newKey) => {
   summary.value = content.getLocalizedRecipeSummary(newKey)
-  route.meta.title.value = summary.value?.title
+  route.meta.setTitle(summary.value?.title, true)
   recipe.value = undefined
   
   recipe.value = await fetchRecipe(newKey)
 }, { deep: true, immediate: true })
-
-onBeforeMount(() => {
-  route.meta.showsLargeTitle.value = true
-})
 </script>
 
 <template>

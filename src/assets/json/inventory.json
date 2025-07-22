@@ -21,7 +21,7 @@
       "density": "baking-soda"
     },
     {
-      "key": "ground-black-pepper",
+      "key": "black-pepper",
       "consistency": "powder",
       "density": "ground-spice"
     },
@@ -39,7 +39,7 @@
     {
       "key": "carrier-oil",
       "consistency": "liquid",
-      "density": "0.9"
+      "density": "carrier-oil"
     },
     {
       "key": "chia-seed",

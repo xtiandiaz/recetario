@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import type { LocalizedRecipeSummary } from '@/models/localization';
 import useContentStore from '@/stores/content'
@@ -22,12 +22,8 @@ const recipeEntries = computed(() => localized.value?.recipeSummaries
 )
 
 watch(localized, async (value) => {
-  route.meta.title.value = value ? `${value.emoji} ${value.title}` : undefined
+  route.meta.setTitle(value ? `${value.emoji} ${value.title}` : undefined, true)
 }, { immediate: true })
-
-onBeforeMount(() => {
-  route.meta.showsLargeTitle.value = true
-})
 </script>
 
 <template>
