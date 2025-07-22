@@ -84,7 +84,7 @@ export function calculateIngredientMeasurementEquivalent(
   measurement: Measurement
 ): Measurement | undefined {
   const dataSheet = useContentStore().dataSheet
-  const density = dataSheet?.densities.find(d => d.key === ingredient.density)?.value
+  const density = ingredient.density
   const consistency = ingredient.consistency
   const customaryVolume = dataSheet?.customaryVolumes.find(cv => cv.unit === measurement.unit)
   
@@ -98,9 +98,9 @@ export function calculateIngredientMeasurementEquivalent(
   switch (consistency) {
     case Consistency.Liquid:
     case Consistency.Viscous:
-      return { quantity: { value: volumeML / density }, unit: Unit.Mililiter }
+      return { quantity: { value: volumeML / density.value }, unit: Unit.Mililiter }
     default:
-      return { quantity: { value: volumeML * density }, unit: Unit.Gram }
+      return { quantity: { value: volumeML * density.value }, unit: Unit.Gram }
   }
 }
 
