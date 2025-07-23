@@ -133,7 +133,7 @@ watch(() => recipeKey, async (newKey) => {
 
 .headline {
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 420px;
   padding: 0.5em 2em;
   text-align: center;
   

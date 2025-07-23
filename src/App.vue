@@ -35,7 +35,7 @@ onBeforeMount(async () => {
 
 .vuety-progress-indicator {
   margin: auto;
-  width: 3em;
+  @include mixins.size(3em);
   @include mixins.position(absolute, 0, 0, 0, 0);
 }
 </style>

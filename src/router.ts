@@ -27,24 +27,18 @@ function produceCommonChildren(parentPath: string): RouteRecordRaw[] {
 export default createVuetyRouter([
   {
     path: '/',
-    components: {
-      default: CatalogView
-    },
+    component: CatalogView,
     children: produceCommonChildren('/')
   },
   {
     path: '/category/:categoryKey',
-    components: {
-      default: CategoryView
-    },
+    component: CategoryView,
     props: true,
     children: produceCommonChildren('/category/:categoryKey')
   },
   {
     path: '/recipe/:recipeKey',
-    components: {
-      default: RecipeView
-    },
+    component: RecipeView,
     props: true,
     children: produceCommonChildren('/recipe/:recipeKey')
   }
