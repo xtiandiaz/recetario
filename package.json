@@ -1,6 +1,6 @@
 {
   "name": "recetario",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "private": false,
   "type": "module",
   "scripts": {
