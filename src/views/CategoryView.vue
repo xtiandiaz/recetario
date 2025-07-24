@@ -16,23 +16,23 @@ const { categoryKey } = defineProps<{
 const route = useRoute()
 const content = useContentStore()
 
-const localized = computed(() => content.getLocalizedCategory(categoryKey))
-const recipeEntries = computed(() => localized.value?.recipeSummaries
+const category = computed(() => content.getLocalizedCategory(categoryKey))
+const recipeEntries = computed(() => category.value?.recipeSummaries
   .groupedBy((val: LocalizedRecipeSummary) => val.title.substring(0, 1).toLocaleUpperCase())
 )
 
-watch(localized, async (value) => {
+watch(category, async (value) => {
   route.meta.setTitle(value ? `${value.emoji} ${value.title}` : undefined, true)
 }, { immediate: true })
 </script>
 
 <template>
-  <main v-if="localized" :class="['theme-category', categoryKey]">
-    <div :id="localized.key" class="theme-background"></div>
+  <main v-if="category" :class="['theme-category', categoryKey]">
+    <div :id="category.key" class="theme-background"></div>
     
-    <div class="headline">
-      <h1 class="emoji">{{ localized.emoji }}</h1>
-      <h5>{{ localized.title }}</h5>
+    <div id="headline">
+      <h1 class="emoji">{{ category.emoji }}</h1>
+      <h4 class="title">{{ category.title }}</h4>
     </div>
     
     <VuetyForm>
@@ -53,20 +53,24 @@ watch(localized, async (value) => {
 </template>
 
 <style scoped lang="scss">
-@use '@/assets/styles/theme';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
+@use '@design-tokens/typography';
+@use '@/assets/styles/theme';
 
 @include theme.categories();
 
-.headline {
+#headline {
   margin: 0;
   text-align: center;
   
   & > * {
-    @extend .serif;
-    margin: 0;
+    margin: 0.25em;
+  }
+  
+  .title {
+    @include typography.handwritten();
   }
   
   .emoji {

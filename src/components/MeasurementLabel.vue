@@ -25,9 +25,10 @@ const { measurement } = defineProps<{
 
 <style scoped lang="scss">
 @use '../assets/styles/measurement';
-@use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
 @use '@design-tokens/typography';
+@use '@design-tokens/mixins';
+@use '@/assets/varties';
 
 .measurement-label-wrapper {
   align-items: center;
@@ -42,17 +43,12 @@ const { measurement } = defineProps<{
   padding: 0.125em 0 0 0;
   
   :not(&.temperature) {
-    @extend .strong;
-  }
-  
-  .svg-icon {
-    @include mixins.size(1.25em);
-    @include palette.color-attribute('color', 'tertiary-body');
+    @include typography.strong();
   }
 }
 
 .equivalent {
-  @extend .caption;
-  @include palette.color-attribute('color', 'tertiary-body');
+  @include typography.caption();
+  @include palette.color-attribute('color', varties.$tertiary-body-color);
 }
 </style>

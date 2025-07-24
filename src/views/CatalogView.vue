@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router';
 import useContentStore from '@/stores/content'
 import VuetyForm from '@vueties/components/form/VuetyForm.vue';
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue';
 import VuetyPushFormRow from '@/vueties/components/form/rows/VuetyPushFormRow.vue';
 
+const route = useRoute()
 const content = useContentStore()
 
 const catalog = computed(() => content.catalog)
+
+onMounted(() => {
+  route.meta.setTitle('– Recetario –')
+})
 </script>
 
 <template>
@@ -43,9 +49,5 @@ const catalog = computed(() => content.catalog)
 h4 {
   text-align: center;
   margin-bottom: 1em;
-}
-
-:deep(.large-title *) {
-  @extend .serif;
 }
 </style>

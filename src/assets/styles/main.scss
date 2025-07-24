@@ -1,8 +1,8 @@
 @use '@vueties/styles/base';
 @use '@design-tokens/typography';
+@use '@vueties/components/form/styles';
 
-.vuety-navigation-bar {
-  #vnb-title {
-    @extend strong, .serif;
-  }
+#vnb-title,
+.vuety-form-section .large-title .title {
+  @include typography.handwritten();
 }

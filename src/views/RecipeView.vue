@@ -12,7 +12,6 @@ import VuetyForm from '@vueties/components/form/VuetyForm.vue'
 import VuetyFormSection from '@vueties/components/form/VuetyFormSection.vue'
 import VuetyTaskFormRow from '@vueties/components/form/rows/VuetyTaskFormRow.vue';
 import VuetyProgressIndicator from '@vueties/components/misc/VuetyProgressIndicator.vue';
-import { Icon } from '@design-tokens/iconography';
 import '@/assets/tungsten/extensions/string.extensions'
 import { interpolateLocalizedString } from '@/services/localization';
 
@@ -50,14 +49,13 @@ watch(() => recipeKey, async (newKey) => {
   <main :class="['theme-category', summary?.category]">
     <div class="theme-background"></div>
     
-    <div class="headline">
-      <h4>{{ summary?.title }} {{ recipe?.origin }}</h4>
+    <div id="headline">
+      <h4 class="title">{{ summary?.title }} {{ recipe?.origin }}</h4>
       <span class="description">{{ recipe?.localizedDescription }}</span>
     </div>
     
     <VuetyForm v-if="recipe">
       <VuetyFormSection
-        :icon="Icon.Scale"
         :showsLargeTitle="true"
         :title="content.localized?.other.get('title-ingredients')"
       >
@@ -95,7 +93,6 @@ watch(() => recipeKey, async (newKey) => {
       </VuetyFormSection>
       
       <VuetyFormSection
-        :icon="Icon.Doc"
         :showsLargeTitle="true"
         :title="content.localized?.other.get('title-instructions')"
       >
@@ -110,47 +107,47 @@ watch(() => recipeKey, async (newKey) => {
 </template>
 
 <style scoped lang="scss">
-@use '@/assets/styles/theme';
-@use '@/assets/styles/measurement';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
-@use '@vueties/styles/mixins';
 @use '@design-tokens/palette';
 @use '@design-tokens/typography';
-@use '@design-tokens/iconography';
+@use '@design-tokens/mixins';
+@use '@/assets/styles/theme';
+@use '@/assets/styles/measurement';
+@use '@/assets/varties';
+
 
 @include theme.categories();
 @include measurement.label();
-
-:deep(.large-title *) {
-  @extend .serif;
-}
 
 .divider {
   @extend strong;
 }
 
-.headline {
+#headline {
   margin: 0 auto;
   max-width: 420px;
   padding: 0.5em 2em;
   text-align: center;
   
   > * {
-    @extend .serif;
     margin: 0.5em auto;
   }
   
+  .title {
+    @include typography.handwritten();
+  }
+  
   .description {
-    @extend .italic;
-    @include palette.color-attribute('color', 'secondary-body');
+    @include typography.italic();
+    @include palette.color-attribute('color', varties.$secondary-body-color);
   }
 }
 
 .vuety-progress-indicator {
   margin: auto;
-  width: 3em;
+  @include mixins.size(3em);
   @include mixins.position(absolute, 0, 0, 0, 0);
 }
 </style>

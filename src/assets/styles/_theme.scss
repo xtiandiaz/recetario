@@ -10,7 +10,8 @@
         :deep(.theme-background) {
           z-index: -100;
           @include mixins.position(fixed, 0, 0, 0, 0);
-          @include mixins.linear-gradient(180deg, $color 0.1 0%, 'secondary-background' 1 75%);
+          @include palette.color-attribute('background-color', $color, 0.05);
+          // @include mixins.linear-gradient(180deg, $color 0.1 0%, 'secondary-background' 1 75%);
         }
       
         :deep(.theme-colored-item) {

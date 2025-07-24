@@ -3,7 +3,8 @@
 @use '@design-tokens/palette';
 @use '@design-tokens/typography';
 @use '@design-tokens/iconography';
-@use '@vueties/styles/mixins';
+@use '@design-tokens/mixins';
+@use '@/assets/varties';
 
 @mixin temperature($value) {
   .temperature-#{$value} {
@@ -21,10 +22,10 @@
 
 @mixin label() {
   :deep(.measurement-label) {
-    @extend .strong;
     align-items: center;
     display: inline-flex;
     gap: 0.125em;
+    @include typography.strong();
     
     $icon-map: (
       'ºC': 'thermometer-medium',
@@ -40,7 +41,7 @@
       @each $symbol, $icon in $icon-map {
         &.#{$symbol} {
           @include mixins.size(1.25em);
-          @include iconography.colored-icon-content-attribute($icon, 'tertiary-body');
+          @include iconography.colored-icon-content-attribute($icon, varties.$tertiary-body-color);
         }
       }
     }
