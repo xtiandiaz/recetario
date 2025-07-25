@@ -34,7 +34,7 @@ const localizedContent = useContentStore().localized
       :measurement="ingredient.temperature" 
     />
     
-    <div v-if="ingredient.cut" class="cut theme-colored-item">
+    <div v-if="ingredient.cut" class="cut caption italic theme-colored-item">
       {{ ingredient.localizedCut }}
       <SvgIcon :icon="ingredientCutIcon(ingredient.cut)" />
     </div>
@@ -42,13 +42,11 @@ const localizedContent = useContentStore().localized
 </template>
 
 <style scoped lang="scss">
-@use '@design-tokens/palette';
-@use '@design-tokens/typography';
-@use '@vueties/styles/mixins';
+@use '@vueties/utils/vuetystrap' as vs;
 
 .note {
   @extend .caption;
-  @include palette.color-attribute('color', 'secondary-body');
+  @include vs.color-attribute('color', vs.$secondary-body-color);
 }
 
 .labels {
@@ -58,19 +56,18 @@ const localizedContent = useContentStore().localized
   gap: 0 0.75em;
   
   .cut {
-    @extend .caption, .italic;
     align-items: center;
     display: inline-flex;
     gap: 0.25em;
     
     .svg-icon {
-      @include mixins.size(1.75em);
+      @include vs.size(1.75em);
     }
   }
 }
 
 .unspecified-amount {
-  @extend .italic;
-  @include palette.color-attribute('color', 'tertiary-body');
+  @include vs.italic();
+  @include vs.color-attribute('color', vs.$tertiary-body-color);
 }
 </style>

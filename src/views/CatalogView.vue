@@ -37,14 +37,9 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@use '@/assets/varties';
-@use '@/assets/styles/theme';
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
-@use '@vueties/styles/mixins';
-@use '@design-tokens/typography';
-@use '@design-tokens/palette';
 
 h4 {
   text-align: center;

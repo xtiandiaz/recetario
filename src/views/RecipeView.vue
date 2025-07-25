@@ -107,23 +107,15 @@ watch(() => recipeKey, async (newKey) => {
 </template>
 
 <style scoped lang="scss">
+@use '@vueties/utils/vuetystrap' as vs;
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
-@use '@design-tokens/palette';
-@use '@design-tokens/typography';
-@use '@design-tokens/mixins';
 @use '@/assets/styles/theme';
 @use '@/assets/styles/measurement';
-@use '@/assets/varties';
-
 
 @include theme.categories();
 @include measurement.label();
-
-.divider {
-  @extend strong;
-}
 
 #headline {
   margin: 0 auto;
@@ -136,18 +128,18 @@ watch(() => recipeKey, async (newKey) => {
   }
   
   .title {
-    @include typography.handwritten();
+    @include vs.handwritten();
   }
   
   .description {
-    @include typography.italic();
-    @include palette.color-attribute('color', varties.$secondary-body-color);
+    @include vs.italic();
+    @include vs.color-attribute('color', vs.$secondary-body-color);
   }
 }
 
 .vuety-progress-indicator {
   margin: auto;
-  @include mixins.size(3em);
-  @include mixins.position(absolute, 0, 0, 0, 0);
+  @include vs.size(3em);
+  @include vs.position(absolute, 0, 0, 0, 0);
 }
 </style>

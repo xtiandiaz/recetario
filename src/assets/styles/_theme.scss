@@ -1,7 +1,6 @@
 @use 'sass:map';
-@use '../keys/theme-keys';
-@use '@vueties/styles/mixins';
-@use '@design-tokens/palette';
+@use '@vueties/utils/vuetystrap' as vs;
+@use '@/assets/keys/theme-keys';
 
 @mixin categories() {
   .theme-category {
@@ -9,13 +8,12 @@
       &.#{$category} {        
         :deep(.theme-background) {
           z-index: -100;
-          @include mixins.position(fixed, 0, 0, 0, 0);
-          @include palette.color-attribute('background-color', $color, 0.05);
-          // @include mixins.linear-gradient(180deg, $color 0.1 0%, 'secondary-background' 1 75%);
+          @include vs.position(fixed, 0, 0, 0, 0);
+          @include vs.color-attribute('background-color', $color, 0.05);
         }
       
         :deep(.theme-colored-item) {
-          @include palette.color-attribute('color', $color);
+          @include vs.color-attribute('color', $color);
         }
       }
     }

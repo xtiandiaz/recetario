@@ -31,11 +31,11 @@ onBeforeMount(async () => {
 </template>
 
 <style scoped lang="scss">
-@use '@vueties/styles/mixins';
+@use '@vueties/utils/vuetystrap' as vs;
 
 .vuety-progress-indicator {
   margin: auto;
-  @include mixins.size(3em);
-  @include mixins.position(absolute, 0, 0, 0, 0);
+  @include vs.size(3em);
+  @include vs.position(absolute, 0, 0, 0, 0);
 }
 </style>

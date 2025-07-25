@@ -53,10 +53,10 @@ watch(category, async (value) => {
 </template>
 
 <style scoped lang="scss">
+@use '@vueties/utils/vuetystrap' as vs;
 @use '@vueties/components/form/styles' as form-styles with (
   $max-width: 720px
 );
-@use '@design-tokens/typography';
 @use '@/assets/styles/theme';
 
 @include theme.categories();
@@ -70,7 +70,7 @@ watch(category, async (value) => {
   }
   
   .title {
-    @include typography.handwritten();
+    @include vs.handwritten();
   }
   
   .emoji {
